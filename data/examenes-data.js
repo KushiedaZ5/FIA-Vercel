@@ -1,12 +1,4 @@
-/**
- * Catálogo de exámenes disponibles
- * Estructura: clave del curso -> tipo de examen -> array de ciclos disponibles
- * 
- * Ejemplo de nombre de archivo: MD-PC1-241.pdf
- * - MD = clave del curso (Matemática Discreta)
- * - PC1 = tipo de examen (Práctica Calificada 1)
- * - 241 = ciclo académico (2024-1)
- */
+
 
 const examenesDisponibles = {
     // Matemática Discreta
@@ -16,11 +8,7 @@ const examenesDisponibles = {
         'PC3': ['181','182','191','192','212','230','231','232','241','242','251',],
         'PC4': ['212','230','231','232','241','242','251'], // MD-PC2-241.pdf ✅ NUEVO
         'EF': ['212','232','241','242','251'], // MD-PC2-241.pdf ✅ NUEVO
-        // Agrega más tipos y ciclos conforme subas PDFs
-        // 'PC2': ['241', '242'],
-        // 'PC3': ['241'],
-        // 'PC4': ['241'],
-        // 'EF': ['241']
+
     },
     'AL': {
         'PC1': ['232'],
@@ -28,10 +16,7 @@ const examenesDisponibles = {
         'PC3': ['232','241'],
         'PC4': ['232','241'],
         'EF': ['231','232','241'],
-        // Agrega tipos y ciclos conforme subas PDFs
-        // 'PC1': ['241'],
-        // 'PC2': ['241'],
-        // 'EF': ['241']
+
     },
     'F1': {
         'PC1': ['090','091','232','241','242','251'],
@@ -45,32 +30,44 @@ const examenesDisponibles = {
         'LAB4': ['232'],
         'LAB5': ['251'], // MD-PC1-241.pdf existe
         'LAB6': ['202'], // MD-PC2-241.pdf ✅ NUEVO
-        // Agrega más tipos y ciclos conforme subas PDFs
-        // 'PC2': ['241', '242'],
-        // 'PC3': ['241'],
-        // 'PC4': ['241'],
-        // 'EF': ['241']
     },
 
     // Física 2 - Prof. Castro
     // Carpeta: pdfs/F2C/
     'F2C': {
         'PC1': ['241'],
-        // Agrega tipos y ciclos conforme subas PDFs
-        // 'PC1': ['241'],
-        // 'PC2': ['241'],
-        // 'EF': ['241']
+
     },
 
     // Física 2 - Prof. Tejada
     // Carpeta: pdfs/F2T/
     'F2T': {
-        'PC1': ['241'],
-        // Agrega tipos y ciclos conforme subas PDFs
-        // 'PC1': ['241'],
-        // 'PC2': ['241'],
-        // 'EF': ['241']
+        'PC1': ['231','241','242','251'],
+        'PC2': ['232','242'],
+        'PC3': ['242','251','252'],
+        'PC4': ['241'],
+        'EF': ['201'],
+        'LAB1': ['A','B'],
+        'LAB2': ['A','B'],
+        'LAB3': ['A','B'],
+        'LAB4': ['A'],
+        'LAB5': ['A'],
+        'LAB6': ['A'],
     },
+    'GA': {
+         'PC1': ['231','232','241','242','251','252'],
+         'PC2': ['231','232','241','242','251'],
+         'PC3': ['231','232','241','251'],
+         'PC4': ['231','232','241','242','251'],
+         'EF': ['231','232','241','242','251']
+        },
+    'EST2': {
+         'PC1': ['251'],
+         'PC2': ['251'],
+         'PC3': ['251'],
+         'PC4': ['251'],
+         'EF': ['241']
+        },
     // Cálculo I
     // Carpeta: pdfs/C1/
     'C1': {

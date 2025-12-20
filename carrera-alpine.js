@@ -12,6 +12,39 @@ document.addEventListener('alpine:init', () => {
             this.carrera = (this.carreraKey && dataCarreras[this.carreraKey])
                 ? dataCarreras[this.carreraKey]
                 : null;
+
+            // Esperar a que Alpine renderice el DOM y luego igualar alturas
+            this.$nextTick(() => {
+                this.equalizarAlturas();
+            });
+
+            // También igualar cuando la ventana cambie de tamaño
+            window.addEventListener('resize', () => this.equalizarAlturas());
+        },
+
+        // Método: Igualar alturas de todas las tarjetas de ciclo
+        equalizarAlturas() {
+            // Buscar todas las tarjetas de ciclo (los links dentro del grid)
+            const cards = document.querySelectorAll('[x-data="carreraApp"] .grid > div > a');
+
+            if (cards.length === 0) return;
+
+            // Primero resetear alturas para medir correctamente
+            cards.forEach(card => card.style.height = 'auto');
+
+            // Encontrar la altura máxima
+            let maxHeight = 0;
+            cards.forEach(card => {
+                const height = card.offsetHeight;
+                if (height > maxHeight) maxHeight = height;
+            });
+
+            // Aplicar la altura máxima a todas las tarjetas
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+
+            console.log(`📐 Alturas igualadas: ${maxHeight}px para ${cards.length} tarjetas`);
         },
 
         // Computed: Título dinámico
