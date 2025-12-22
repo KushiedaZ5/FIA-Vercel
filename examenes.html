@@ -34,8 +34,16 @@
         content="Accede a cientos de exámenes pasados de la FIA USMP organizados por carrera, curso y ciclo.">
     <meta name="twitter:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
 
+    <!-- Preconexiones para carga más rápida -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <!-- Preload fuentes críticas -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
+        as="style">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
@@ -555,7 +563,7 @@
                     <div class="lg:col-span-5 flex flex-col items-center text-center mb-5 lg:mb-0">
 
                         <div class="flex items-center gap-3 mb-3">
-                            <img src="imagenes/logo.png" alt="Logo Footer" class="h-12 opacity-90">
+                            <img src="imagenes/logo.png" alt="Logo Footer" class="h-12 opacity-90" loading="lazy">
                             <div class="flex flex-col items-start">
                                 <span
                                     class="text-2xl text-official-blue font-black -tracking-tight leading-none">Calculadora</span>
