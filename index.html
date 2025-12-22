@@ -33,7 +33,31 @@
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
                         'roboto': ['Roboto', 'sans-serif'],
-                    }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-in-1': 'slideIn1 0.8s ease-out 0.1s forwards',
+                        'slide-in-2': 'slideIn2 0.8s ease-out 0.25s forwards',
+                        'slide-in-3': 'slideIn3 0.8s ease-out 0.4s forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        slideIn1: {
+                            '0%': { opacity: '0', transform: 'translate(-50%, -50%) translateX(-100px) translateY(-40px) rotate(-8deg) scale(0.7)' },
+                            '100%': { opacity: '0.5', transform: 'translate(-50%, -50%) translateX(-40px) translateY(-15px) rotate(-6deg) scale(0.92)' },
+                        },
+                        slideIn2: {
+                            '0%': { opacity: '0', transform: 'translate(-50%, -50%) translateX(-60px) translateY(-25px) rotate(-5deg) scale(0.8)' },
+                            '100%': { opacity: '0.75', transform: 'translate(-50%, -50%) translateX(-20px) translateY(-8px) rotate(-3deg) scale(0.96)' },
+                        },
+                        slideIn3: {
+                            '0%': { opacity: '0', transform: 'translateX(-40px) scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'translateX(0) scale(1)' },
+                        },
+                    },
                 }
             }
         }
@@ -87,12 +111,551 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Hero Background - CSFloat style */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 17%;
+            width: 83%;
+            height: 100vh;
+            background-image: url('imagenes/hero-background.svg');
+            background-size: 110%;
+            background-position: left top;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Card Stack Animation - CSFloat Style */
+        .card-stack {
+            --rot-x: 44;
+            --rot-y: -56;
+            --rot-z: 11;
+            --rot-deg: 33deg;
+            --base-offset: 50px;
+            --transform-y: 28px;
+            position: relative;
+            width: 418px;
+            height: 715px;
+            /* Compensate for the horizontal shift caused by rotation */
+            transform: translateX(calc(var(--base-offset) * -2));
+            margin-top: -10px;
+        }
+
+        .card-stack img {
+            max-width: 396px;
+            width: 100%;
+            border-radius: 16px;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            /* Mejora de nitidez */
+
+
+
+        }
+
+        .stack-card-1 {
+            --offset: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .stack-card-2 {
+            --offset: var(--base-offset);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 1;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.25s;
+        }
+
+        .stack-card-3 {
+            --offset: calc(var(--base-offset) * 2);
+            position: relative;
+            z-index: 1;
+            opacity: 1;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes cardFloat {
+
+            0%,
+            100% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            }
+
+            50% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            }
+        }
+
+        /* ========================================
+           HERO CARD - Componente HTML/CSS
+           Replica la interfaz de la calculadora
+           ======================================== */
+        .hero-card {
+            width: 320px;
+            background: linear-gradient(to bottom, #18181b 0%, #0f0f12 100%);
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            /* Optimizaciones de rendering */
+            will-change: transform;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header azul */
+        .hero-card-header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #141820 100%);
+            border-bottom: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-header h3 {
+            color: #1E88E5;
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container de inputs */
+        .hero-card-inputs {
+            padding: 16px;
+        }
+
+        /* Fila de input */
+        .hero-card-input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hero-card-input-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-input-label {
+            color: #9ca3af;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .hero-card-input-label.highlight {
+            color: #ef4444;
+        }
+
+        .hero-card-input-label.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-input-value {
+            background: #0a0a0c;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            color: #08e600;
+            font-size: 12px;
+            padding: 8px 16px;
+            min-width: 140px;
+            text-align: left;
+        }
+
+        .hero-card-input-value.blue {
+            color: #60a5fa;
+        }
+
+        /* Separador */
+        .hero-card-separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #3f3f46, transparent);
+            margin: 8px 16px;
+        }
+
+        /* Result Box */
+        .hero-card-result {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 20px 16px 0 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card-approved {
+            color: #22c55e;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-card-result-label {
+            color: #9ca3af;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-result-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .hero-card-result-value.green {
+            color: #22c55e;
+            text-shadow: 0 0 60px rgba(34, 197, 94, 0.6);
+        }
+
+        /* Neon bar y fade glow */
+        .hero-card-glow {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 80px;
+            background: linear-gradient(to top, rgba(34, 197, 94, 0.25) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-card-neon-bar {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 4px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .hero-card-neon-bar.green {
+            background: hsl(142, 71%, 45%);
+            box-shadow:
+                0 -2px 10px hsla(142, 71%, 45%, 0.5),
+                0 -4px 20px hsla(142, 71%, 45%, 0.3),
+                0 -8px 40px hsla(142, 71%, 45%, 0.2);
+        }
+
+        /* Colores naranja para carta 2 */
+        .hero-card-result-value.orange {
+            color: #f59e0b;
+            text-shadow: 0 0 60px rgba(245, 158, 11, 0.6);
+        }
+
+        .hero-card-glow.orange {
+            background: linear-gradient(to top, rgba(245, 158, 11, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.orange {
+            background: hsl(38, 92%, 50%);
+            box-shadow:
+                0 -2px 10px hsla(38, 92%, 50%, 0.5),
+                0 -4px 20px hsla(38, 92%, 50%, 0.3),
+                0 -8px 40px hsla(38, 92%, 50%, 0.2);
+        }
+
+        /* Mensaje de nota mínima */
+        .hero-card-min-section {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .hero-card-min-label {
+            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-min-value {
+            color: #22c55e;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        /* Botón Guardar Notas */
+        .hero-card-save-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(to right, #16a34a, #22c55e);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .hero-card-save-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Colores rojos para carta 3 */
+        .hero-card-result-value.red {
+            color: #ef4444;
+            text-shadow: 0 0 60px rgba(239, 68, 68, 0.6);
+        }
+
+        .hero-card-glow.red {
+            background: linear-gradient(to top, rgba(239, 68, 68, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.red {
+            background: hsl(0, 84%, 60%);
+            box-shadow:
+                0 -2px 10px hsla(0, 84%, 60%, 0.5),
+                0 -4px 20px hsla(0, 84%, 60%, 0.3),
+                0 -8px 40px hsla(0, 84%, 60%, 0.2);
+        }
+
+        /* Texto "Imposible" */
+        .hero-card-impossible {
+            color: #ef4444;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        /* Peso de Notas Section */
+        .hero-card-weights {
+            background: #18181b;
+            border-top: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-weights-title {
+            color: #9ca3af;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .hero-card-weight-row {
+            margin-bottom: 8px;
+        }
+
+        .hero-card-weight-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-weight-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-weight-name {
+            color: #e5e7eb;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .hero-card-weight-name.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-name.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-percent {
+            color: #6b7280;
+            font-size: 10px;
+        }
+
+        .hero-card-weight-percent.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-percent.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-bar-bg {
+            background: #27272a;
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .hero-card-weight-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .hero-card-weight-bar-fill.blue {
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+        }
+
+        .hero-card-weight-bar-fill.red {
+            background: linear-gradient(to right, #ef4444, #f87171);
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile Hero Cards
+           ======================================== */
+        @media (max-width: 1024px) {
+            .card-stack {
+                width: 280px;
+                height: 500px;
+                --base-offset: 35px;
+                --transform-y: 20px;
+                margin-top: 0;
+                transform: translateX(20px) scale(0.95);
+            }
+
+            .hero-card {
+                width: 260px;
+                border-radius: 12px;
+            }
+
+            .hero-card-header {
+                padding: 10px 12px;
+            }
+
+            .hero-card-header h3 {
+                font-size: 11px;
+            }
+
+            .hero-card-inputs {
+                padding: 12px;
+            }
+
+            .hero-card-input-row {
+                margin-bottom: 8px;
+            }
+
+            .hero-card-input-label {
+                font-size: 9px;
+            }
+
+            .hero-card-input-value {
+                font-size: 10px;
+                padding: 6px 12px;
+                min-width: 100px;
+                border-radius: 6px;
+            }
+
+            .hero-card-separator {
+                margin: 6px 12px;
+            }
+
+            .hero-card-result {
+                padding: 14px 12px 0 12px;
+            }
+
+            .hero-card-approved {
+                font-size: 14px;
+            }
+
+            .hero-card-result-label {
+                font-size: 8px;
+            }
+
+            .hero-card-result-value {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+
+            .hero-card-min-section {
+                padding: 10px 12px;
+            }
+
+            .hero-card-min-label {
+                font-size: 8px;
+            }
+
+            .hero-card-min-value {
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+
+            .hero-card-impossible {
+                font-size: 14px;
+            }
+
+            .hero-card-save-btn {
+                font-size: 10px;
+                padding: 8px 12px;
+                border-radius: 8px;
+            }
+
+            .hero-card-weights {
+                padding: 10px 12px;
+            }
+
+            .hero-card-weights-title {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+
+            .hero-card-weight-name,
+            .hero-card-weight-percent {
+                font-size: 8px;
+            }
+
+            .hero-card-weight-bar-bg {
+                height: 4px;
+            }
+
+            .hero-card-glow {
+                height: 50px;
+            }
+
+            .hero-card-neon-bar {
+                height: 3px;
+            }
+
+            /* Aumentar altura del contenedor para que el título baje */
+            .hero-animation-container {
+                height: 525px !important;
+            }
+        }
     </style>
 </head>
 
-<body class="bg-bg-dark text-white font-inter min-h-screen flex flex-col">
+<body class="bg-bg-dark text-white font-inter min-h-screen flex flex-col relative">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5W79TKG" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Hero Background (CSFloat style) -->
+    <div class="hero-bg" aria-hidden="true"></div>
 
     <!-- ============================================
          MOBILE HEADER - Fixed Top (CSFloat Style)
@@ -357,10 +920,11 @@
     <!-- Mobile: Add padding for fixed header/footer -->
     <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0">
         <main class="flex items-center py-8 lg:py-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            <!-- Hero Layout: Flexbox with space-between like CSFloat -->
+            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full gap-8">
 
-                <!-- Left Column: Text Content -->
-                <div class="order-2 lg:order-1 text-center lg:text-left lg:pr-5">
+                <!-- Left Column: Text Content (max-width 570px like CSFloat) -->
+                <div class="order-2 lg:order-1 text-center lg:text-left lg:max-w-[570px]">
                     <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight mb-6 text-gradient">
                         Obtén los cálculos de promedios que necesitas con CalculadoraFIAUSMP
                     </h1>
@@ -428,33 +992,214 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Animation Preview -->
-                <div class="order-1 lg:order-2">
+                <!-- Right Column: Animation -->
+                <div class="order-1 lg:order-2 lg:max-w-[500px] lg:flex-shrink-0">
                     <div
-                        class="relative h-[350px] lg:h-[700px] w-full bg-radial-blue rounded-3xl border border-zinc-800 flex justify-center items-center overflow-hidden backdrop-blur-sm">
-                        <div class="relative w-full flex justify-center items-center">
-                            <div
-                                class="absolute top-7 left-[-30px] lg:left-[-50px] w-4/5 max-w-[280px] lg:max-w-[520px] opacity-20 blur-sm brightness-75 z-10">
-                                <img src="calculadora_preview.png" alt="Calculadora Shadow"
-                                    class="w-full h-auto rounded-2xl">
+                        class="hero-animation-container relative h-[450px] lg:h-[650px] w-full flex justify-center items-center overflow-visible">
+
+                        <!-- Card Stack - CSFloat Style -->
+                        <div class="card-stack">
+                            <!-- Card 1 - Front (HTML/CSS Component) -->
+                            <div class="hero-card stack-card-1">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value blue">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value blue">11</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value blue">14</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value blue">11</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value green">8</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-approved">¡Ya Aprobaste! 🎉</div>
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value green">10.50</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar green"></div>
+                                </div>
                             </div>
 
-                            <div class="relative w-[95%] lg:w-4/5 max-w-[300px] lg:max-w-[550px] z-30 drop-shadow-2xl animate-float"
-                                style="filter: drop-shadow(0 25px 50px rgba(26, 69, 188, 0.5));">
-                                <img src="calculadora_preview.png" alt="Preview Calculadora FIA"
-                                    class="w-full h-auto rounded-2xl">
+                            <!-- Card 2 - Middle (HTML/CSS Component - Orange) -->
+                            <div class="hero-card stack-card-2">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value">11</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value">14</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value">11</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value orange">7.83</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow orange"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar orange"></div>
+                                </div>
+
+                                <!-- Nota Mínima + Botón -->
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para aprobar:</div>
+                                    <div class="hero-card-min-value">8.00</div>
+                                    <button class="hero-card-save-btn">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                                        </svg>
+                                        Guardar Notas
+                                    </button>
+                                </div>
                             </div>
 
-                            <div
-                                class="absolute top-7 right-[-30px] lg:right-[-50px] w-4/5 max-w-[280px] lg:max-w-[520px] opacity-20 blur-sm brightness-75 z-10">
-                                <img src="calculadora_preview.png" alt="Calculadora Shadow"
-                                    class="w-full h-auto rounded-2xl">
+                            <!-- Card 3 - Back (HTML/CSS Component - Red) -->
+                            <div class="hero-card stack-card-3">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value red">0.00</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow red"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar red"></div>
+                                </div>
+
+                                <!-- Imposible text -->
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para :</div>
+                                    <div class="hero-card-impossible">Imposible</div>
+                                </div>
+
+                                <!-- Peso de Notas -->
+                                <div class="hero-card-weights">
+                                    <div class="hero-card-weights-title">Peso de Notas</div>
+
+                                    <!-- Prom. Prácticas -->
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header">
+                                            <span class="hero-card-weight-name blue">Prom. Prácticas (PE)</span>
+                                            <span class="hero-card-weight-percent blue">66.7%</span>
+                                        </div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill blue" style="width: 66.7%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Examen Final -->
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header">
+                                            <span class="hero-card-weight-name red">Examen Final (EF)</span>
+                                            <span class="hero-card-weight-percent red">33.3%</span>
+                                        </div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill red" style="width: 33.3%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Blur effect -->
+                        <!-- Blur glow effect behind cards -->
                         <div
-                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-epics-blue blur-[120px] opacity-30 z-0">
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-epics-blue blur-[150px] opacity-25 z-0">
                         </div>
                     </div>
                 </div>

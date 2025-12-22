@@ -444,6 +444,8 @@
             const borderColor = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.5)`;
 
             return {
+                color: color, // Color crudo para la barra neon
+                colorGlow: `hsla(${hue}, ${saturation}%, ${lightness}%, 0.25)`, // Color con opacidad para fade
                 texto: {
                     color: color,
                     textShadow: `0 0 80px ${color}`
