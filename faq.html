@@ -43,8 +43,17 @@
         as="style">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
+    <!-- Prevenir FOUC (Flash of Unstyled Content) -->
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.1s ease-in;
+        }
+    </style>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => document.body.style.opacity = '1');</script>
 
     <!-- Tailwind Configuration -->
     <script>
