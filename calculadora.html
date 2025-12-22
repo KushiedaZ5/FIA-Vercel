@@ -668,8 +668,8 @@
                         </div>
                     </section>
 
-                    <!-- BOX NOTA MÃNIMA (DELTA) - OCULTO HASTA PROMEDIO > 3 -->
-                    <section class="bg-card-bg border border-zinc-700 rounded-xl mb-6"
+                    <!-- BOX NOTA MÍNIMA (DELTA) - OCULTO HASTA PROMEDIO > 3 -->
+                    <section class="bg-card-bg border border-zinc-700 rounded-xl mb-6" x-show="promedio > 3"
                         x-transition.opacity.duration.500ms>
 
                         <div class="p-4 text-center">
@@ -682,7 +682,7 @@
                                         <span x-show="notaMinimaNecesaria.estado === 'aprobado'"
                                             class="text-[#00E676]">¡Ya aprobaste!</span>
                                         <span x-show="notaMinimaNecesaria.estado === 'imposible'"
-                                            class="text-[#FF1744]">No es posible</span>
+                                            class="text-[#FF1744]">No es posible aprobar</span>
                                         <span x-show="notaMinimaNecesaria.estado === 'posible'"
                                             :style="estilosNotaMinima"
                                             x-text="notaMinimaNecesaria.valor.toFixed(2)"></span>
