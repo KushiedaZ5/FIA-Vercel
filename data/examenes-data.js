@@ -95,6 +95,16 @@ const examenesDisponibles = {
         // 'PC2': ['241'],
         // 'EF': ['241']
     },
+    'CG': {
+        'PC1': ['241', '242', '251','252'],
+        'PC2': ['241', '2412', '2422','2512'],
+        'PC3': ['232', '241', '2412','242' ],
+        'EP': ['242', '251', '2512'],
+        'EF': ['231', '232', '241', '242', '242A','251', '251A'],  // Todos los ciclos en un solo array
+        // Agrega más tipos y ciclos conforme subas PDFs
+        // 'PC2': ['241'],
+        // 'EF': ['241']
+    },
 
     // Geometría Analítica  
     // 'GA': {
