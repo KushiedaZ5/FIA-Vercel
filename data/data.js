@@ -251,7 +251,7 @@ const dataCarreras = {
                 { value: 'liderazgo_profesionalizacion', text: 'Liderazgo y Profesionalización', esquema: '038', creditos: 2, clave: 'LP' },
                 { value: 'teoria_vuelo_instrumental', text: 'Teoría de Vuelo Instrumental', esquema: '038', creditos: 2, clave: 'TVI' },
             ], 'ciclo5': [
-                { value: 'administracion_logistica', text: 'Administración Logística', esquema: '045', creditos: 4, clave: 'AL' },
+                { value: 'administracion_logistica', text: 'Administración Logística', esquema: '045', creditos: 4, clave: 'ALO' },
                 { value: 'contabilidad_general', text: 'Contabilidad General', esquema: '038', creditos: 4, clave: 'CG' },
                 { value: 'mercadotecnia', text: 'Mercadotecnia', esquema: '045', creditos: 4, clave: 'MKT' },
                 { value: 'comportamiento_organizacional', text: 'Comportamiento Organizacional en Aviación', esquema: '045', creditos: 3, clave: 'COA' },
