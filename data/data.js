@@ -284,7 +284,14 @@ const tiposExamen = {
     'LB4': 'Laboratorio 4',
     'LB5': 'Laboratorio 5',
     'LB6': 'Laboratorio 6',
-    'LB7': 'Laboratorio 7'
+    'LB7': 'Laboratorio 7',
+    'C1': 'Control 1',
+    'C2': 'Control 2',
+    'C3': 'Control 3',
+    'C4': 'Control 4',
+    'C5': 'Control 5',
+    'C6': 'Control 6',
+    'CE': 'Controles Extra'
 };
 
 // Mapeo de ciclos académicos para mostrar nombres legibles
