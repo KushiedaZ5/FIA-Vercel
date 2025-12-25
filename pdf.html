@@ -41,10 +41,10 @@
     <style>
         body {
             opacity: 0;
-            transition: opacity 0.1s ease-in;
+            transition: opacity 0s;
         }
     </style>
-    <script>window.addEventListener('load', () => document.body.style.opacity = '1');</script>
+    <script>document.addEventListener('alpine:init', () => document.body.style.opacity = '1');</script>
 
     <style>
         /* ========================================
