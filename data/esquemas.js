@@ -8,7 +8,7 @@ const esquemas = {
     // --- GRUPO 1: PROMEDIOS BÁSICOS ---
     "038": {
         descripcion: "Promedio Simple P1, P2, P3",
-        imagen: "imagenes/038.jpg",
+        imagen: "imagenes/038.webp",
         inputs: ["P1", "P2", "P3", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones (PE)", v: 33.3, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 33.3, c: "bg-warning" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-danger" }],
         calcular: (n) => {
@@ -18,7 +18,7 @@ const esquemas = {
     },
     "039": {
         descripcion: "Inglés (Controles C1-C4)",
-        imagen: "imagenes/039.jpg",
+        imagen: "imagenes/039.webp",
         inputs: ["C1", "C2", "C3", "C4", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones (PE)", v: 70, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 15, c: "bg-warning" }, { n: "Examen Final (EF)", v: 15, c: "bg-danger" }],
         calcular: (n) => {
@@ -28,7 +28,7 @@ const esquemas = {
     },
     "040": {
         descripcion: "Ecuaciones Diferenciales (P4 Doble)",
-        imagen: "imagenes/040.jpg",
+        imagen: "imagenes/040.webp",
         inputs: ["P1", "P2", "P3", "P4", "EF"],
         pesos: [{ n: "Prom. Prácticas (PE)", v: 66.7, c: "bg-primary" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-danger" }],
         calcular: (n) => {
@@ -43,7 +43,7 @@ const esquemas = {
     // --- GRUPO 2: FÓRMULAS COMPLEJAS ---
     "041": {
         descripcion: "Estadística (P4 Doble + W1)",
-        imagen: "imagenes/041.jpg",
+        imagen: "imagenes/041.webp",
         inputs: ["P1", "P2", "P3", "P4", "W1", "EF"],
         pesos: [{ n: "Prom. Prácticas (PPR)", v: 53.3, c: "bg-primary" }, { n: "Trabajo (W1)", v: 13.3, c: "bg-info" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-warning" }],
         calcular: (n) => {
@@ -57,7 +57,7 @@ const esquemas = {
     },
     "042": {
         descripcion: "Física (P4 Doble + 7 Labs)",
-        imagen: "imagenes/042.jpg",
+        imagen: "imagenes/042.webp",
         inputs: ["P1", "P2", "P3", "P4", "Lb1", "Lb2", "Lb3", "Lb4", "Lb5", "Lb6", "Lb7", "EF"],
         pesos: [{ n: "Prom. Prácticas (PE)", v: 50, c: "bg-primary" }, { n: "Prom. Laboratorio (PL)", v: 25, c: "bg-success" }, { n: "Examen Final (EF)", v: 25, c: "bg-warning" }],
         calcular: (n) => {
@@ -75,7 +75,7 @@ const esquemas = {
     },
     "043": {
         descripcion: "Labs (6) + Examen Oral",
-        imagen: "imagenes/043.jpg",
+        imagen: "imagenes/043.webp",
         inputs: ["P1", "P2", "W1", "Lb1", "Lb2", "Lb3", "Lb4", "Lb5", "Lb6", "EO", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones", v: 50, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 25, c: "bg-warning" }, { n: "Examen Final (EF)", v: 25, c: "bg-danger" }],
         calcular: (n) => {
@@ -94,7 +94,7 @@ const esquemas = {
     },
     "045": {
         descripcion: "Dinámica / Tec. Concreto",
-        imagen: "imagenes/045.jpg",
+        imagen: "imagenes/045.webp",
         inputs: ["P1", "P2", "P3", "P4", "W1", "EP", "EF"],
         pesos: [{ n: "Prom. Prácticas", v: 25, c: "bg-primary" }, { n: "Trabajo (W1)", v: 25, c: "bg-info" }, { n: "Examen Parcial (EP)", v: 25, c: "bg-warning" }, { n: "Examen Final (EF)", v: 25, c: "bg-danger" }],
         calcular: (n) => {
@@ -107,7 +107,7 @@ const esquemas = {
     },
     "046": {
         descripcion: "TI 2 - 4 Labs",
-        imagen: "imagenes/046.jpg",
+        imagen: "imagenes/046.webp",
         inputs: ["P1", "P2", "P3", "P4", "W1", "Lb1", "Lb2", "Lb3", "Lb4", "EP", "EF"],
         pesos: [{ n: "Examen Final (EF)", v: 25, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 25, c: "bg-warning" }, { n: "Prom. Prácticas (P)", v: 16.7, c: "bg-primary" }, { n: "Trabajo (W1)", v: 16.7, c: "bg-info" }, { n: "Prom. Laboratorio (PL)", v: 16.7, c: "bg-success" }],
         calcular: (n) => {
@@ -121,7 +121,7 @@ const esquemas = {
     },
     "047": {
         descripcion: "Algoritmos 2 - Labs + Trabajos",
-        imagen: "imagenes/047.jpg",
+        imagen: "imagenes/047.webp",
         inputs: ["P1", "P2", "W1", "Lb1", "Lb2", "Lb3", "Lb4", "Lb5", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones (PE)", v: 50, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 25, c: "bg-info" }, { n: "Examen Final (EF)", v: 25, c: "bg-warning" }],
         calcular: (n) => {
@@ -137,7 +137,7 @@ const esquemas = {
     // --- GRUPO 3: PESOS DECIMALES ---
     "049": {
         descripcion: "Decimales 0.3, 0.3, 0.4",
-        imagen: "imagenes/049.jpg",
+        imagen: "imagenes/049.webp",
         inputs: ["P1", "P2", "P3", "P4", "EP", "EF"],
         pesos: [{ n: "Final (EF)", v: 40, c: "bg-danger" }, { n: "Parcial (EP)", v: 30, c: "bg-warning" }, { n: "Evaluaciones (PE)", v: 30, c: "bg-primary" }],
         calcular: (n) => {
@@ -183,7 +183,7 @@ const esquemas = {
     },
     "054": {
         descripcion: "Microeconomía 0.3, 0.3, 0.4",
-        imagen: "imagenes/054.jpg",
+        imagen: "imagenes/054.webp",
         inputs: ["P1", "P2", "P4", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "EP", "EF"],
         pesos: [{ n: "Examen Final (EF)", v: 40, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 30, c: "bg-warning" }, { n: "Práctica 1 (P1)", v: 7.5, c: "bg-primary" }, { n: "Práctica 2 (P2)", v: 7.5, c: "bg-primary" }, { n: "Controles (P3)", v: 7.5, c: "bg-primary" }, { n: "Investigación (P4)", v: 7.5, c: "bg-primary" }],
         calcular: (n) => {
@@ -195,7 +195,7 @@ const esquemas = {
     },
     "055": {
         descripcion: "Decimales (0.3, 0.2, 0.5) -  P5",
-        imagen: "imagenes/055.jpg",
+        imagen: "imagenes/055.webp",
         inputs: ["P1", "P2", "P3", "P4", "P5", "EP", "EF"],
         pesos: [{ n: "Examen Final (EF)", v: 50, c: "bg-danger" }, { n: "Prom. Evaluaciones (PE)", v: 30, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 20, c: "bg-warning" }],
         calcular: (n) => {
@@ -219,7 +219,7 @@ const esquemas = {
     // --- GRUPO 4: 12X / 13X ---
     "127": {
         descripcion: "Taller 4 Arquitectura",
-        imagen: "imagenes/127.jpg",
+        imagen: "imagenes/127.webp",
         inputs: ["P1", "P2", "P3", "P4", "EP", "EF"],
         pesos: [{ n: "Examen Final (EF)", v: 50, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 33.3, c: "bg-warning" }, { n: "Prom. Evaluaciones (PE)", v: 16.7, c: "bg-primary" }],
         calcular: (n) => {
@@ -229,7 +229,7 @@ const esquemas = {
     },
     "128": {
         descripcion: "Algoritmos I - Labs + Prácticas",
-        imagen: "imagenes/128.jpg",
+        imagen: "imagenes/128.webp",
         inputs: ["P1", "P2", "Lb1", "Lb2", "Lb3", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones (PE)", v: 33.3, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 33.3, c: "bg-warning" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-danger" }],
         calcular: (n) => {
@@ -241,7 +241,7 @@ const esquemas = {
     },
     "129": {
         descripcion: "Construcción 2 - Divisor 5",
-        imagen: "imagenes/129.jpg",
+        imagen: "imagenes/129.webp",
         inputs: ["P1", "P2", "P3", "P4", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones (PE)", v: 60, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 20, c: "bg-warning" }, { n: "Examen Final (EF)", v: 20, c: "bg-danger" }],
         calcular: (n) => {
@@ -251,7 +251,7 @@ const esquemas = {
     },
     "130": {
         descripcion: "Química Industrial (Labs + EO)",
-        imagen: "imagenes/130.jpg",
+        imagen: "imagenes/130.webp",
         inputs: ["P1", "P2", "W1", "Lb1", "Lb2", "Lb3", "Lb4", "Lb5", "Lb6", "EO", "EP", "EF"],
         pesos: [{ n: "Prom. Evaluaciones", v: 33.3, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 33.3, c: "bg-warning" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-danger" }],
         calcular: (n) => {
@@ -273,7 +273,7 @@ const esquemas = {
     },
     "132": {
         descripcion: "Gestión de Procesos (APPC + AFPC)",
-        imagen: "imagenes/130.jpg",
+        imagen: "imagenes/130.webp",
         inputs: ["P1", "P2", "P3", "P4", "APPC", "AFPC", "EP", "EF"],
         pesos: [
             { n: "Prom. Prácticas", v: 25, c: "bg-primary" },
@@ -297,7 +297,7 @@ const esquemas = {
     },
     "133": {
         descripcion: "Taller Herramientas Info (0.30, 0.30, 0.40)",
-        imagen: "imagenes/133.jpg",
+        imagen: "imagenes/133.webp",
         inputs: ["P1", "P2", "P3", "P4", "EP", "EF"],
         pesos: [
             { n: "Examen Final (EF)", v: 40, c: "bg-danger" },

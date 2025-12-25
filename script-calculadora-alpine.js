@@ -101,7 +101,7 @@
                 // Reset notes initially (will be overwritten by loaded notes)
                 this.limpiarNotas();
                 this.imagenErrorCount = 0;
-                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.jpg`;
+                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.webp`;
 
                 // Load saved notes from Firestore
                 this.cargarNotasGuardadas(cursoValue);
@@ -218,7 +218,7 @@
                 // Resetear notas e imagen
                 this.limpiarNotas();
                 this.imagenErrorCount = 0;
-                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.jpg`;
+                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.webp`;
 
                 // Calcular inicial (0)
                 this.calcularPromedio();
@@ -341,11 +341,11 @@
 
             this.imagenErrorCount++;
             if (this.imagenErrorCount === 1) {
-                // Intento 1: Probar PNG
-                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.png`;
+                // Intento 1: Probar otro formato
+                this.imagenSilaboSrc = `imagenes/${this.cursoObj.esquema}.jpg`;
             } else {
                 // Intento 2: Fallback al logo por defecto
-                this.imagenSilaboSrc = 'imagenes/logo.png';
+                this.imagenSilaboSrc = 'imagenes/logo.webp';
             }
         },
 
