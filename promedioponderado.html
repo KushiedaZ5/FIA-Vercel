@@ -35,7 +35,7 @@
     <!-- Preconexiones para carga más rápida -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
     <!-- Preload fuentes críticas -->
@@ -54,30 +54,8 @@
         }
     </style>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="dist/styles.css" rel="stylesheet">
     <script>window.addEventListener('load', () => document.body.style.opacity = '1');</script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'bg-dark': '#0b0d12',
-                        'epics-blue': '#1a45bc',
-                        'epics-blue-hover': '#2563eb',
-                        'official-blue': '#1E88E5',
-                        'card-bg': '#18181b',
-                        'border-color': '#27272a',
-                        'success-green': '#00E676',
-                        'danger-red': '#FF1744',
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'roboto': ['Roboto', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
 
     <!-- Firebase Auth Module (loads and registers Alpine components) -->
     <script type="module">

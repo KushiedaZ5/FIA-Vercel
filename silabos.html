@@ -35,30 +35,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'bg-dark': '#0b0d12',
-                        'epics-blue': '#1a45bc',
-                        'epics-blue-hover': '#2563eb',
-                        'official-blue': '#1E88E5',
-                        'card-bg': '#18181b',
-                        'border-color': '#27272a',
-                    },
-                    fontFamily: {
-                        'roboto': ['Roboto', 'sans-serif'],
-                        'inter': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS (Local Build) -->
+    <link href="dist/styles.css" rel="stylesheet">
 
     <!-- Firebase Auth Module (loads and registers Alpine components) -->
     <script type="module">
