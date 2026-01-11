@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CalculadoraFIAUSMP: Notas, Promedios y Exámenes</title>
+    <meta name="description"
+        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.">
+    <link rel="canonical" href="https://calculadorafiausmp.com/">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Maximo Morales">
+    <meta name="publisher" content="Z5 Store">
+
+    <!-- Favicon optimizado para Google Search -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/logo.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculadorafiausmp.com/">
+    <meta property="og:title" content="CalculadoraFIAUSMP: Notas, Promedios y Exámenes">
+    <meta property="og:description"
+        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.">
+    <meta property="og:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CalculadoraFIAUSMP: Notas, Promedios y Exámenes">
+    <meta name="twitter:description"
+        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.">
+    <meta name="twitter:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://calculadorafiausmp.com/#website",
+                "url": "https://calculadorafiausmp.com/",
+                "name": "CalculadoraFIAUSMP",
+                "description": "Calculadora de notas y promedios para estudiantes de la FIA USMP",
+                "inLanguage": "es"
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://calculadorafiausmp.com/#organization",
+                "name": "CalculadoraFIAUSMP",
+                "url": "https://calculadorafiausmp.com/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://calculadorafiausmp.com/imagenes/logo.png"
+                }
+            },
+            {
+                "@type": "WebApplication",
+                "name": "CalculadoraFIAUSMP",
+                "url": "https://calculadorafiausmp.com/",
+                "description": "Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.",
+                "applicationCategory": "EducationalApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Preconexiones para carga más rápida -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" as="script">
+
+    <!-- Preload fuentes críticas -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
+        as="style">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Prevenir FOUC (Flash of Unstyled Content) -->
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0s;
+        }
+    </style>
+
+    <link href="dist/styles.css" rel="stylesheet">
+    <script>document.addEventListener('alpine:init', () => document.body.style.opacity = '1');</script>
+
+    <!-- Firebase Auth Module (loads and registers Alpine components) -->
+    <script type="module">
+        // Import and execute auth module FIRST
+        await import('./auth.alpine.js');
+
+        // THEN load Alpine.js dynamically AFTER auth is ready
+        const alpineScript = document.createElement('script');
+        alpineScript.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js';
+        alpineScript.defer = true;
+        document.head.appendChild(alpineScript);
+    </script>
+
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M5W79TKG');</script>
+
+    <style>
+        /* ========================================
+           RESPONSIVE - Header Navigation Spacing
+           Reduce spacing when between 1024-1186px
+           ======================================== */
+        @media (min-width: 1024px) and (max-width: 1282px) {
+            .desktop-header-logo {
+                height: 64px !important;
+            }
+
+            .desktop-header-logo-text {
+                font-size: 2.25rem !important;
+            }
+
+            .desktop-header-logo-subtitle {
+                font-size: 0.7rem !important;
+            }
+
+            .desktop-nav {
+                gap: 0.5rem !important;
+            }
+
+            .desktop-nav a {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .card-stack {
+                transform: translateX(-5px) !important;
+            }
+
+            .nav-como-funciona {
+                white-space: normal !important;
+                text-align: center !important;
+                max-width: 80px !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-radial-blue {
+            background: radial-gradient(circle at center, rgba(26, 69, 188, 0.15) 0%, rgba(11, 13, 18, 0) 70%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Background - CSFloat style */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 17%;
+            width: 83%;
+            height: 100vh;
+            background-image: url('imagenes/hero-background.svg');
+            background-size: 110%;
+            background-position: left top;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Card Stack Animation - CSFloat Style */
+        .card-stack {
+            --rot-x: 44;
+            --rot-y: -56;
+            --rot-z: 11;
+            --rot-deg: 33deg;
+            --base-offset: 50px;
+            --transform-y: 28px;
+            position: relative;
+            width: 418px;
+            height: 715px;
+            /* Compensate for the horizontal shift caused by rotation */
+            transform: translateX(calc(var(--base-offset) * -2));
+            margin-top: -10px;
+        }
+
+        .card-stack img {
+            max-width: 396px;
+            width: 100%;
+            border-radius: 16px;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            /* Mejora de nitidez */
+
+
+
+        }
+
+        .stack-card-1 {
+            --offset: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .stack-card-2 {
+            --offset: var(--base-offset);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 1;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.25s;
+        }
+
+        .stack-card-3 {
+            --offset: calc(var(--base-offset) * 2);
+            position: relative;
+            z-index: 1;
+            opacity: 1;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: cardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes cardFloat {
+
+            0%,
+            100% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            }
+
+            50% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            }
+        }
+
+        /* ========================================
+           HERO CARD - Componente HTML/CSS
+           Replica la interfaz de la calculadora
+           ======================================== */
+        .hero-card {
+            width: 320px;
+            background: linear-gradient(to bottom, #18181b 0%, #0f0f12 100%);
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            /* Optimizaciones de rendering */
+            will-change: transform;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header azul */
+        .hero-card-header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #141820 100%);
+            border-bottom: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-header h3 {
+            color: #1E88E5;
+            font-size: 13px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* Container de inputs */
+        .hero-card-inputs {
+            padding: 16px;
+        }
+
+        /* Fila de input */
+        .hero-card-input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hero-card-input-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-input-label {
+            color: #9ca3af;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .hero-card-input-label.highlight {
+            color: #ef4444;
+        }
+
+        .hero-card-input-label.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-input-value {
+            background: #0a0a0c;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            color: #08e600;
+            font-size: 12px;
+            padding: 8px 16px;
+            min-width: 140px;
+            text-align: left;
+        }
+
+        .hero-card-input-value.blue {
+            color: #60a5fa;
+        }
+
+        /* Separador */
+        .hero-card-separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #3f3f46, transparent);
+            margin: 8px 16px;
+        }
+
+        /* Result Box */
+        .hero-card-result {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 20px 16px 0 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card-approved {
+            color: #22c55e;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-card-result-label {
+            color: #9ca3af;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-result-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .hero-card-result-value.green {
+            color: #22c55e;
+            text-shadow: 0 0 60px rgba(34, 197, 94, 0.6);
+        }
+
+        /* Neon bar y fade glow */
+        .hero-card-glow {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 80px;
+            background: linear-gradient(to top, rgba(34, 197, 94, 0.25) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-card-neon-bar {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 4px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .hero-card-neon-bar.green {
+            background: hsl(142, 71%, 45%);
+            box-shadow:
+                0 -2px 10px hsla(142, 71%, 45%, 0.5),
+                0 -4px 20px hsla(142, 71%, 45%, 0.3),
+                0 -8px 40px hsla(142, 71%, 45%, 0.2);
+        }
+
+        /* Colores naranja para carta 2 */
+        .hero-card-result-value.orange {
+            color: #f59e0b;
+            text-shadow: 0 0 60px rgba(245, 158, 11, 0.6);
+        }
+
+        .hero-card-glow.orange {
+            background: linear-gradient(to top, rgba(245, 158, 11, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.orange {
+            background: hsl(38, 92%, 50%);
+            box-shadow:
+                0 -2px 10px hsla(38, 92%, 50%, 0.5),
+                0 -4px 20px hsla(38, 92%, 50%, 0.3),
+                0 -8px 40px hsla(38, 92%, 50%, 0.2);
+        }
+
+        /* Mensaje de nota mínima */
+        .hero-card-min-section {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .hero-card-min-label {
+            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-min-value {
+            color: #22c55e;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        /* Botón Guardar Notas */
+        .hero-card-save-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(to right, #16a34a, #22c55e);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .hero-card-save-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Colores rojos para carta 3 */
+        .hero-card-result-value.red {
+            color: #ef4444;
+            text-shadow: 0 0 60px rgba(239, 68, 68, 0.6);
+        }
+
+        .hero-card-glow.red {
+            background: linear-gradient(to top, rgba(239, 68, 68, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.red {
+            background: hsl(0, 84%, 60%);
+            box-shadow:
+                0 -2px 10px hsla(0, 84%, 60%, 0.5),
+                0 -4px 20px hsla(0, 84%, 60%, 0.3),
+                0 -8px 40px hsla(0, 84%, 60%, 0.2);
+        }
+
+        /* Texto "Imposible" */
+        .hero-card-impossible {
+            color: #ef4444;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        /* Peso de Notas Section */
+        .hero-card-weights {
+            background: #18181b;
+            border-top: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-weights-title {
+            color: #9ca3af;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .hero-card-weight-row {
+            margin-bottom: 8px;
+        }
+
+        .hero-card-weight-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-weight-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-weight-name {
+            color: #e5e7eb;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .hero-card-weight-name.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-name.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-percent {
+            color: #6b7280;
+            font-size: 10px;
+        }
+
+        .hero-card-weight-percent.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-percent.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-bar-bg {
+            background: #27272a;
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .hero-card-weight-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .hero-card-weight-bar-fill.blue {
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+        }
+
+        .hero-card-weight-bar-fill.red {
+            background: linear-gradient(to right, #ef4444, #f87171);
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile Hero Cards
+           ======================================== */
+        @media (max-width: 1023px) {
+            .card-stack {
+                width: 210px;
+                height: 380px;
+                --base-offset: 26px;
+                --transform-y: 15px;
+                margin-top: 0;
+                transform: translateX(15px) scale(0.70);
+            }
+
+            .hero-card {
+                width: 195px;
+                border-radius: 10px;
+            }
+
+            .hero-card-header {
+                padding: 8px 10px;
+            }
+
+            .hero-card-header h3 {
+                font-size: 9px;
+            }
+
+            .hero-card-inputs {
+                padding: 10px;
+            }
+
+            .hero-card-input-row {
+                margin-bottom: 6px;
+            }
+
+            .hero-card-input-label {
+                font-size: 7px;
+            }
+
+            .hero-card-input-value {
+                font-size: 8px;
+                padding: 5px 10px;
+                min-width: 75px;
+                border-radius: 5px;
+            }
+
+            .hero-card-separator {
+                margin: 5px 10px;
+            }
+
+            .hero-card-result {
+                padding: 10px 10px 0 10px;
+            }
+
+            .hero-card-approved {
+                font-size: 11px;
+            }
+
+            .hero-card-result-label {
+                font-size: 6px;
+            }
+
+            .hero-card-result-value {
+                font-size: 27px;
+                margin-bottom: 10px;
+            }
+
+            .hero-card-min-section {
+                padding: 8px 10px;
+            }
+
+            .hero-card-min-label {
+                font-size: 6px;
+            }
+
+            .hero-card-min-value {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .hero-card-impossible {
+                font-size: 11px;
+            }
+
+            .hero-card-save-btn {
+                font-size: 8px;
+                padding: 6px 10px;
+                border-radius: 6px;
+            }
+
+            .hero-card-weights {
+                padding: 8px 10px;
+            }
+
+            .hero-card-weights-title {
+                font-size: 8px;
+                margin-bottom: 6px;
+            }
+
+            .hero-card-weight-name,
+            .hero-card-weight-percent {
+                font-size: 6px;
+            }
+
+            .hero-card-weight-bar-bg {
+                height: 3px;
+            }
+
+            .hero-card-glow {
+                height: 38px;
+            }
+
+            .hero-card-neon-bar {
+                height: 2px;
+            }
+
+            /* Reducir altura del contenedor para que el título sea visible */
+            .hero-animation-container {
+                height: 320px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark text-white font-inter min-h-screen flex flex-col relative overflow-x-hidden">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5W79TKG" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Hero Background (CSFloat style) -->
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <!-- ============================================
+         MOBILE HEADER - Fixed Top (CSFloat Style)
+         Solo visible en móvil (lg:hidden)
+         ============================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800 lg:hidden"
+        x-data="authSystem">
+        <div class="flex items-center justify-between px-4 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="imagenes/logo.webp" alt="Logo" class="h-14 w-14 object-contain">
+            </a>
+
+            <!-- Auth Avatar/Login -->
+            <div class="relative">
+                <!-- Loading -->
+                <div x-show="$store.auth?.loading">
+                    <svg class="animate-spin h-8 w-8 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+
+                <!-- Not Logged In - Blue Button -->
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-full transition-all text-sm">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+
+                <!-- Logged In - User Avatar -->
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="w-12 h-12 rounded-full overflow-hidden border-2 border-official-blue">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar" class="w-full h-full object-cover">
+                    </button>
+
+                    <!-- Mobile Dropdown -->
+                    <div x-show="showDropdown" x-transition @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-56 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden">
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white truncate" x-text="$store.auth?.userName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+                        <a href="promedioponderado.html"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-zinc-800">
+                            <span>📊</span><span>Mi Promedio</span>
+                        </a>
+                        <button @click="logout()"
+                            class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-zinc-800 border-t border-zinc-700">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         MOBILE BOTTOM NAVIGATION - Fixed Bottom
+         Solo visible en móvil (lg:hidden)
+         ============================================ -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-t border-zinc-800 lg:hidden">
+        <div class="flex items-center justify-around py-2 px-6">
+            <!-- Calculadora (Activo) -->
+            <a href="index.html" class="flex flex-col items-center gap-1 px-3 py-2 text-official-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs font-medium">Calculadora</span>
+            </a>
+
+            <!-- Exámenes -->
+            <a href="examenes.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-xs font-medium">Exámenes</span>
+            </a>
+
+            <!-- Mi Promedio -->
+            <a href="promedioponderado.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-green-400 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="text-xs font-medium">Mi Promedio</span>
+            </a>
+
+            <!-- FAQ con badge de Sílabos -->
+            <a href="faq.html#repositorio"
+                class="relative flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                <!-- Badge Sílabos -->
+                <span
+                    class="absolute -top-1 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap animate-pulse">
+                    Sílabos ↓
+                </span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs font-medium">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         DESKTOP HEADER - Original (hidden on mobile)
+         Solo visible en desktop (hidden lg:block)
+         ============================================ -->
+    <header class="mb-12 pt-3 hidden lg:block">
+        <div class="w-full px-5 flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-0">
+
+            <!-- Logo + Nav (izquierda) -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-0">
+                <a href="index.html" class="text-decoration-none hover:opacity-90 transition-opacity mr-0 lg:mr-4">
+                    <div class="flex items-center gap-4">
+                        <img src="imagenes/logo.webp" alt="Logo Calculadora"
+                            class="desktop-header-logo h-16 lg:h-[85px]">
+                        <div class="flex flex-col leading-none">
+                            <span
+                                class="desktop-header-logo-text font-roboto font-black text-3xl lg:text-5xl text-official-blue -tracking-tight">
+                                Calculadora</span>
+                            <span
+                                class="desktop-header-logo-subtitle font-roboto font-bold text-xs lg:text-base text-official-blue uppercase tracking-[0.35em] ml-1">FIA
+                                USMP</span>
+                        </div>
+                    </div>
+                </a>
+
+                <nav
+                    class="desktop-nav flex gap-4 lg:gap-6 items-center flex-wrap justify-center lg:justify-start lg:flex-nowrap lg:ml-4">
+                    <a href="index.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-white uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-2 border-official-blue whitespace-nowrap">CALCULADORA</a>
+                    <a href="examenes.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">EXÁMENES</a>
+                    <a href="faq.html"
+                        class="nav-como-funciona font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">¿CÓMO
+                        FUNCIONA?</a>
+                    <!-- Link a Promedio Ponderado (siempre visible) -->
+                    <a href="promedioponderado.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-green-400 uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-green-300 hover:border-green-400 whitespace-nowrap">📊
+                        MI PROMEDIO</a>
+                </nav>
+            </div>
+
+            <!-- Auth Section (derecha) -->
+            <div x-data="authSystem" class="relative">
+                <!-- Loading State -->
+                <div x-show="$store.auth?.loading" class="text-gray-400 text-sm">
+                    <svg class="animate-spin h-5 w-5 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+
+                <!-- Not Logged In -->
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-official-blue/30 disabled:opacity-50 disabled:cursor-wait">
+                    <svg x-show="!isLoggingIn" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <svg x-show="isLoggingIn" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+
+                <!-- Logged In - User Avatar + Dropdown -->
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="flex items-center gap-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 px-3 py-2 rounded-lg transition-all duration-200">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar"
+                            class="w-8 h-8 rounded-full border-2 border-official-blue object-cover">
+                        <span class="text-white font-medium hidden sm:block" x-text="$store.auth?.userName"></span>
+                        <svg class="w-4 h-4 text-gray-400 transition-transform duration-200"
+                            :class="showDropdown ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="showDropdown" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-64 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl z-50 overflow-hidden">
+
+                        <!-- User Info -->
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white" x-text="$store.auth?.user?.displayName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+
+                        <!-- Menu Items -->
+                        <div class="py-2">
+                            <a href="promedioponderado.html"
+                                class="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <span>📊</span>
+                                <span>Mi Promedio Ponderado</span>
+                            </a>
+                        </div>
+
+                        <!-- Logout -->
+                        <div class="border-t border-zinc-700 py-2">
+                            <button @click="logout()"
+                                class="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 hover:text-red-300 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Cerrar Sesión</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- Mobile: Add padding for fixed header/footer -->
+    <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0 overflow-hidden">
+        <main class="flex items-center py-8 lg:py-16">
+            <!-- Hero Layout: Flexbox with space-between like CSFloat -->
+            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full gap-8">
+
+                <!-- Left Column: Text Content (max-width 570px like CSFloat) -->
+
+                <div class="order-2 lg:order-1 text-center lg:text-left lg:max-w-[570px]">
+                    <!-- Mobile Spacer: Empuja el texto hacia abajo en móvil -->
+                    <div class="h-5 lg:hidden"></div>
+
+                    <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight mb-6 text-gradient">
+                        Obtén los cálculos de promedios que necesitas con CalculadoraFIAUSMP
+                    </h1>
+                    <h2
+                        class="text-base lg:text-lg text-gray-400 leading-relaxed mb-10 max-w-full lg:max-w-[90%] font-normal">
+                        CalculadoraFIAUSMP proporciona un sistema de cálculos y herramientas para el usuario que
+                        impulsan y motivan al conocimiento de sus promedios y cuánto de importancia tiene para su
+                        ciclo estudiantil.
+                    </h2>
+
+                    <div class="mt-8 lg:mt-12">
+                        <p class="text-sm lg:text-base uppercase tracking-wider text-blue-500 mb-4 font-bold">Elija su
+                            carrera a continuación</p>
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <a href="carrera.html?carrera=ingSistemas"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería de Computación y Sistemas
+                            </a>
+                            <a href="carrera.html?carrera=ingCivil"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería Civil
+                            </a>
+                            <a href="carrera.html?carrera=ingIndustrial"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería Industrial
+                            </a>
+                            <a href="carrera.html?carrera=arquitectura"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Arquitectura
+                            </a>
+                            <a href="carrera.html?carrera=aeronautica"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ciencias Aeronáuticas
+                            </a>
+                        </div>
+
+                        <!-- Mobile Quick Actions - Solo móvil (lg:hidden) -->
+                        <p class="text-sm uppercase tracking-wider text-blue-500 mb-3 mt-8 font-bold lg:hidden">
+                            Funciones</p>
+                        <div class="flex flex-row gap-2 lg:hidden">
+                            <a href="examenes.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span>Exámenes</span>
+                            </a>
+                            <a href="faq.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>FAQ</span>
+                            </a>
+                            <a href="promedioponderado.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                <span>Promedio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Animation -->
+                <div class="order-1 lg:order-2 lg:max-w-[500px] lg:flex-shrink-0">
+                    <div
+                        class="hero-animation-container relative h-[450px] lg:h-[650px] w-full flex justify-center items-center overflow-visible">
+
+                        <!-- Card Stack - CSFloat Style -->
+                        <div class="card-stack">
+                            <!-- Card 1 - Front (HTML/CSS Component) -->
+                            <div class="hero-card stack-card-1">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value blue">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value blue">11</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value blue">14</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label blue">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value blue">11</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value green">8</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-approved">¡Ya Aprobaste! 🎉</div>
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value green">10.50</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar green"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 - Middle (HTML/CSS Component - Orange) -->
+                            <div class="hero-card stack-card-2">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value">11</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value">14</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value">11</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value orange">7.83</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow orange"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar orange"></div>
+                                </div>
+
+                                <!-- Nota Mínima + Botón -->
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para aprobar:</div>
+                                    <div class="hero-card-min-value">8.00</div>
+                                    <button class="hero-card-save-btn">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                                        </svg>
+                                        Guardar Notas
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 - Back (HTML/CSS Component - Red) -->
+                            <div class="hero-card stack-card-3">
+                                <!-- Header -->
+                                <div class="hero-card-header">
+                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
+                                </div>
+
+                                <!-- Inputs -->
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Separador -->
+                                <div class="hero-card-separator"></div>
+
+                                <!-- Examen Final -->
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row">
+                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
+                                        <span class="hero-card-input-value">0</span>
+                                    </div>
+                                </div>
+
+                                <!-- Result Box -->
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value red">0.00</div>
+
+                                    <!-- Fade Glow -->
+                                    <div class="hero-card-glow red"></div>
+                                    <!-- Neon Bar -->
+                                    <div class="hero-card-neon-bar red"></div>
+                                </div>
+
+                                <!-- Imposible text -->
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para :</div>
+                                    <div class="hero-card-impossible">Imposible</div>
+                                </div>
+
+                                <!-- Peso de Notas -->
+                                <div class="hero-card-weights">
+                                    <div class="hero-card-weights-title">Peso de Notas</div>
+
+                                    <!-- Prom. Prácticas -->
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header">
+                                            <span class="hero-card-weight-name blue">Prom. Prácticas (PE)</span>
+                                            <span class="hero-card-weight-percent blue">66.7%</span>
+                                        </div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill blue" style="width: 66.7%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Examen Final -->
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header">
+                                            <span class="hero-card-weight-name red">Examen Final (EF)</span>
+                                            <span class="hero-card-weight-percent red">33.3%</span>
+                                        </div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill red" style="width: 33.3%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blur glow effect behind cards -->
+                        <div
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-epics-blue blur-[150px] opacity-25 z-0">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer - Visible on all devices, appears above mobile bottom nav -->
+        <footer class="bg-zinc-950 border-t border-zinc-800 pt-16 pb-24 lg:pb-16 px-5 mt-auto">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-5 flex flex-col items-center text-center mb-5 lg:mb-0">
+
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="imagenes/logo.webp" alt="Logo Footer" class="h-12 opacity-90" loading="lazy">
+                            <div class="flex flex-col items-start">
+                                <span
+                                    class="text-2xl text-official-blue font-black -tracking-tight leading-none">Calculadora</span>
+                                <span class="text-[0.7rem] text-official-blue tracking-[0.3em] font-bold">FIA
+                                    USMP</span>
+                            </div>
+                        </div>
+
+                        <div class="text-gray-500">
+                            <p class="mb-1">2025</p>
+                            <a href="mailto:alessandro_morales@usmp.pe"
+                                class="text-gray-500 font-normal hover:underline hover:text-gray-400 transition-colors duration-200">alessandro_morales@usmp.pe</a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-3 text-center lg:text-left mb-4 lg:mb-0">
+                        <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                            style="color: #546E7A;">Funciones</h5>
+                        <ul class="list-none">
+                            <li><a href="index.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Calculadora</a>
+                            </li>
+                            <li><a href="examenes.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Exámenes</a>
+                            </li>
+                            <li><a href="promedioponderado.html"
+                                    class="text-gray-400 block mb-2 hover:text-green-400 transition-colors duration-200">Mi
+                                    Promedio</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-3 text-center lg:text-left">
+                        <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                            style="color: #546E7A;">Sobre Nosotros</h5>
+                        <ul class="list-none">
+                            <li><a href="faq.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">¿Cómo
+                                    Funciona?</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

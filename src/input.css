@@ -1,0 +1,362 @@
+/* Tailwind CSS Base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ESTILOS PERSONALIZADOS GLOBALES
+   ============================================ */
+
+/* Prevenir FOUC (Flash of Unstyled Content) */
+body {
+    opacity: 0;
+    transition: opacity 0s;
+}
+
+/* Alpine.js cloak */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ============================================
+   RESPONSIVE - Header Navigation Spacing
+   Reduce spacing when between 1024-1282px
+   ============================================ */
+@media (min-width: 1024px) and (max-width: 1282px) {
+    .desktop-header-logo {
+        height: 64px !important;
+    }
+
+    .desktop-header-logo-text {
+        font-size: 2.25rem !important;
+    }
+
+    .desktop-header-logo-subtitle {
+        font-size: 0.7rem !important;
+    }
+
+    .desktop-nav {
+        gap: 0.5rem !important;
+    }
+
+    .desktop-nav a {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        font-size: 0.875rem !important;
+    }
+
+    .nav-como-funciona {
+        white-space: normal !important;
+        text-align: center !important;
+        max-width: 80px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* ============================================
+   HERO BACKGROUND - CSFloat Style
+   ============================================ */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 17%;
+    width: 83%;
+    height: 100vh;
+    background-image: url('../imagenes/hero-background.svg');
+    background-size: 110%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================
+   GRADIENTES Y EFECTOS DE TEXTO
+   ============================================ */
+.bg-radial-blue {
+    background: radial-gradient(circle at center, rgba(26, 69, 188, 0.15) 0%, rgba(11, 13, 18, 0) 70%);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #a1a1aa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Fallback text shadow for promedio */
+#promedioFinal {
+    text-shadow: 0 0 35px currentColor;
+}
+
+/* ============================================
+   CARD STACK - Animación CSFloat Style
+   ============================================ */
+.card-stack {
+    --rot-x: 44;
+    --rot-y: -56;
+    --rot-z: 11;
+    --rot-deg: 33deg;
+    --base-offset: 50px;
+    --transform-y: 28px;
+    position: relative;
+    width: 418px;
+    height: 715px;
+    transform: translateX(calc(var(--base-offset) * -2));
+    margin-top: -10px;
+}
+
+.card-stack img {
+    max-width: 396px;
+    width: 100%;
+    border-radius: 16px;
+    filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+}
+
+/* ============================================
+   ANIMACIONES FLOTANTES
+   ============================================ */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(26, 69, 188, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(26, 69, 188, 0.6);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ============================================
+   ESTILOS ESPECÍFICOS DE INPUTS (Calculadora)
+   ============================================ */
+#practica1,
+#practica2,
+#practica3,
+#practica4 {
+    color: #1E88E5;
+    font-weight: 700;
+}
+
+#trabajoPractico {
+    color: #0df033;
+    font-weight: 700;
+}
+
+#examenParcial {
+    color: #ffc107;
+    font-weight: 700;
+}
+
+#lab1,
+#lab2,
+#lab3,
+#lab4,
+#lab5,
+#lab6,
+#lab7 {
+    color: #039df7;
+    font-weight: 700;
+}
+
+#examenFinal {
+    color: #FF1744;
+    font-weight: 700;
+}
+
+#control1,
+#control2,
+#control3,
+#control4,
+#control5,
+#control6,
+#control7,
+#control8 {
+    color: #0dcaf0;
+    font-weight: 700;
+}
+
+/* ============================================
+   ESTILOS DE TARJETAS Y GRADIENTES
+   ============================================ */
+.cycle-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26, 69, 188, 0.03) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.group:hover .cycle-gradient::before {
+    opacity: 1;
+}
+
+.course-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26, 69, 188, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 0.75rem;
+}
+
+.group:hover .course-gradient::before {
+    opacity: 1;
+}
+
+/* Custom bullet for list items */
+.custom-bullet li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.custom-bullet li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #1a45bc;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   ESTILOS PDF VIEWER
+   ============================================ */
+.pdf-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid #27272a;
+}
+
+.pdf-preview {
+    background: linear-gradient(135deg, #1e1e2e 0%, #0d0d14 100%);
+    border: 1px solid #27272a;
+}
+
+.pdf-line {
+    background: linear-gradient(to right, #3f3f46 0%, #27272a 100%);
+    border-radius: 2px;
+}
+
+.pdf-wrapper {
+    min-height: 500px;
+    background: #0a0a0f;
+}
+
+@media (min-width: 1024px) {
+    .pdf-wrapper {
+        min-height: 700px;
+    }
+}
+
+/* Exam type buttons */
+.exam-type-btn {
+    transition: all 0.2s ease;
+}
+
+.exam-type-btn:hover:not(.active):not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 69, 188, 0.3);
+}
+
+.exam-type-btn.active {
+    background: linear-gradient(135deg, #1a45bc 0%, #2563eb 100%);
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(26, 69, 188, 0.4);
+}
+
+.exam-type-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Cycle buttons */
+.cycle-btn {
+    transition: all 0.2s ease;
+}
+
+.cycle-btn:hover:not(.active) {
+    background: rgba(26, 69, 188, 0.2);
+}
+
+.cycle-btn.active {
+    background: #1a45bc;
+    color: white;
+}
+
+/* Exam badge */
+.exam-badge {
+    transition: all 0.2s ease;
+}
+
+.exam-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 69, 188, 0.3);
+}
+
+/* Course card */
+.course-card {
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+details summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] summary .arrow {
+    transform: rotate(180deg);
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll margin for anchor links */
+#repositorio {
+    scroll-margin-top: 100px;
+}

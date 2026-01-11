@@ -1,0 +1,12 @@
+Entonces muchachos, les vengo a entregar una página donde pueden:
+- Calcular sus notas
+- Guardar su progreso con su correo
+- Calcular su promedio ponderado
+- Estudiar con exámenes pasados organizados
+- Compartir todo con un clic
+Y sí, van a poder calcular ese número mágico que les mencioné en la historia del inicio.
+La próxima vez que alguien saque su calculadora, papel y lápiz para hacer esos 
+garabatos... ustedes ya saben que hay una forma mejor.
+Entren a calculadorafiausmp.com,  hecho por un estudiante, para estudiantes.
+Muchas gracias.
+[aplausos]

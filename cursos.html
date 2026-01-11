@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona un Curso - Exámenes FIA USMP</title>
+
+    <!-- Favicon optimizado para Google Search -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Preconnect for Alpine.js CDN -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" as="script">
+
+    <link href="dist/styles.css" rel="stylesheet">
+
+    <!-- Prevenir FOUC (Flash of Unstyled Content) -->
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0s;
+        }
+    </style>
+    <script>document.addEventListener('alpine:init', () => document.body.style.opacity = '1');</script>
+
+    <!-- Firebase Auth Module (loads and registers Alpine components) -->
+    <script type="module">
+        // Import and execute auth module FIRST
+        await import('./auth.alpine.js');
+
+        // THEN load Alpine.js dynamically AFTER auth is ready
+        const alpineScript = document.createElement('script');
+        alpineScript.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js';
+        alpineScript.defer = true;
+        document.head.appendChild(alpineScript);
+    </script>
+
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M5W79TKG');</script>
+
+    <style>
+        /* ========================================
+           RESPONSIVE - Header Navigation Spacing
+           Reduce spacing when between 1024-1282px
+           ======================================== */
+        @media (min-width: 1024px) and (max-width: 1282px) {
+            .desktop-header-logo {
+                height: 64px !important;
+            }
+
+            .desktop-header-logo-text {
+                font-size: 2.25rem !important;
+            }
+
+            .desktop-header-logo-subtitle {
+                font-size: 0.7rem !important;
+            }
+
+            .desktop-nav {
+                gap: 0.5rem !important;
+            }
+
+            .desktop-nav a {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .nav-como-funciona {
+                white-space: normal !important;
+                text-align: center !important;
+                max-width: 80px !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        /* Gradient overlay for course cards */
+        .course-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 69, 188, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            border-radius: 0.75rem;
+        }
+
+        .group:hover .course-gradient::before {
+            opacity: 1;
+        }
+
+        /* Exam type badges */
+        .exam-badge {
+            transition: all 0.2s ease;
+        }
+
+        .exam-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 69, 188, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark text-white font-inter min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5W79TKG" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ============================================
+         MOBILE HEADER - Fixed Top
+         ============================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800 lg:hidden"
+        x-data="authSystem">
+        <div class="flex items-center justify-between px-4 py-4">
+            <a href="index.html" class="flex items-center">
+                <img src="imagenes/logo.webp" alt="Logo" class="h-14 w-14 object-contain">
+            </a>
+            <div class="relative">
+                <div x-show="$store.auth?.loading">
+                    <svg class="animate-spin h-8 w-8 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-full transition-all text-sm">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="w-12 h-12 rounded-full overflow-hidden border-2 border-official-blue">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar" class="w-full h-full object-cover">
+                    </button>
+                    <div x-show="showDropdown" x-transition @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-56 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden">
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white truncate" x-text="$store.auth?.userName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+                        <a href="promedioponderado.html"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-zinc-800">
+                            <span>📊</span><span>Mi Promedio</span>
+                        </a>
+                        <button @click="logout()"
+                            class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-zinc-800 border-t border-zinc-700">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         MOBILE BOTTOM NAVIGATION
+         ============================================ -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-t border-zinc-800 lg:hidden">
+        <div class="flex items-center justify-around py-2">
+            <a href="index.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-official-blue transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs font-medium">Calculadora</span>
+            </a>
+            <a href="examenes.html" class="flex flex-col items-center gap-1 px-3 py-2 text-official-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-xs font-medium">Exámenes</span>
+            </a>
+            <a href="promedioponderado.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-green-400 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="text-xs font-medium">Mi Promedio</span>
+            </a>
+            <a href="faq.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs font-medium">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         DESKTOP HEADER
+         ============================================ -->
+    <header class="mb-12 pt-3 hidden lg:block">
+        <div class="w-full px-5 flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-0">
+
+            <!-- Logo + Nav (izquierda) -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-0">
+                <a href="index.html" class="text-decoration-none hover:opacity-90 transition-opacity mr-0 lg:mr-4">
+                    <div class="flex items-center gap-4">
+                        <img src="imagenes/logo.webp" alt="Logo Calculadora"
+                            class="desktop-header-logo h-16 lg:h-[85px]">
+                        <div class="flex flex-col leading-none">
+                            <h1
+                                class="desktop-header-logo-text font-roboto font-black text-3xl lg:text-5xl text-official-blue -tracking-tight">
+                                Calculadora</h1>
+                            <span
+                                class="desktop-header-logo-subtitle font-roboto font-bold text-xs lg:text-base text-official-blue uppercase tracking-[0.35em] ml-1">FIA
+                                USMP</span>
+                        </div>
+                    </div>
+                </a>
+
+                <nav
+                    class="desktop-nav flex gap-4 lg:gap-6 items-center flex-wrap justify-center lg:justify-start lg:flex-nowrap lg:ml-4">
+                    <a href="index.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">CALCULADORA</a>
+                    <a href="examenes.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-white uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-2 border-official-blue whitespace-nowrap">EXÁMENES</a>
+                    <a href="faq.html"
+                        class="nav-como-funciona font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">¿CÓMO
+                        FUNCIONA?</a>
+                    <a href="promedioponderado.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-green-400 uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-green-300 hover:border-green-400 whitespace-nowrap">📊
+                        MI PROMEDIO</a>
+                </nav>
+            </div>
+
+            <!-- Auth Section (derecha) -->
+            <div x-data="authSystem" class="relative">
+                <div x-show="$store.auth?.loading" class="text-gray-400 text-sm">
+                    <svg class="animate-spin h-5 w-5 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-official-blue/30 disabled:opacity-50 disabled:cursor-wait">
+                    <svg x-show="!isLoggingIn" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <svg x-show="isLoggingIn" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="flex items-center gap-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 px-3 py-2 rounded-lg transition-all duration-200">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar"
+                            class="w-8 h-8 rounded-full border-2 border-official-blue object-cover">
+                        <span class="text-white font-medium hidden sm:block" x-text="$store.auth?.userName"></span>
+                        <svg class="w-4 h-4 text-gray-400 transition-transform duration-200"
+                            :class="showDropdown ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="showDropdown" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-64 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl z-50 overflow-hidden">
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white" x-text="$store.auth?.user?.displayName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+                        <div class="py-2">
+                            <a href="promedioponderado.html"
+                                class="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <span>📊</span>
+                                <span>Mi Promedio Ponderado</span>
+                            </a>
+                        </div>
+                        <div class="border-t border-zinc-700 py-2">
+                            <button @click="logout()"
+                                class="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 hover:text-red-300 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Cerrar Sesión</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content with Alpine.js -->
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 flex-1 pt-28 pb-20 lg:pt-0 lg:pb-0" x-data="cursosApp">
+
+        <!-- Título dinámico -->
+        <h3 x-text="titulo"
+            class="text-center mb-8 mt-8 font-bold text-lg lg:text-2xl text-cyan-400 uppercase tracking-wide">
+        </h3>
+
+        <!-- Botón volver (arriba) -->
+        <div class="text-center mt-4 mb-8">
+            <a href="examenes.html"
+                class="bg-transparent border-2 border-epics-blue text-epics-blue font-bold px-8 py-3 text-sm rounded-full transition-all duration-300 inline-block hover:bg-epics-blue hover:text-white hover:-translate-y-0.5 hover:shadow-xl">
+                &lt;&lt; Volver a elegir Carrera
+            </a>
+        </div>
+
+        <!-- Filtro de Ciclo Académico -->
+        <div class="flex items-center justify-center gap-3 mb-6">
+            <span class="text-cyan-400 font-bold text-sm uppercase tracking-wider">Ciclo</span>
+            <select x-model="filtroCiclo" @change="aplicarFiltroCiclo()"
+                class="bg-zinc-800 border border-zinc-600 text-white font-medium px-3 py-2 rounded-lg text-sm cursor-pointer hover:border-official-blue transition-all focus:outline-none focus:border-official-blue">
+                <option value="">Ver todos</option>
+                <template x-for="ciclo in ciclosUnicos" :key="ciclo">
+                    <option :value="ciclo" x-text="ciclo"></option>
+                </template>
+            </select>
+        </div>
+
+        <!-- Grid de cursos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <template x-for="curso in cursos" :key="curso.value">
+                <a :href="curso.href"
+                    class="group relative block bg-card-bg border border-zinc-700 rounded-xl p-5 transition-all duration-300 hover:border-official-blue hover:shadow-lg hover:shadow-official-blue/10 hover:-translate-y-1">
+
+                    <div class="course-gradient absolute inset-0 rounded-xl"></div>
+
+                    <!-- Header del curso -->
+                    <div class="relative z-10 flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="text-cyan-400 font-bold text-base lg:text-lg leading-tight" x-text="curso.text">
+                            </h4>
+                            <span class="text-gray-500 text-xs uppercase tracking-wider"
+                                x-text="'Ciclo ' + curso.ciclo"></span>
+                        </div>
+                        <span class="bg-zinc-800 text-gray-400 text-xs font-mono px-2 py-1 rounded"
+                            x-text="curso.clave"></span>
+                    </div>
+
+                    <!-- Tipos de examen disponibles -->
+                    <div class="relative z-10">
+                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Exámenes disponibles:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="tipo in curso.tiposDisponibles" :key="tipo">
+                                <span
+                                    class="exam-badge bg-epics-blue/20 text-official-blue text-xs font-medium px-2 py-1 rounded-md border border-epics-blue/30"
+                                    x-text="tiposExamen[tipo] || tipo"></span>
+                            </template>
+                            <template x-if="curso.tiposDisponibles.length === 0">
+                                <span class="text-gray-600 text-xs italic">Próximamente...</span>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Indicator arrow -->
+                    <div
+                        class="absolute right-4 bottom-4 text-gray-600 group-hover:text-official-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </template>
+
+        </div>
+
+        <!-- Mensaje si no hay cursos -->
+        <div x-show="cursos.length === 0" class="text-center py-12">
+            <p class="text-gray-500 text-lg">No se encontraron cursos para esta carrera.</p>
+            <a href="examenes.html" class="text-official-blue hover:underline mt-4 inline-block">Volver a seleccionar
+                carrera</a>
+        </div>
+
+        <!-- Botón volver (abajo) -->
+        <div class="text-center mt-8 mb-8">
+            <a href="examenes.html"
+                class="bg-transparent border-2 border-epics-blue text-epics-blue font-bold px-8 py-3 text-sm rounded-full transition-all duration-300 inline-block hover:bg-epics-blue hover:text-white hover:-translate-y-0.5 hover:shadow-xl">
+                &lt;&lt; Volver a elegir Carrera
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 pt-16 pb-24 lg:pb-16 px-5 mt-auto">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <div class="lg:col-span-5 flex flex-col items-center text-center mb-5 lg:mb-0">
+
+                    <div class="flex items-center gap-3 mb-3">
+                        <img src="imagenes/logo.webp" alt="Logo Footer" class="h-12 opacity-90">
+                        <div class="flex flex-col items-start">
+                            <span
+                                class="text-2xl text-official-blue font-black -tracking-tight leading-none">Calculadora</span>
+                            <span class="text-[0.7rem] text-official-blue tracking-[0.3em] font-bold">FIA USMP</span>
+                        </div>
+                    </div>
+
+                    <div class="text-gray-500">
+                        <p class="mb-1">2025</p>
+                        <a href="mailto:alessandro_morales@usmp.pe"
+                            class="text-gray-500 font-normal hover:underline hover:text-gray-400 transition-colors duration-200">alessandro_morales@usmp.pe</a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-3 text-center lg:text-left mb-4 lg:mb-0">
+                    <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                        style="color: #546E7A;">Funciones</h5>
+                    <ul class="list-none">
+                        <li><a href="index.html"
+                                class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Calculadora</a>
+                        </li>
+                        <li><a href="examenes.html" class="text-official-blue block mb-2 font-medium">Exámenes</a>
+                        </li>
+                        <li><a href="promedioponderado.html"
+                                class="text-gray-400 block mb-2 hover:text-green-400 transition-colors duration-200">Mi
+                                Promedio</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3 text-center lg:text-left">
+                    <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                        style="color: #546E7A;">Sobre Nosotros</h5>
+                    <ul class="list-none">
+                        <li><a href="faq.html"
+                                class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">¿Cómo
+                                Funciona?</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/data.js"></script>
+    <script src="data/examenes-data.js"></script>
+    <script src="cursos-alpine.js"></script>
+</body>
+
+</html>

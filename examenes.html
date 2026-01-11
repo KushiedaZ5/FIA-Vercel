@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exámenes Pasados - CalculadoraFIAUSMP</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Accede a cientos de exámenes pasados de la FIA USMP organizados por carrera, curso y ciclo. Estudia con prácticas y exámenes finales anteriores.">
+    <meta name="keywords"
+        content="examenes FIA USMP, prácticas calificadas, exámenes pasados, ingeniería sistemas, ingeniería civil">
+    <link rel="canonical" href="https://calculadorafiausmp.com/examenes">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Maximo Morales">
+    <meta name="publisher" content="Z5 Store">
+
+    <!-- Favicon optimizado para Google Search -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/logo.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculadorafiausmp.com/examenes">
+    <meta property="og:title" content="Exámenes Pasados - CalculadoraFIAUSMP">
+    <meta property="og:description"
+        content="Accede a cientos de exámenes pasados de la FIA USMP organizados por carrera, curso y ciclo.">
+    <meta property="og:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Exámenes Pasados - CalculadoraFIAUSMP">
+    <meta name="twitter:description"
+        content="Accede a cientos de exámenes pasados de la FIA USMP organizados por carrera, curso y ciclo.">
+    <meta name="twitter:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
+
+    <!-- Preconexiones para carga más rápida -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" as="script">
+
+    <!-- Preload fuentes críticas -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
+        as="style">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Prevenir FOUC (Flash of Unstyled Content) -->
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0s;
+        }
+    </style>
+
+    <link href="dist/styles.css" rel="stylesheet">
+    <script>document.addEventListener('alpine:init', () => document.body.style.opacity = '1');</script>
+
+    <!-- Firebase Auth Module (loads and registers Alpine components) -->
+    <script type="module">
+        // Import and execute auth module FIRST
+        await import('./auth.alpine.js');
+
+        // THEN load Alpine.js dynamically AFTER auth is ready
+        const alpineScript = document.createElement('script');
+        alpineScript.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js';
+        alpineScript.defer = true;
+        document.head.appendChild(alpineScript);
+    </script>
+
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M5W79TKG');</script>
+
+    <style>
+        /* ========================================
+           RESPONSIVE - Header Navigation Spacing
+           Reduce spacing when between 1024-1282px
+           ======================================== */
+        @media (min-width: 1024px) and (max-width: 1282px) {
+            .desktop-header-logo {
+                height: 64px !important;
+            }
+
+            .desktop-header-logo-text {
+                font-size: 2.25rem !important;
+            }
+
+            .desktop-header-logo-subtitle {
+                font-size: 0.7rem !important;
+            }
+
+            .desktop-nav {
+                gap: 0.5rem !important;
+            }
+
+            .desktop-nav a {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            .nav-como-funciona {
+                white-space: normal !important;
+                text-align: center !important;
+                max-width: 80px !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(26, 69, 188, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(26, 69, 188, 0.6);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        .bg-radial-blue {
+            background: radial-gradient(circle at center, rgba(26, 69, 188, 0.15) 0%, rgba(11, 13, 18, 0) 70%);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* PDF preview mockup styles */
+        .pdf-preview {
+            background: linear-gradient(135deg, #1e1e2e 0%, #0d0d14 100%);
+            border: 1px solid #27272a;
+        }
+
+        .pdf-line {
+            background: linear-gradient(to right, #3f3f46 0%, #27272a 100%);
+            border-radius: 2px;
+        }
+
+        /* Hero Background - CSFloat style */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 17%;
+            width: 83%;
+            height: 100vh;
+            background-image: url('imagenes/hero-background.svg');
+            background-size: 110%;
+            background-position: left top;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-bg-dark text-white font-inter min-h-screen flex flex-col relative">
+    <!-- Hero Background (CSFloat style) -->
+    <div class="hero-bg" aria-hidden="true"></div>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5W79TKG" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ============================================
+         MOBILE HEADER - Fixed Top (CSFloat Style)
+         Solo visible en móvil (lg:hidden)
+         ============================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800 lg:hidden"
+        x-data="authSystem">
+        <div class="flex items-center justify-between px-4 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="imagenes/logo.webp" alt="Logo" class="h-14 w-14 object-contain">
+            </a>
+
+            <!-- Auth Avatar/Login -->
+            <div class="relative">
+                <!-- Loading -->
+                <div x-show="$store.auth?.loading">
+                    <svg class="animate-spin h-8 w-8 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+
+                <!-- Not Logged In - Blue Button -->
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-full transition-all text-sm">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+
+                <!-- Logged In - User Avatar -->
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="w-12 h-12 rounded-full overflow-hidden border-2 border-official-blue">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar" class="w-full h-full object-cover">
+                    </button>
+
+                    <!-- Mobile Dropdown -->
+                    <div x-show="showDropdown" x-transition @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-56 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl overflow-hidden">
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white truncate" x-text="$store.auth?.userName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+                        <a href="promedioponderado.html"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-zinc-800">
+                            <span>📊</span><span>Mi Promedio</span>
+                        </a>
+                        <button @click="logout()"
+                            class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-zinc-800 border-t border-zinc-700">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         MOBILE BOTTOM NAVIGATION - Fixed Bottom
+         Solo visible en móvil (lg:hidden)
+         ============================================ -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-t border-zinc-800 lg:hidden">
+        <div class="flex items-center justify-around py-2">
+            <!-- Calculadora -->
+            <a href="index.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-official-blue transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xs font-medium">Calculadora</span>
+            </a>
+
+            <!-- Exámenes (Activo) -->
+            <a href="examenes.html" class="flex flex-col items-center gap-1 px-3 py-2 text-official-blue">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-xs font-medium">Exámenes</span>
+            </a>
+
+            <!-- Mi Promedio -->
+            <a href="promedioponderado.html"
+                class="flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-green-400 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="text-xs font-medium">Mi Promedio</span>
+            </a>
+
+            <!-- FAQ con badge de Sílabos -->
+            <a href="faq.html#repositorio"
+                class="relative flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                <!-- Badge Sílabos -->
+                <span
+                    class="absolute -top-1 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap animate-pulse">
+                    Sílabos ↓
+                </span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-xs font-medium">FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         DESKTOP HEADER - Original (hidden on mobile)
+         Solo visible en desktop (hidden lg:block)
+         ============================================ -->
+    <header class="mb-12 pt-3 hidden lg:block">
+        <div class="w-full px-5 flex flex-wrap items-center justify-center lg:justify-between gap-6 lg:gap-0">
+
+            <!-- Logo + Nav (izquierda) -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-0">
+                <a href="index.html" class="text-decoration-none hover:opacity-90 transition-opacity mr-0 lg:mr-4">
+                    <div class="flex items-center gap-4">
+                        <img src="imagenes/logo.webp" alt="Logo Calculadora"
+                            class="desktop-header-logo h-16 lg:h-[85px]">
+                        <div class="flex flex-col leading-none">
+                            <h1
+                                class="desktop-header-logo-text font-roboto font-black text-3xl lg:text-5xl text-official-blue -tracking-tight">
+                                Calculadora</h1>
+                            <span
+                                class="desktop-header-logo-subtitle font-roboto font-bold text-xs lg:text-base text-official-blue uppercase tracking-[0.35em] ml-1">FIA
+                                USMP</span>
+                        </div>
+                    </div>
+                </a>
+
+                <nav
+                    class="desktop-nav flex gap-4 lg:gap-6 items-center flex-wrap justify-center lg:justify-start lg:flex-nowrap lg:ml-4">
+                    <a href="index.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">CALCULADORA</a>
+                    <a href="examenes.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-white uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-2 border-official-blue whitespace-nowrap">EXÁMENES</a>
+                    <a href="faq.html"
+                        class="nav-como-funciona font-roboto font-bold text-sm lg:text-base text-official-blue uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-blue-700 hover:border-official-blue whitespace-nowrap">¿CÓMO
+                        FUNCIONA?</a>
+                    <!-- Link a Promedio Ponderado (siempre visible) -->
+                    <a href="promedioponderado.html"
+                        class="font-roboto font-bold text-sm lg:text-base text-green-400 uppercase tracking-wide px-3 py-2 transition-all duration-200 border-b-3 border-transparent hover:text-green-300 hover:border-green-400 whitespace-nowrap">📊
+                        MI PROMEDIO</a>
+                </nav>
+            </div>
+
+            <!-- Auth Section (derecha) -->
+            <div x-data="authSystem" class="relative">
+                <!-- Loading State -->
+                <div x-show="$store.auth?.loading" class="text-gray-400 text-sm">
+                    <svg class="animate-spin h-5 w-5 text-official-blue" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </div>
+
+                <!-- Not Logged In -->
+                <button x-show="!$store.auth?.loading && !$store.auth?.isLoggedIn" @click="login()"
+                    :disabled="isLoggingIn"
+                    class="flex items-center gap-2 bg-official-blue hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-official-blue/30 disabled:opacity-50 disabled:cursor-wait">
+                    <svg x-show="!isLoggingIn" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    <svg x-show="isLoggingIn" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <span x-text="isLoggingIn ? 'Entrando...' : 'Iniciar Sesión'"></span>
+                </button>
+
+                <!-- Logged In - User Avatar + Dropdown -->
+                <div x-show="!$store.auth?.loading && $store.auth?.isLoggedIn" class="relative">
+                    <button @click="toggleDropdown()"
+                        class="flex items-center gap-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 px-3 py-2 rounded-lg transition-all duration-200">
+                        <img :src="$store.auth?.userPhoto" alt="Avatar"
+                            class="w-8 h-8 rounded-full border-2 border-official-blue object-cover">
+                        <span class="text-white font-medium hidden sm:block" x-text="$store.auth?.userName"></span>
+                        <svg class="w-4 h-4 text-gray-400 transition-transform duration-200"
+                            :class="showDropdown ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="showDropdown" x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                        @click.away="closeDropdown()"
+                        class="absolute right-0 mt-2 w-64 bg-zinc-900 border border-zinc-700 rounded-lg shadow-xl z-50 overflow-hidden">
+
+                        <!-- User Info -->
+                        <div class="px-4 py-3 border-b border-zinc-700">
+                            <p class="text-sm font-bold text-white" x-text="$store.auth?.user?.displayName"></p>
+                            <p class="text-xs text-gray-400 truncate" x-text="$store.auth?.userEmail"></p>
+                        </div>
+
+                        <!-- Menu Items -->
+                        <div class="py-2">
+                            <a href="promedioponderado.html"
+                                class="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:bg-zinc-800 hover:text-white transition-colors">
+                                <span>📊</span>
+                                <span>Mi Promedio Ponderado</span>
+                            </a>
+                        </div>
+
+                        <!-- Logout -->
+                        <div class="border-t border-zinc-700 py-2">
+                            <button @click="logout()"
+                                class="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 hover:text-red-300 transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>Cerrar Sesión</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- Mobile: Add padding for fixed header/footer -->
+    <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0">
+        <main class="flex items-center py-8 lg:py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+
+                <!-- Left Column: Text Content -->
+                <div class="order-2 lg:order-1 text-center lg:text-left lg:pr-5">
+                    <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight mb-6 text-gradient">
+                        Estudia con exámenes pasados de tu carrera
+                    </h1>
+                    <p class="text-base lg:text-lg text-gray-400 leading-relaxed mb-10 max-w-full lg:max-w-[90%]">
+                        Accede a cientos de prácticas calificadas y exámenes finales de ciclos anteriores.
+                        Prepárate mejor conociendo el estilo de preguntas y temas frecuentes de cada curso.
+                    </p>
+
+                    <div class="mt-8 lg:mt-12">
+                        <p class="text-sm lg:text-base uppercase tracking-wider text-blue-500 mb-4 font-bold">Selecciona
+                            tu carrera para ver los exámenes</p>
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                            <a href="cursos.html?carrera=ingSistemas"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería de Computación y Sistemas
+                            </a>
+                            <a href="cursos.html?carrera=ingCivil"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería Civil
+                            </a>
+                            <a href="cursos.html?carrera=ingIndustrial"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ingeniería Industrial
+                            </a>
+                            <!-- Ocultos temporalmente: Sin exámenes disponibles
+                            <a href="cursos.html?carrera=arquitectura"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Arquitectura
+                            </a>
+                            <a href="cursos.html?carrera=aeronautica"
+                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
+                                Ciencias Aeronáuticas
+                            </a>
+                            -->
+                        </div>
+
+                        <!-- Mobile Quick Actions - Solo móvil (lg:hidden) -->
+                        <p class="text-sm uppercase tracking-wider text-blue-500 mb-3 mt-8 font-bold lg:hidden">
+                            Otras funciones</p>
+                        <div class="flex flex-row gap-2 lg:hidden">
+                            <a href="index.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <span>Calculadora</span>
+                            </a>
+                            <a href="faq.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>FAQ</span>
+                            </a>
+                            <a href="promedioponderado.html"
+                                class="flex-1 flex items-center justify-center gap-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                <span>Promedio</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: PDF Preview Animation -->
+                <div class="order-1 lg:order-2">
+                    <div
+                        class="relative h-[350px] lg:h-[700px] w-full bg-radial-blue rounded-3xl border border-zinc-800 flex justify-center items-center overflow-hidden backdrop-blur-sm">
+                        <div class="relative w-full flex justify-center items-center">
+
+                            <!-- PDF Preview Mockup -->
+                            <div class="relative w-[85%] lg:w-3/4 max-w-[280px] lg:max-w-[450px] z-30 animate-float"
+                                style="filter: drop-shadow(0 25px 50px rgba(26, 69, 188, 0.5));">
+
+                                <!-- PDF Document -->
+                                <div class="pdf-preview rounded-xl p-4 lg:p-6 animate-pulse-glow">
+                                    <!-- Header -->
+                                    <div class="flex items-center gap-3 mb-4 lg:mb-6">
+                                        <div
+                                            class="w-8 h-8 lg:w-10 lg:h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+                                            <svg class="w-4 h-4 lg:w-5 lg:h-5 text-red-400" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 9h-2v2H9v2h2v2h2v-2h2v-2h-2v-2zm0-6V3.5L18.5 9H13z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-white font-bold text-sm lg:text-base">MD-PC1-241.pdf</p>
+                                            <p class="text-gray-500 text-xs">Matemática Discreta</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content Lines -->
+                                    <div class="space-y-2 lg:space-y-3">
+                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-4/5"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-3/4"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-5/6"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-2/3"></div>
+                                    </div>
+
+                                    <!-- Formulas mockup -->
+                                    <div
+                                        class="mt-4 lg:mt-6 p-3 lg:p-4 bg-zinc-800/50 rounded-lg border border-zinc-700">
+                                        <p class="text-xs text-gray-400 mb-2">Pregunta 1:</p>
+                                        <div class="text-official-blue font-mono text-sm lg:text-base">
+                                            f(n) = f(n-1) + f(n-2)
+                                        </div>
+                                    </div>
+
+                                    <!-- More lines -->
+                                    <div class="space-y-2 lg:space-y-3 mt-4 lg:mt-6">
+                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-4/5"></div>
+                                        <div class="pdf-line h-2 lg:h-3 w-3/5"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Blur effect -->
+                        <div
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-epics-blue blur-[120px] opacity-30 z-0">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer - Visible on all devices, appears above mobile bottom nav -->
+        <footer class="bg-zinc-950 border-t border-zinc-800 pt-16 pb-24 lg:pb-16 px-5 mt-auto">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                    <div class="lg:col-span-5 flex flex-col items-center text-center mb-5 lg:mb-0">
+
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="imagenes/logo.webp" alt="Logo Footer" class="h-12 opacity-90" loading="lazy">
+                            <div class="flex flex-col items-start">
+                                <span
+                                    class="text-2xl text-official-blue font-black -tracking-tight leading-none">Calculadora</span>
+                                <span class="text-[0.7rem] text-official-blue tracking-[0.3em] font-bold">FIA
+                                    USMP</span>
+                            </div>
+                        </div>
+
+                        <div class="text-gray-500">
+                            <p class="mb-1">2025</p>
+                            <a href="mailto:alessandro_morales@usmp.pe"
+                                class="text-gray-500 font-normal hover:underline hover:text-gray-400 transition-colors duration-200">alessandro_morales@usmp.pe</a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-3 text-center lg:text-left mb-4 lg:mb-0">
+                        <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                            style="color: #546E7A;">Funciones</h5>
+                        <ul class="list-none">
+                            <li><a href="index.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Calculadora</a>
+                            </li>
+                            <li><a href="examenes.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Exámenes</a>
+                            </li>
+                            <li><a href="promedioponderado.html"
+                                    class="text-gray-400 block mb-2 hover:text-green-400 transition-colors duration-200">Mi
+                                    Promedio</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-3 text-center lg:text-left">
+                        <h5 class="text-blue-gray-600 font-bold uppercase text-sm tracking-wider mb-6"
+                            style="color: #546E7A;">Sobre Nosotros</h5>
+                        <ul class="list-none">
+                            <li><a href="faq.html"
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">¿Cómo
+                                    Funciona?</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

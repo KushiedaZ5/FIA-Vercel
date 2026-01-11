@@ -1,0 +1,8 @@
+# Robots.txt para calculadorafiausmp.com
+# Generado el 2025-12-22
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://calculadorafiausmp.com/sitemap.xml

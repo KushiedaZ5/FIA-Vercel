@@ -1,0 +1,30 @@
+Hoy, les traigo la herramienta definitiva.
+[PAUSA]
+Estamos en 2026. Tenemos que sacar algo mínimo de provecho a toda esta tecnología 
+de la cual tenemos acceso. No solo es usar la Inteligencia Artificial para hacer 
+videos de amigos vestidos con terno.
+Tenemos que disponer de herramientas útiles para estudiar, como son:
+- Tener a disposición los exámenes pasados
+- Ser capaces de tener un seguimiento de las notas mientras transcurre el ciclo
+- Y poder calcular ese número mágico de cuánto necesitamos en el final para aprobar, 
+  sin tener que recurrir a ese amigo.
+[PAUSA]
+Hoy quisiera entregarles mi granito de arena. De un estudiante, para ustedes.
+He creado esta herramienta para que puedan calcular sus notas y, sobre todo, 
+su Promedio Ponderado. He escuchado a muchos compañeros de Tercio Superior 
+angustiados preguntando: "Máximo, ¿llegaré al 14 de promedio ponderado?"
+Por si no lo saben, los que ingresan a la universidad con el modo de Tercio Superior, 
+deben mantener una nota de 14 en su promedio ponderado semestral para mantener 
+este beneficio económico. Con esta herramienta, en la sección "Mi Promedio", 
+sabrán exactamente dónde están parados.
+[PAUSA]
+Pero no es solo calcular. Como dice un gran mentor: 
+"El más inteligente no es el que estudia mucho, sino el que sabe QUÉ estudiar."
+De nada sirve matarse estudiando si al llegar al examen dices: "No vino lo que estudié." 
+Esas excusas ya no sirven aquí.
+No solo me he contentado con las herramientas que he mencionado anteriormente, 
+sino que —y seguro que les interesa mucho— he integrado un banco de Exámenes Pasados 
+y un visualizador para los mismos.
+[PAUSA]
+Olvídense de scrollear horas en los grupos de WhatsApp buscando una práctica antigua. 
+Aquí tienen todo a un clic: gratis, organizado y listo para compartir con sus amigos.
