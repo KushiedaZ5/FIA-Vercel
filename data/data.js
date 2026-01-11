@@ -38,7 +38,7 @@ const dataCarreras = {
                 { value: 'fis2_tejada', text: 'Física 2 - Prof. Tejada', esquema: '042', creditos: 5, clave: 'F2T' },
                 { value: 'alg2', text: 'Algoritmos 2', esquema: '047', creditos: 5, clave: 'AED2' },
                 { value: 'micro_sanchez', text: 'Microeconomía - Prof. Sánchez', esquema: '054', creditos: 4, clave: 'MICROS' },
-                { value: 'micro_caparachin', text: 'Microeconomía - Prof. Caparachín', esquema: '054', creditos: 4, clave: 'MICROC' }
+                { value: 'micro_caparachin', text: 'Microeconomía - Prof. Caparachín', esquema: '134', creditos: 4, clave: 'MICROC' }
             ],
             'ciclo5': [
                 { value: 'contabilidad_general', text: 'Contabilidad General', esquema: '038', creditos: 4, clave: 'CG' },
@@ -137,7 +137,7 @@ const dataCarreras = {
                 { value: 'quimica_industrial', text: 'Química Industrial', esquema: '130', creditos: 5, clave: 'QI' },
                 { value: 'fis1', text: 'Física I', esquema: '042', creditos: 5, clave: 'F1' },
                 { value: 'micro_sanchez', text: 'Microeconomía - Prof. Sánchez', esquema: '054', creditos: 4, clave: 'MICROS' },
-                { value: 'micro_caparachin', text: 'Microeconomía - Prof. Caparachín', esquema: '054', creditos: 4, clave: 'MICROC' },
+                { value: 'micro_caparachin', text: 'Microeconomía - Prof. Caparachín', esquema: '134', creditos: 4, clave: 'MICROC' },
                 { value: 'dis_ind_com', text: 'Diseño Industrial por Computador', esquema: '038', creditos: 3, clave: 'DIC' },
                 { value: 'discapacidad_inclusion', text: 'Discapacidad e Inclusión(Proximamente...)', esquema: '045', creditos: 3, clave: 'DI' }
             ], 'ciclo4': [

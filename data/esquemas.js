@@ -383,5 +383,32 @@ const esquemas = {
             return (0.30 * pe) + (0.30 * n.EP) + (0.40 * n.EF);
         }
     },
+    "134": {
+        descripcion: "Microeconomía evaluación de verano",
+        imagen: "imagenes/134.jpg",
+        inputs: ["P1", "P2", "P3", "EP", "EF"],
+        pesos: [{ n: "Examen Final (EF)", v: 40, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 30, c: "bg-warning" }, { n: "Prom. Evaluaciones (PE)", v: 30, c: "bg-primary" }],
+        calcular: (n) => {
+            const pe = (n.P1 + n.P2 + n.P3) / 3;
+            return (0.3 * pe) + (0.3 * n.EP) + (0.4 * n.EF);
+        },
+        ejemplos: [
+            {
+                nombre: "🟢 Sin dar el final",
+                descripcion: "Aprobar sin rendir el examen final",
+                notas: { P1: 18, P2: 18, P3: 18, EP: 18, EF: 0 }
+            },
+            {
+                nombre: "🟡 18 en parcial, 5 en final",
+                descripcion: "Sacando 18 en el parcial pero solo 5 en final",
+                notas: { P1: 11, P2: 11, P3: 11, EP: 18, EF: 5 }
+            },
+            {
+                nombre: "🔴 Raspando con 10 en final",
+                descripcion: "Pasando a las justas con 10 en el final",
+                notas: { P1: 9, P2: 13, P3: 11, EP: 11, EF: 10 }
+            }
+        ]
+    },
 
 };
