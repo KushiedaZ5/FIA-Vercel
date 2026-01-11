@@ -202,7 +202,8 @@
 
             if (this.carreraSeleccionada && this.cicloSeleccionado) {
                 const rawCursos = dataCarreras[this.carreraSeleccionada].ciclos[this.cicloSeleccionado] || [];
-                this.listaCursos = rawCursos;
+                // Filtrar cursos que contengan "Proximamente" en su nombre
+                this.listaCursos = rawCursos.filter(curso => !curso.text.toLowerCase().includes('proximamente'));
             }
         },
 
