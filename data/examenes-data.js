@@ -96,6 +96,9 @@ const examenesDisponibles = {
     // Microeconomía - Prof. Caparachín
     // Carpeta: pdfs/MICROC/
     'MICROC': {
+        'C3': ['231'],
+        'C4': ['181'],
+        'EP': ['181', '232', '241', '242'],
         'EF': ['241'],
     },
     // Cálculo I
