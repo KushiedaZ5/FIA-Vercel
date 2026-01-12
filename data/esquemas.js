@@ -72,6 +72,11 @@ const esquemas = {
                 nombre: "🔴 Raspando en el final",
                 descripcion: "Necesitando 10 en el examen final",
                 notas: { P1: 5, P2: 10, P3: 11, P4: 11, EF: 10 }
+            },
+            {
+                nombre: "⭐ Sobresaliente",
+                descripcion: "Pensado para los que quieren mantener un promedio de 14",
+                notas: { P1: 15, P2: 15, P3: 0, P4: 15, EF: 12 }
             }
         ]
     },
