@@ -18,3 +18,8 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Archivos personales/internos
+.FullName
+CONTEXTO-PROYECTO.md
+pdfs originales/
