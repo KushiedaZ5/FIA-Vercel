@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 80" fill="none">
+  <!-- Speech bubble -->
+  <ellipse cx="45" cy="35" rx="35" ry="30" fill="white"/>
+  <polygon points="35,60 50,60 42,72" fill="white"/>
+  <!-- plin text -->
+  <text x="45" y="43" text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="24" font-weight="900" fill="#1a1a1a">plin</text>
+</svg>
