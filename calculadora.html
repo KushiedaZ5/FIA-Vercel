@@ -176,6 +176,25 @@
         [x-cloak] {
             display: none !important;
         }
+
+        /* Banner Ad - Pulsing blue border */
+        @keyframes border-pulse-blue {
+
+            0%,
+            100% {
+                border-color: #0b48aa;
+                box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+            }
+
+            50% {
+                border-color: rgba(59, 130, 246, 0.3);
+                box-shadow: 0 0 2px rgba(59, 130, 246, 0.1);
+            }
+        }
+
+        .animate-border-pulse {
+            animation: border-pulse-blue 2s ease-in-out infinite;
+        }
     </style>
 </head>
 
