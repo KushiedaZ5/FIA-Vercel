@@ -76,10 +76,9 @@ document.addEventListener('alpine:init', () => {
                 return carreras;
             }
 
-            // Si hay carrera seleccionada, mostrar los 6 ciclos
+            // Si hay carrera seleccionada, mostrar todos los ciclos disponibles
             // Filtrando cursos con "Proximamente" y ocultando ciclos vacíos
-            const ciclosFiltrados = [1, 2, 3, 4, 5, 6].map(i => {
-                const cicloKey = `ciclo${i}`;
+            const ciclosFiltrados = Object.keys(this.carrera.ciclos).map(cicloKey => {
                 const cursosOriginales = this.carrera.ciclos[cicloKey] || [];
 
                 // Filtrar cursos que NO contengan "Proximamente" (case insensitive)
@@ -89,8 +88,16 @@ document.addEventListener('alpine:init', () => {
 
                 const tieneCursos = cursosDisponibles.length > 0;
 
+                // Determinar el número/label del ciclo
+                let numero;
+                if (cicloKey === 'electivas') {
+                    numero = 'ELECTIVOS';
+                } else {
+                    numero = parseInt(cicloKey.replace('ciclo', ''));
+                }
+
                 return {
-                    numero: i,
+                    numero,
                     key: cicloKey,
                     cursos: cursosDisponibles,
                     tieneCursos,

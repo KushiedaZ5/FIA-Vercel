@@ -462,7 +462,7 @@
                             <h4 class="text-cyan-400 font-bold text-base lg:text-lg leading-tight" x-text="curso.text">
                             </h4>
                             <span class="text-gray-500 text-xs uppercase tracking-wider"
-                                x-text="'Ciclo ' + curso.ciclo"></span>
+                                x-text="typeof curso.ciclo === 'number' ? 'Ciclo ' + curso.ciclo : curso.ciclo"></span>
                         </div>
                         <span class="bg-zinc-800 text-gray-400 text-xs font-mono px-2 py-1 rounded"
                             x-text="curso.clave"></span>

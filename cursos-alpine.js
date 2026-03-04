@@ -85,7 +85,12 @@ document.addEventListener('alpine:init', () => {
             }
 
             // Convertir a array y ordenar de menor a mayor
-            this.ciclosUnicos = Array.from(ciclosSet).sort((a, b) => a - b);
+            this.ciclosUnicos = Array.from(ciclosSet).sort((a, b) => {
+                if (typeof a === 'string' && typeof b === 'string') return a.localeCompare(b);
+                if (typeof a === 'string') return 1;
+                if (typeof b === 'string') return -1;
+                return a - b;
+            });
         },
 
         /**
@@ -99,8 +104,8 @@ document.addEventListener('alpine:init', () => {
             }
 
             // Filtrar cursos por el ciclo de la carrera
-            const cicloNumero = parseInt(this.filtroCiclo);
-            this.cursos = this.cursosTodos.filter(curso => curso.ciclo === cicloNumero);
+            const cicloVal = isNaN(this.filtroCiclo) ? this.filtroCiclo : parseInt(this.filtroCiclo);
+            this.cursos = this.cursosTodos.filter(curso => curso.ciclo === cicloVal);
         },
 
         /**
@@ -118,11 +123,12 @@ document.addEventListener('alpine:init', () => {
                 'ciclo7': 7,
                 'ciclo8': 8,
                 'ciclo9': 9,
-                'ciclo10': 10
+                'ciclo10': 10,
+                'electivas': 'Electivos'
             };
 
             for (const [cicloKey, cursosCiclo] of Object.entries(ciclos)) {
-                const cicloNum = cicloNumeros[cicloKey] || parseInt(cicloKey.replace('ciclo', ''));
+                const cicloNum = cicloNumeros[cicloKey] || cicloKey;
 
                 for (const curso of cursosCiclo) {
                     // Obtener tipos de examen disponibles para este curso
@@ -147,8 +153,10 @@ document.addEventListener('alpine:init', () => {
                 // Primero los que tienen exámenes
                 if (a.tieneExamenes && !b.tieneExamenes) return -1;
                 if (!a.tieneExamenes && b.tieneExamenes) return 1;
-                // Luego por ciclo
-                return a.ciclo - b.ciclo;
+                // Luego por ciclo (strings como 'Electivos' van al final)
+                const aNum = typeof a.ciclo === 'number' ? a.ciclo : 999;
+                const bNum = typeof b.ciclo === 'number' ? b.ciclo : 999;
+                return aNum - bNum;
             });
 
             // FILTRO: Solo mostrar cursos que tienen exámenes disponibles

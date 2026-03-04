@@ -108,6 +108,54 @@ const dataCarreras = {
                 { value: 'gestion_financiera', text: 'Gestión Financiera(Proximamente...)', esquema: '038', creditos: 4, clave: 'GF' },
                 { value: 'mecanica_suelos1', text: 'Mecánica de Suelos I(Proximamente...)', esquema: '046', creditos: 4, clave: 'MS1' },
                 { value: 'resistencia_materiales2', text: 'Resistencia de Materiales II(Proximamente...)', esquema: '046', creditos: 4, clave: 'RM2' },
+            ],
+            'ciclo7': [
+                { value: 'mecanica_fluidos2', text: 'Mecánica de Fluidos II(Proximamente...)', esquema: '038', creditos: 5, clave: 'MF2' },
+                { value: 'analisis_estructural1', text: 'Análisis Estructural I(Proximamente...)', esquema: '046', creditos: 4, clave: 'AE1' },
+                { value: 'formulacion_proyectos', text: 'Formulación y Evaluación de Proyectos(Proximamente...)', esquema: '045', creditos: 4, clave: 'FEP' },
+                { value: 'mecanica_suelos2', text: 'Mecánica de Suelos II(Proximamente...)', esquema: '046', creditos: 4, clave: 'MS2' },
+                { value: 'presupuesto_obra', text: 'Presupuesto y Programación de Obra(Proximamente...)', esquema: '045', creditos: 4, clave: 'PPO' },
+                { value: 'discapacidad_inclusion', text: 'Discapacidad e Inclusión(Proximamente...)', esquema: '049', creditos: 1, clave: 'DI' },
+            ],
+            'ciclo8': [
+                { value: 'analisis_estructural2', text: 'Análisis Estructural II(Proximamente...)', esquema: '046', creditos: 4, clave: 'AE2' },
+                { value: 'concreto_armado1', text: 'Concreto Armado I(Proximamente...)', esquema: '046', creditos: 4, clave: 'CA1' },
+                { value: 'gestion_proyectos_pmi', text: 'Gestión de Proyectos - PMI(Proximamente...)', esquema: '045', creditos: 4, clave: 'GPPMI' },
+                { value: 'ingenieria_costos_civil', text: 'Ingeniería de Costos(Proximamente...)', esquema: '038', creditos: 4, clave: 'ICO2' },
+                { value: 'hidrologia', text: 'Hidrología(Proximamente...)', esquema: '038', creditos: 3, clave: 'HID' },
+                { value: 'instalaciones_sanitarias', text: 'Instalaciones Sanitarias(Proximamente...)', esquema: '038', creditos: 3, clave: 'ISAL' },
+            ],
+            'ciclo9': [
+                { value: 'concreto_armado2', text: 'Concreto Armado II(Proximamente...)', esquema: '046', creditos: 4, clave: 'CA2' },
+                { value: 'ing_antisismica', text: 'Ingeniería Antisísmica(Proximamente...)', esquema: '046', creditos: 4, clave: 'IAS' },
+                { value: 'proyecto_final_civil', text: 'Proyecto Final de Ingeniería Civil(Proximamente...)', esquema: '045', creditos: 4, clave: 'PFIC' },
+                { value: 'hidraulica', text: 'Hidráulica(Proximamente...)', esquema: '038', creditos: 4, clave: 'HIDR' },
+                { value: 'ing_valuaciones', text: 'Ingeniería de Valuaciones y Tasaciones(Proximamente...)', esquema: '045', creditos: 3, clave: 'IVT' },
+                { value: 'diseno_acero_madera', text: 'Diseño de Acero y Madera(Proximamente...)', esquema: '046', creditos: 2, clave: 'DAM' },
+            ],
+            'ciclo10': [
+                { value: 'abastecimiento_agua', text: 'Abastecimiento de Agua y Alcantarillado(Proximamente...)', esquema: '038', creditos: 4, clave: 'AAA' },
+                { value: 'trabajo_investigacion', text: 'Trabajo de Investigación(Proximamente...)', esquema: '045', creditos: 4, clave: 'TINV' },
+                { value: 'organizacion_empresas_constructoras', text: 'Organización y Dirección de Empresas Constructoras(Proximamente...)', esquema: '045', creditos: 3, clave: 'ODEC' },
+                { value: 'puentes_obras_arte', text: 'Puentes y Obras de Arte(Proximamente...)', esquema: '046', creditos: 3, clave: 'POA' },
+                { value: 'etica_moral', text: 'Ética y Moral(Proximamente...)', esquema: '049', creditos: 2, clave: 'ETM' },
+            ],
+            'electivas': [
+                { value: 'gestion_estrategica', text: 'Gestión Estratégica(Proximamente...)', esquema: '045', creditos: 4, clave: 'GESTRA' },
+                { value: 'ing_cimentaciones', text: 'Ingeniería de Cimentaciones(Proximamente...)', esquema: '046', creditos: 4, clave: 'ICIM' },
+                { value: 'software_ing_civil', text: 'Software Aplicado a Ingeniería Civil(Proximamente...)', esquema: '045', creditos: 4, clave: 'SAIC' },
+                { value: 'caminos2', text: 'Caminos II(Proximamente...)', esquema: '045', creditos: 3, clave: 'CAM2' },
+                { value: 'ing_transporte', text: 'Ingeniería del Transporte(Proximamente...)', esquema: '045', creditos: 3, clave: 'ITRP' },
+                { value: 'fund_emprendimiento', text: 'Fundamentos de Emprendimiento(Proximamente...)', esquema: '045', creditos: 3, clave: 'FEMP' },
+                { value: 'normatividad', text: 'Normatividad(Proximamente...)', esquema: '045', creditos: 3, clave: 'NORM' },
+                { value: 'productividad_construccion', text: 'Productividad en la Construcción(Proximamente...)', esquema: '045', creditos: 3, clave: 'PCON' },
+                { value: 'seguridad_obras_civil', text: 'Seguridad en Obras de Ingeniería Civil(Proximamente...)', esquema: '045', creditos: 3, clave: 'SOIC' },
+                { value: 'fotogrametria', text: 'Fotogrametría y Exploración Aérea(Proximamente...)', esquema: '045', creditos: 2, clave: 'FEA' },
+                { value: 'gestion_innovacion', text: 'Gestión de la Innovación(Proximamente...)', esquema: '045', creditos: 2, clave: 'GINOV' },
+                { value: 'liderazgo_oratoria', text: 'Liderazgo y Oratoria(Proximamente...)', esquema: '045', creditos: 2, clave: 'LO' },
+                { value: 'mant_conservacion_civil', text: 'Mantenimiento y Conservación de Obras Civiles(Proximamente...)', esquema: '045', creditos: 2, clave: 'MCOC' },
+                { value: 'materiales_alternativos', text: 'Materiales de Construcción Alternativos(Proximamente...)', esquema: '045', creditos: 2, clave: 'MCA' },
+                { value: 'quechua', text: 'Quechua(Proximamente...)', esquema: '049', creditos: 2, clave: 'QCH' },
             ]
         }
     },
@@ -161,6 +209,49 @@ const dataCarreras = {
                 { value: 'investigacion_operativa1', text: 'Investigación Operativa I', esquema: '038', creditos: 4, clave: 'IO1' },
                 { value: 'proceso_manufactura', text: 'Proceso de Manufactura', esquema: '047', creditos: 4, clave: 'PM' },
                 { value: 'taller_herramientas', text: 'Taller de Herramientas Informáticas', esquema: '133', creditos: 2, clave: 'THI' },
+            ],
+            'ciclo7': [
+                { value: 'control_calidad', text: 'Control de Calidad(Proximamente...)', esquema: '038', creditos: 4, clave: 'CC' },
+                { value: 'gestion_financiera_ind', text: 'Gestión Financiera(Proximamente...)', esquema: '038', creditos: 4, clave: 'GF' },
+                { value: 'ing_metodos2', text: 'Ingeniería de Métodos II(Proximamente...)', esquema: '038', creditos: 4, clave: 'IM2' },
+                { value: 'investigacion_operativa2', text: 'Investigación Operativa II(Proximamente...)', esquema: '038', creditos: 4, clave: 'IO2' },
+                { value: 'mercadotecnia', text: 'Mercadotecnia(Proximamente...)', esquema: '045', creditos: 4, clave: 'MKT' },
+                { value: 'instrumentacion_control', text: 'Instrumentación y Control Industrial(Proximamente...)', esquema: '047', creditos: 2, clave: 'ICI' },
+            ],
+            'ciclo8': [
+                { value: 'automatizacion_industrial', text: 'Automatización Industrial(Proximamente...)', esquema: '047', creditos: 4, clave: 'AIND' },
+                { value: 'formulacion_proyectos_ind', text: 'Formulación y Evaluación de Proyectos(Proximamente...)', esquema: '045', creditos: 4, clave: 'FEP' },
+                { value: 'mant_seguridad_salud', text: 'Mantenimiento, Seguridad y Salud Ocupacional(Proximamente...)', esquema: '045', creditos: 4, clave: 'MSSO' },
+                { value: 'planeamiento_produccion1', text: 'Planeamiento y Control de la Producción I(Proximamente...)', esquema: '045', creditos: 4, clave: 'PCP1' },
+                { value: 'tqm', text: 'Total Quality Management TQM(Proximamente...)', esquema: '038', creditos: 4, clave: 'TQM' },
+                { value: 'taller_manufactura', text: 'Taller de Manufactura Moderna(Proximamente...)', esquema: '047', creditos: 2, clave: 'TMM' },
+            ],
+            'ciclo9': [
+                { value: 'diseno_sistemas_produccion', text: 'Diseño de Sistemas de Producción(Proximamente...)', esquema: '045', creditos: 4, clave: 'DSP' },
+                { value: 'gestion_proyectos_pmi_ind', text: 'Gestión de Proyectos - PMI(Proximamente...)', esquema: '045', creditos: 4, clave: 'GPPMI' },
+                { value: 'planeamiento_produccion2', text: 'Planeamiento y Control de la Producción II(Proximamente...)', esquema: '045', creditos: 4, clave: 'PCP2' },
+                { value: 'proyecto_final_ind', text: 'Proyecto Final de Ingeniería Industrial I(Proximamente...)', esquema: '045', creditos: 4, clave: 'PFII' },
+                { value: 'psicologia_industrial', text: 'Psicología Industrial y Organizacional(Proximamente...)', esquema: '049', creditos: 2, clave: 'PIO' },
+            ],
+            'ciclo10': [
+                { value: 'gestion_personal_legislacion', text: 'Gestión de Personal y Legislación Laboral(Proximamente...)', esquema: '045', creditos: 4, clave: 'GPLL' },
+                { value: 'supply_chain', text: 'Supply Chain Management(Proximamente...)', esquema: '045', creditos: 4, clave: 'SCM' },
+                { value: 'trabajo_investigacion_ind', text: 'Trabajo de Investigación(Proximamente...)', esquema: '045', creditos: 4, clave: 'TINV' },
+                { value: 'etica_moral_ind', text: 'Ética y Moral(Proximamente...)', esquema: '049', creditos: 2, clave: 'ETM' },
+            ],
+            'electivas': [
+                { value: 'ing_costos_avanzado', text: 'Ingeniería de Costos Avanzado(Proximamente...)', esquema: '038', creditos: 4, clave: 'ICA' },
+                { value: 'marketing_digital', text: 'Marketing Digital(Proximamente...)', esquema: '045', creditos: 4, clave: 'MKTD' },
+                { value: 'planeamiento_desarrollo_producto', text: 'Planeamiento, Desarrollo e Ingeniería del Producto(Proximamente...)', esquema: '045', creditos: 4, clave: 'PDIP' },
+                { value: 'comercio_exterior', text: 'Comercio Exterior y Financiamiento(Proximamente...)', esquema: '038', creditos: 3, clave: 'CEF' },
+                { value: 'ergonomia', text: 'Ergonomía(Proximamente...)', esquema: '045', creditos: 3, clave: 'ERGO' },
+                { value: 'fund_emprendimiento_ind', text: 'Fundamentos de Emprendimiento(Proximamente...)', esquema: '045', creditos: 3, clave: 'FEMP' },
+                { value: 'gestion_riesgos', text: 'Gestión de Riesgos(Proximamente...)', esquema: '045', creditos: 3, clave: 'GRIESG' },
+                { value: 'mercado_valores_ind', text: 'Mercado de Valores Industriales(Proximamente...)', esquema: '038', creditos: 3, clave: 'MVI' },
+                { value: 'metodologias_agiles', text: 'Metodologías Ágiles(Proximamente...)', esquema: '045', creditos: 3, clave: 'MAGIL' },
+                { value: 'sistemas_erp', text: 'Sistemas ERP(Proximamente...)', esquema: '045', creditos: 3, clave: 'SERP' },
+                { value: 'gestion_innovacion_ind', text: 'Gestión de la Innovación(Proximamente...)', esquema: '045', creditos: 2, clave: 'GINOV' },
+                { value: 'liderazgo_oratoria_ind', text: 'Liderazgo y Oratoria(Proximamente...)', esquema: '045', creditos: 2, clave: 'LO' },
             ]
         }
     },
@@ -293,7 +384,9 @@ const tiposExamen = {
     'C4': 'Control 4',
     'C5': 'Control 5',
     'C6': 'Control 6',
-    'CE': 'Controles Extra'
+    'CE': 'Controles Extra',
+    'L4': 'Laboratorio 4',
+    'T3': 'Tarea 3'
 };
 
 // Mapeo de ciclos académicos para mostrar nombres legibles
@@ -357,6 +450,8 @@ const ciclosAcademicos = {
     '14SAI': '2014 SAI',
     '141': '2014-1',
     '142': '2014-2',
+    '142 1': '2014-2 Exam 1',
+    '142 2': '2014-2 Exam 2',
 
     '15SAI': '2015 SAI',
     '151': '2015-1',
@@ -368,6 +463,7 @@ const ciclosAcademicos = {
 
     '17SAI': '2017 SAI',
     '171': '2017-1',
+    '170': '2017-0',
     '172': '2017-2',
 
     '18SAI': '2018 SAI',
