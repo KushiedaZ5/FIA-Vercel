@@ -52,8 +52,43 @@ const dataCarreras = {
                 { value: 'ing_software1', text: 'Ingeniería de Software I', esquema: '128', creditos: 5, clave: 'IS1' },
                 { value: 'inv_operativa', text: 'Investigación Operativa', esquema: '038', creditos: 4, clave: 'IO' },
                 { value: 'programacion1', text: 'Programación I', esquema: '046', creditos: 5, clave: 'PROG1' },
-                { value: 'teoria_sistemas', text: 'Teoría General de Sistemas (Proximamente...)', esquema: '046', creditos: 4, clave: 'TGS' },
+                { value: 'teoria_sistemas', text: 'Teoría General de Sistemas ', esquema: '045', creditos: 4, clave: 'TGS' },
+            ],
+            'ciclo7': [
+                { value: 'arq_soft_si', text: 'Arquitectura de Software para Sistemas de Información', esquema: '135', creditos: 2, clave: 'ASSI' },
+                { value: 'ing_software2', text: 'Ingeniería de Software II', esquema: '136', creditos: 5, clave: 'IS2' },
+                { value: 'ges_financiera', text: 'Gestión Financiera', esquema: '038', creditos: 4, clave: 'GF' },
+                { value: 'discapacidad_inclusion', text: 'Discapacidad e Inclusión(Proximamente...)', esquema: '046', creditos: 1, clave: 'DI' },
+                { value: 'i_a', text: 'Inteligencia Artificial', esquema: '135', creditos: 4, clave: 'IAR' },
+            ],
+            'ciclo8': [
+                { value: 'taller_proyectos', text: 'Taller de Proyectos', esquema: '045', creditos: 5, clave: 'TPSIS' },
+                { value: 'arq_empresarial', text: 'Arquitectura Empresarial(Proximamente...)', esquema: '128', creditos: 4, clave: 'AESIS' },
+                { value: 'diseno_implementacion', text: 'Diseño e Implementacion de Sistemas', esquema: '045', creditos: 4, clave: 'DISIS' },
+                { value: 'formulacion_evaluacion', text: 'Formulación y Evaluación de Proyectos', esquema: '045', creditos: 4, clave: 'FEPSIS' },
+                { value: 'gestion_recursos', text: 'Gestion de Recursos de Tecnología de Información', esquema: '045', creditos: 4, clave: 'GRTISSIS' },
+                { value: 'investigacion_sistemas', text: 'Investigación en Sistemas de Información(Proximamente...)', esquema: '046', creditos: 2, clave: 'ISIS' },
+                
+            ],
+            'ciclo9': [
+                { value: 'inteligencia_negocios', text: 'Inteligencia de Negocios(Proximamente...)', esquema: '045', creditos: 4, clave: 'INSIS' },
+                { value: 'planeamiento_estrategico', text: 'Planeamiento estratégico de Tecnología de Información', esquema: '045', creditos: 4, clave: 'PETISIS' },
+                { value: 'proyecto_final', text: 'Proyecto Final de Ingenería de Computación y Sistemas(Proximamente...)', esquema: '038', creditos: 4, clave: 'PFCISIS' },
+                { value: 'seguridad_auditoria', text: 'Seguridad y auditoría de Sistemas de Información', esquema: '045', creditos: 4, clave: 'SASSIS' },
+                { value: 'liderazgo_oratoria', text: 'Liderazgo y Oratoria(Proximamente...)', esquema: '046', creditos: 2, clave: 'LOSIS' },
+            ],
+            'ciclo10': [
+                { value: 'etica_moral', text: 'Ética y Moral', esquema: '038', creditos: 4, clave: 'EMSIS' },
+                { value: 'marketing_digital', text: 'Marketing Digital', esquema: '045', creditos: 4, clave: 'MDSIS' },
+            
+            ],
+            'Electivos': [
+                { value: 'pruebas_software', text: 'Pruebas de Software', esquema: '045', creditos: 4, clave: 'PSSIS' },
+                { value: 'redes_conectividad', text: 'Redes y Conectividad', esquema: '046', creditos: 4, clave: 'RCSIS' },
+                { value: 'gestion_estrategica', text: 'Gestión Estratégica', esquema: '045', creditos: 4, clave: 'GESIS' },
+            
             ]
+            
         }
     },
     'ingCivil': {

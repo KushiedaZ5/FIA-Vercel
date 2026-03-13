@@ -124,7 +124,8 @@ document.addEventListener('alpine:init', () => {
                 'ciclo8': 8,
                 'ciclo9': 9,
                 'ciclo10': 10,
-                'electivas': 'Electivos'
+                'electivas': 'Electivos',
+                'electivos': 'Electivos'
             };
 
             for (const [cicloKey, cursosCiclo] of Object.entries(ciclos)) {
@@ -156,6 +157,7 @@ document.addEventListener('alpine:init', () => {
                 // Luego por ciclo (strings como 'Electivos' van al final)
                 const aNum = typeof a.ciclo === 'number' ? a.ciclo : 999;
                 const bNum = typeof b.ciclo === 'number' ? b.ciclo : 999;
+                if (aNum === 999 && bNum === 999) return a.ciclo.toString().localeCompare(b.ciclo.toString());
                 return aNum - bNum;
             });
 

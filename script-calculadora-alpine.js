@@ -1,4 +1,4 @@
-﻿document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
     Alpine.data('appCalculadora', () => ({
         // ============================================
         // 1. ESTADO (STATE)
@@ -184,11 +184,19 @@
             if (this.carreraSeleccionada) {
                 const carrera = dataCarreras[this.carreraSeleccionada];
                 this.listaCiclos = Object.keys(carrera.ciclos)
-                    .filter(key => parseInt(key.replace('ciclo', '')) <= 6) // Filtro opcional
-                    .map(key => ({
-                        id: key,
-                        nombre: key.replace('ciclo', 'Ciclo ')
-                    }));
+                    .filter(key => key.toLowerCase().startsWith('ciclo') ? parseInt(key.replace(/ciclo/i, '')) <= 10 : true)
+                    .map(key => {
+                        const lowerKey = key.toLowerCase();
+                        let nombre;
+                        if (lowerKey === 'electivas' || lowerKey === 'electivos') {
+                            nombre = 'ELECTIVOS';
+                        } else if (lowerKey.startsWith('ciclo')) {
+                            nombre = key.replace(/ciclo/i, 'Ciclo ');
+                        } else {
+                            nombre = key.toUpperCase();
+                        }
+                        return { id: key, nombre };
+                    });
             }
 
             // Actualizar link de "Volver"
@@ -362,7 +370,9 @@
         get tituloCicloTexto() {
             if (!this.cicloSeleccionado || !this.carreraSeleccionada) return 'CARGANDO...';
             const nombreCarrera = dataCarreras[this.carreraSeleccionada].nombre;
-            const nombreCiclo = this.cicloSeleccionado.replace('ciclo', 'Ciclo ');
+            const nombreCiclo = this.cicloSeleccionado.toLowerCase().startsWith('ciclo') 
+                ? this.cicloSeleccionado.replace(/ciclo/i, 'Ciclo ')
+                : this.cicloSeleccionado.toUpperCase();
             return `${nombreCiclo} - ${nombreCarrera}`;
         },
 

@@ -90,10 +90,14 @@ document.addEventListener('alpine:init', () => {
 
                 // Determinar el número/label del ciclo
                 let numero;
-                if (cicloKey === 'electivas') {
+                const lowerKey = cicloKey.toLowerCase();
+                if (lowerKey === 'electivas' || lowerKey === 'electivos') {
                     numero = 'ELECTIVOS';
+                } else if (lowerKey.startsWith('ciclo')) {
+                    const numPart = cicloKey.replace(/ciclo/i, '');
+                    numero = isNaN(numPart) ? cicloKey.toUpperCase() : parseInt(numPart);
                 } else {
-                    numero = parseInt(cicloKey.replace('ciclo', ''));
+                    numero = cicloKey.toUpperCase();
                 }
 
                 return {

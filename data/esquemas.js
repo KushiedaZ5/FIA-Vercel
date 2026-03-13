@@ -414,6 +414,30 @@ const esquemas = {
                 notas: { P1: 9, P2: 13, P3: 11, EP: 11, EF: 10 }
             }
         ]
+        
     },
-
+    "135": {
+        descripcion: "arq_soft_si 0.3, 0.3, 0.4",
+        imagen: "imagenes/135.jpg",
+        inputs: ["P1", "P2","P3", "P4", "EP", "EF"],
+        pesos: [{ n: "Examen Final (EF)", v: 40, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 30, c: "bg-warning" }, { n: "Práctica 1 (P1)", v: 7.5, c: "bg-primary" }, { n: "Práctica 2 (P2)", v: 7.5, c: "bg-primary" }, { n: "Práctica 3 (P3)", v: 7.5, c: "bg-primary" }, { n: "Práctica 4 (P4)", v: 7.5, c: "bg-primary" }],
+        calcular: (n) => {
+            const pe = (n.P1 + n.P2 + n.P3 + n.P4) / 4;
+            return (0.3 * pe) + (0.3 * n.EP) + (0.4 * n.EF);
+        },
+    },
+    "136": {
+        descripcion: "ing soft 2",
+        imagen: "imagenes/136.jpg",
+        inputs: ["P1", "P2", "P3", "P4", "W1", "Lb1", "Lb2", "Lb3", "Lb4", "EP", "EF"],
+        pesos: [{ n: "Examen Final (EF)", v: 25, c: "bg-danger" }, { n: "Examen Parcial (EP)", v: 25, c: "bg-warning" }, { n: "Prom. Prácticas (P)", v: 16.7, c: "bg-primary" }, { n: "Trabajo (W1)", v: 16.7, c: "bg-info" }, { n: "Prom. Laboratorio (PL)", v: 16.7, c: "bg-success" }],
+        calcular: (n) => {
+            const pl = (n.Lb1 + n.Lb2 + n.Lb3 + n.Lb4) / 4;
+            const p = [n.P1, n.P2, n.P3, n.P4];
+            const promP = (p.reduce((a, b) => a + b, 0) ) / 4;
+            const pe = (promP + n.W1 + pl) / 3;
+            return ((2 * pe) + n.EP + n.EF) / 4;
+        },
+    },
+   
 };
