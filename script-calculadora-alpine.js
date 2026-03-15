@@ -368,7 +368,7 @@ document.addEventListener('alpine:init', () => {
 
         // TÃ­tulo dinÃ¡mico del ciclo
         get tituloCicloTexto() {
-            if (!this.cicloSeleccionado || !this.carreraSeleccionada) return 'CARGANDO...';
+            if (!this.cicloSeleccionado || !this.carreraSeleccionada) return 'SELECCIONA TUS CURSOS';
             const nombreCarrera = dataCarreras[this.carreraSeleccionada].nombre;
             const nombreCiclo = this.cicloSeleccionado.toLowerCase().startsWith('ciclo') 
                 ? this.cicloSeleccionado.replace(/ciclo/i, 'Ciclo ')

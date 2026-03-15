@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -509,7 +509,26 @@
                     <div class="p-4">
                         <div class="flex flex-wrap gap-3 justify-center">
 
-                            <p x-show="listaCursos.length === 0" class="text-gray-400">Cargando cursos...</p>
+                            <div x-show="listaCursos.length === 0" class="w-full text-center py-4">
+                                <div x-show="carreraSeleccionada && cicloSeleccionado">
+                                    <p class="text-gray-400 mb-0">Cargando cursos...</p>
+                                </div>
+                                <div x-show="!carreraSeleccionada || !cicloSeleccionado" class="flex flex-col items-center justify-center gap-3 py-6">
+                                    <div class="text-yellow-400 mb-1">
+                                        <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-gray-300 font-medium">Debes seleccionar una carrera para ver los cursos.</p>
+                                    <a href="index.html" class="mt-3 bg-official-blue hover:bg-blue-600 text-white font-bold px-6 py-2.5 rounded-lg transition-all duration-200 shadow-[0_0_15px_rgba(35,123,255,0.3)] hover:shadow-[0_0_25px_rgba(35,123,255,0.5)] flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                        </svg>
+                                        Ir al Mapa de Carreras
+                                    </a>
+                                </div>
+                            </div>
+
 
                             <template x-for="curso in listaCursos" :key="curso.value">
                                 <button @click="seleccionarCurso(curso.value)" :class="cursoSeleccionado === curso.value 
