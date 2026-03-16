@@ -123,38 +123,6 @@
             }
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes pulse-glow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(26, 69, 188, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 40px rgba(26, 69, 188, 0.6);
-            }
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-pulse-glow {
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
-
         .bg-radial-blue {
             background: radial-gradient(circle at center, rgba(26, 69, 188, 0.15) 0%, rgba(11, 13, 18, 0) 70%);
         }
@@ -166,15 +134,421 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* PDF preview mockup styles */
-        .pdf-preview {
-            background: linear-gradient(135deg, #1e1e2e 0%, #0d0d14 100%);
-            border: 1px solid #27272a;
+        /* ========================================
+           EXAM CARD STACK - 3D Animation
+           Same technique as index.html calculator cards
+           ======================================== */
+        .exam-card-stack {
+            --rot-x: 44;
+            --rot-y: -56;
+            --rot-z: 11;
+            --rot-deg: 33deg;
+            --base-offset: 50px;
+            --transform-y: 28px;
+            position: relative;
+            width: 418px;
+            height: 715px;
+            transform: translateX(calc(var(--base-offset) * -2));
+            margin-top: -10px;
         }
 
-        .pdf-line {
-            background: linear-gradient(to right, #3f3f46 0%, #27272a 100%);
-            border-radius: 2px;
+        /* Exam Card Base */
+        .exam-card {
+            width: 300px;
+            background: linear-gradient(to bottom, #18181b 0%, #0f0f12 100%);
+            border: 1px solid #27272a;
+            border-radius: 14px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            will-change: transform;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Card positions */
+        .exam-stack-1 {
+            --offset: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: examCardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .exam-stack-2 {
+            --offset: var(--base-offset);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: examCardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.25s;
+        }
+
+        .exam-stack-3 {
+            --offset: calc(var(--base-offset) * 2);
+            position: relative;
+            z-index: 1;
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            animation: examCardFloat 3.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes examCardFloat {
+            0%, 100% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            }
+            50% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            }
+        }
+
+        /* Exam Card Header (PDF bar) */
+        .exam-card-topbar {
+            background: linear-gradient(135deg, #1a1f2e 0%, #141820 100%);
+            border-bottom: 1px solid #27272a;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exam-card-pdf-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(239, 68, 68, 0.15);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .exam-card-pdf-icon svg {
+            width: 14px;
+            height: 14px;
+            color: #f87171;
+        }
+
+        .exam-card-filename {
+            color: #f4f4f5;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .exam-card-subject {
+            color: #71717a;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
+        /* Exam card badges */
+        .exam-card-badges {
+            padding: 8px 14px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1f1f23;
+        }
+
+        .exam-badge-pill {
+            padding: 3px 8px;
+            border-radius: 100px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .exam-badge-pill.blue {
+            background: rgba(26, 69, 188, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: #60a5fa;
+        }
+
+        .exam-badge-pill.cyan {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            color: #22d3ee;
+        }
+
+        .exam-badge-pill.gray {
+            background: rgba(113, 113, 122, 0.15);
+            border: 1px solid rgba(113, 113, 122, 0.2);
+            color: #a1a1aa;
+        }
+
+        /* Exam card body (content) */
+        .exam-card-body {
+            padding: 12px 14px;
+        }
+
+        .exam-card-course-title {
+            color: #9ca3af;
+            font-size: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+        .exam-card-university {
+            color: #4b5563;
+            font-size: 7px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .exam-card-question {
+            margin-bottom: 10px;
+        }
+
+        .exam-card-q-label {
+            color: #6b7280;
+            font-size: 9px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .exam-card-q-text {
+            color: #d1d5db;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .exam-card-formula {
+            background: rgba(26, 69, 188, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-top: 5px;
+        }
+
+        .exam-card-formula code {
+            color: #60a5fa;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .exam-card-formula.green {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.15);
+        }
+
+        .exam-card-formula.green code {
+            color: #4ade80;
+        }
+
+        .exam-card-formula.purple {
+            background: rgba(124, 58, 237, 0.08);
+            border-color: rgba(124, 58, 237, 0.15);
+        }
+
+        .exam-card-formula.purple code {
+            color: #a78bfa;
+        }
+
+        /* Content placeholder lines */
+        .exam-line {
+            height: 5px;
+            background: linear-gradient(to right, #27272a, #1f1f23);
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+
+        /* Bottom accent bar */
+        .exam-card-accent {
+            height: 3px;
+            border-radius: 0 0 14px 14px;
+        }
+
+        .exam-card-accent.blue {
+            background: #3b82f6;
+            box-shadow: 0 -2px 10px rgba(59, 130, 246, 0.5), 0 -4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .exam-card-accent.green {
+            background: #22c55e;
+            box-shadow: 0 -2px 10px rgba(34, 197, 94, 0.5), 0 -4px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .exam-card-accent.purple {
+            background: #8b5cf6;
+            box-shadow: 0 -2px 10px rgba(139, 92, 246, 0.5), 0 -4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Bottom glow */
+        .exam-card-glow {
+            position: absolute;
+            bottom: 0;
+            left: -10px;
+            right: -10px;
+            height: 60px;
+            pointer-events: none;
+        }
+
+        .exam-card-glow.blue {
+            background: linear-gradient(to top, rgba(59, 130, 246, 0.2) 0%, transparent 100%);
+        }
+
+        .exam-card-glow.green {
+            background: linear-gradient(to top, rgba(34, 197, 94, 0.2) 0%, transparent 100%);
+        }
+
+        .exam-card-glow.purple {
+            background: linear-gradient(to top, rgba(139, 92, 246, 0.2) 0%, transparent 100%);
+        }
+
+        /* Download button */
+        .exam-card-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #1a45bc 0%, #2563eb 100%);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            margin: 0 14px 12px;
+        }
+
+        .exam-card-download svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile Exam Card Stack
+           Native px sizes, NO scale() = 100% quality
+           ======================================== */
+        @media (max-width: 1023px) {
+            .exam-card-stack {
+                width: 168px;
+                height: 310px;
+                --base-offset: 20px;
+                --transform-y: 10px;
+                margin-top: 0;
+                transform: translateX(8px);
+            }
+
+            .exam-card {
+                width: 155px;
+                border-radius: 7px;
+            }
+
+            .exam-card-topbar {
+                padding: 5px 7px;
+                gap: 5px;
+            }
+
+            .exam-card-pdf-icon {
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+            }
+
+            .exam-card-pdf-icon svg {
+                width: 8px;
+                height: 8px;
+            }
+
+            .exam-card-filename {
+                font-size: 7px;
+            }
+
+            .exam-card-subject {
+                font-size: 5.5px;
+            }
+
+            .exam-card-badges {
+                padding: 4px 7px;
+                gap: 3px;
+            }
+
+            .exam-badge-pill {
+                padding: 2px 5px;
+                font-size: 5.5px;
+            }
+
+            .exam-card-body {
+                padding: 6px 7px;
+            }
+
+            .exam-card-course-title {
+                font-size: 5px;
+                margin-bottom: 1px;
+            }
+
+            .exam-card-university {
+                font-size: 4.5px;
+                margin-bottom: 5px;
+            }
+
+            .exam-card-question {
+                margin-bottom: 5px;
+            }
+
+            .exam-card-q-label {
+                font-size: 5.5px;
+                margin-bottom: 2px;
+            }
+
+            .exam-card-q-text {
+                font-size: 5.5px;
+            }
+
+            .exam-card-formula {
+                padding: 3px 5px;
+                border-radius: 4px;
+                margin-top: 3px;
+            }
+
+            .exam-card-formula code {
+                font-size: 6px;
+            }
+
+            .exam-line {
+                height: 3px;
+                margin-bottom: 3px;
+            }
+
+            .exam-card-accent {
+                height: 2px;
+            }
+
+            .exam-card-glow {
+                height: 25px;
+            }
+
+            .exam-card-download {
+                font-size: 6px;
+                padding: 4px 7px;
+                border-radius: 4px;
+                margin: 0 7px 6px;
+                gap: 3px;
+            }
+
+            .exam-card-download svg {
+                width: 7px;
+                height: 7px;
+            }
+
+            .hero-animation-container-exams {
+                height: 340px !important;
+            }
         }
 
         /* Hero Background - CSFloat style */
@@ -485,10 +859,10 @@
     <!-- Mobile: Add padding for fixed header/footer -->
     <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0">
         <main class="flex items-center py-8 lg:py-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full gap-2 lg:gap-8">
 
                 <!-- Left Column: Text Content -->
-                <div class="order-2 lg:order-1 text-center lg:text-left lg:pr-5">
+                <div class="order-2 lg:order-1 text-center lg:text-left lg:max-w-[570px]">
                     <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight mb-6 text-gradient">
                         Estudia con exámenes pasados de tu carrera
                     </h1>
@@ -608,68 +982,161 @@
                     </div>
                 </div>
 
-                <!-- Right Column: PDF Preview Animation -->
-                <div class="order-1 lg:order-2">
+                <!-- Right Column: 3D Exam Card Stack Animation -->
+                <div class="order-1 lg:order-2 lg:max-w-[500px] lg:flex-shrink-0">
                     <div
-                        class="relative h-[350px] lg:h-[700px] w-full bg-radial-blue rounded-3xl border border-zinc-800 flex justify-center items-center overflow-hidden backdrop-blur-sm">
-                        <div class="relative w-full flex justify-center items-center">
+                        class="hero-animation-container-exams relative h-[450px] lg:h-[650px] w-full flex justify-center items-center overflow-visible">
 
-                            <!-- PDF Preview Mockup -->
-                            <div class="relative w-[85%] lg:w-3/4 max-w-[280px] lg:max-w-[450px] z-30 animate-float"
-                                style="filter: drop-shadow(0 25px 50px rgba(26, 69, 188, 0.5));">
+                        <!-- Exam Card Stack -->
+                        <div class="exam-card-stack">
 
-                                <!-- PDF Document -->
-                                <div class="pdf-preview rounded-xl p-4 lg:p-6 animate-pulse-glow">
-                                    <!-- Header -->
-                                    <div class="flex items-center gap-3 mb-4 lg:mb-6">
-                                        <div
-                                            class="w-8 h-8 lg:w-10 lg:h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
-                                            <svg class="w-4 h-4 lg:w-5 lg:h-5 text-red-400" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 9h-2v2H9v2h2v2h2v-2h2v-2h-2v-2zm0-6V3.5L18.5 9H13z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <p class="text-white font-bold text-sm lg:text-base">MD-PC1-241.pdf</p>
-                                            <p class="text-gray-500 text-xs">Matemática Discreta</p>
-                                        </div>
+                            <!-- Card 1 - Front: Matemática Discreta PC1 (Blue) -->
+                            <div class="exam-card exam-stack-1">
+                                <div class="exam-card-topbar">
+                                    <div class="exam-card-pdf-icon">
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 9h-2v2H9v2h2v2h2v-2h2v-2h-2v-2zm0-6V3.5L18.5 9H13z" />
+                                        </svg>
                                     </div>
-
-                                    <!-- Content Lines -->
-                                    <div class="space-y-2 lg:space-y-3">
-                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-4/5"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-3/4"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-5/6"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-2/3"></div>
+                                    <div>
+                                        <div class="exam-card-filename">MD-PC1-251.pdf</div>
+                                        <div class="exam-card-subject">Matemática Discreta</div>
                                     </div>
+                                </div>
+                                <div class="exam-card-badges">
+                                    <span class="exam-badge-pill blue">Práctica 1</span>
+                                    <span class="exam-badge-pill cyan">2025-1</span>
+                                </div>
+                                <div class="exam-card-body">
+                                    <div class="exam-card-course-title">Facultad de Ingeniería y Arquitectura</div>
+                                    <div class="exam-card-university">Universidad de San Martín de Porres</div>
 
-                                    <!-- Formulas mockup -->
-                                    <div
-                                        class="mt-4 lg:mt-6 p-3 lg:p-4 bg-zinc-800/50 rounded-lg border border-zinc-700">
-                                        <p class="text-xs text-gray-400 mb-2">Pregunta 1:</p>
-                                        <div class="text-official-blue font-mono text-sm lg:text-base">
-                                            f(n) = f(n-1) + f(n-2)
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 1 (4 pts)</div>
+                                        <div class="exam-card-q-text">Determine si la siguiente relación de
+                                            recurrencia es lineal, homogénea y de coeficientes constantes:</div>
+                                        <div class="exam-card-formula">
+                                            <code>aₙ = 3aₙ₋₁ − 2aₙ₋₂ + 5</code>
                                         </div>
                                     </div>
 
-                                    <!-- More lines -->
-                                    <div class="space-y-2 lg:space-y-3 mt-4 lg:mt-6">
-                                        <div class="pdf-line h-2 lg:h-3 w-full"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-4/5"></div>
-                                        <div class="pdf-line h-2 lg:h-3 w-3/5"></div>
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 2 (4 pts)</div>
+                                        <div class="exam-card-q-text">Resuelva usando el principio de inclusión-exclusión:</div>
+                                        <div class="exam-line" style="width: 100%; margin-top: 6px;"></div>
+                                        <div class="exam-line" style="width: 80%;"></div>
+                                        <div class="exam-line" style="width: 65%;"></div>
                                     </div>
+                                </div>
+
+                                <!-- Download btn -->
+                                <div class="exam-card-download">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Descargar PDF
+                                </div>
+
+                                <!-- Glow + Accent -->
+                                <div style="position:relative;">
+                                    <div class="exam-card-glow blue"></div>
+                                    <div class="exam-card-accent blue"></div>
                                 </div>
                             </div>
 
-                        </div>
+                            <!-- Card 2 - Middle: Geometría Analítica EF (Green) -->
+                            <div class="exam-card exam-stack-2">
+                                <div class="exam-card-topbar">
+                                    <div class="exam-card-pdf-icon">
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 9h-2v2H9v2h2v2h2v-2h2v-2h-2v-2zm0-6V3.5L18.5 9H13z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="exam-card-filename">GA-EF-242.pdf</div>
+                                        <div class="exam-card-subject">Geometría Analítica</div>
+                                    </div>
+                                </div>
+                                <div class="exam-card-badges">
+                                    <span class="exam-badge-pill blue">Examen Final</span>
+                                    <span class="exam-badge-pill cyan">2024-2</span>
+                                </div>
+                                <div class="exam-card-body">
+                                    <div class="exam-card-course-title">Facultad de Ingeniería y Arquitectura</div>
+                                    <div class="exam-card-university">Universidad de San Martín de Porres</div>
 
-                        <!-- Blur effect -->
-                        <div
-                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-epics-blue blur-[120px] opacity-30 z-0">
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 1 (5 pts)</div>
+                                        <div class="exam-card-q-text">Halle la ecuación de la recta tangente a la
+                                            circunferencia en el punto P(3,4):</div>
+                                        <div class="exam-card-formula green">
+                                            <code>x² + y² − 6x − 8y + 9 = 0</code>
+                                        </div>
+                                    </div>
+
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 2 (5 pts)</div>
+                                        <div class="exam-line" style="width: 100%; margin-top: 4px;"></div>
+                                        <div class="exam-line" style="width: 85%;"></div>
+                                        <div class="exam-line" style="width: 70%;"></div>
+                                        <div class="exam-line" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+
+                                <div style="position:relative;">
+                                    <div class="exam-card-glow green"></div>
+                                    <div class="exam-card-accent green"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 - Back: Física I EP (Purple) -->
+                            <div class="exam-card exam-stack-3">
+                                <div class="exam-card-topbar">
+                                    <div class="exam-card-pdf-icon">
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 9h-2v2H9v2h2v2h2v-2h2v-2h-2v-2zm0-6V3.5L18.5 9H13z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="exam-card-filename">FIS1-EP-251.pdf</div>
+                                        <div class="exam-card-subject">Física I</div>
+                                    </div>
+                                </div>
+                                <div class="exam-card-badges">
+                                    <span class="exam-badge-pill blue">Examen Parcial</span>
+                                    <span class="exam-badge-pill cyan">2025-1</span>
+                                </div>
+                                <div class="exam-card-body">
+                                    <div class="exam-card-course-title">Facultad de Ingeniería y Arquitectura</div>
+                                    <div class="exam-card-university">Universidad de San Martín de Porres</div>
+
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 1 (5 pts)</div>
+                                        <div class="exam-card-q-text">Un bloque de 5kg se desliza por un plano
+                                            inclinado a 30°. Calcular la aceleración:</div>
+                                        <div class="exam-card-formula purple">
+                                            <code>F = ma → a = g·sin(θ) − μₖ·g·cos(θ)</code>
+                                        </div>
+                                    </div>
+
+                                    <div class="exam-card-question">
+                                        <div class="exam-card-q-label">Pregunta 2 (5 pts)</div>
+                                        <div class="exam-line" style="width: 100%; margin-top: 4px;"></div>
+                                        <div class="exam-line" style="width: 75%;"></div>
+                                        <div class="exam-line" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+
+                                <div style="position:relative;">
+                                    <div class="exam-card-glow purple"></div>
+                                    <div class="exam-card-accent purple"></div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
