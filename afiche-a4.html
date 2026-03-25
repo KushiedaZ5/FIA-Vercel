@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afiche CalculadoraFIAUSMP - A4 (Versión Imprimible)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a2533;
+            --bg-card: #0d2e3f;
+            --blue-primary: #1a7ab5;
+            --blue-light: #5cc8f5;
+            --green-primary: #2dd47a;
+            --text-white: #e8f4f8;
+            --text-gray: #a3c4d4;
+            --text-muted: #7a9eae;
+            --border-color: #1a4a5e;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1a3040;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px 0;
+            min-height: 100vh;
+        }
+
+        /* ========================================
+           POSTER - A4 size in mm
+           210mm × 297mm
+           ======================================== */
+        @page {
+            size: 210mm 297mm;
+            margin: 0;
+        }
+
+        .poster {
+            width: 210mm;
+            height: 297mm;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Background glow - Teal version para impresion */
+        .poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 25% 15%, rgba(26, 122, 181, 0.15) 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 50%, rgba(45, 212, 122, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 85%, rgba(92, 200, 245, 0.10) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Grid - DESACTIVADO para impresion */
+        .grid-overlay {
+            display: none;
+        }
+
+        /* ========================================
+           HERO
+           ======================================== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 8.5mm 11mm 5.5mm;
+            text-align: center;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3.5mm;
+            margin-bottom: 4mm;
+        }
+
+        .logo-row img {
+            width: 14mm;
+            height: 14mm;
+            filter: drop-shadow(0 0 3mm rgba(92, 200, 245, 0.4));
+        }
+
+        .logo-row h1 {
+            font-size: 7.8mm;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e8f4f8 0%, #5cc8f5 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            text-align: left;
+        }
+
+        .logo-row .sub {
+            font-size: 2.8mm;
+            color: var(--text-muted);
+            letter-spacing: 0.7mm;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.4mm;
+            padding: 1.4mm 4.2mm;
+            background: linear-gradient(135deg, rgba(45, 212, 122, 0.15), rgba(45, 212, 122, 0.05));
+            border: 0.3mm solid rgba(45, 212, 122, 0.35);
+            border-radius: 100px;
+            font-size: 2.8mm;
+            font-weight: 700;
+            color: var(--green-primary);
+            margin-bottom: 4.2mm;
+            letter-spacing: 0.4mm;
+        }
+
+        .free-badge svg {
+            width: 3.5mm;
+            height: 3.5mm;
+        }
+
+        .insight {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 7.8mm;
+            line-height: 1.35;
+            color: var(--text-white);
+            margin-bottom: 2mm;
+        }
+
+        .insight .hl {
+            color: var(--blue-light);
+            font-weight: 700;
+        }
+
+        .sub-insight {
+            font-size: 4.1mm;
+            color: var(--text-muted);
+            letter-spacing: 0.1mm;
+        }
+
+        .divider {
+            width: 14mm;
+            height: 0.7mm;
+            background: linear-gradient(to right, var(--blue-primary), var(--blue-light));
+            margin: 4mm auto -4.7mm auto;
+            border-radius: 1mm;
+        }
+
+        /* ========================================
+           STATS
+           ======================================== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3mm;
+            padding: 0 11mm;
+            margin-bottom: 5.5mm;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 3mm 1.4mm;
+            background: var(--bg-card);
+            border: 0.2mm solid var(--border-color);
+            border-radius: 3mm;
+        }
+
+        .stat-num {
+            font-size: 6.4mm;
+            font-weight: 900;
+            background: linear-gradient(135deg, #5cc8f5, #93ddfb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.7mm;
+        }
+
+        .stat-lbl {
+            font-size: 2.8mm;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.4mm;
+            font-weight: 600;
+        }
+
+        /* ========================================
+           SECTION TITLE
+           ======================================== */
+        .stitle {
+            font-size: 4mm;
+            font-weight: 700;
+            color: var(--blue-light);
+            text-transform: uppercase;
+            letter-spacing: 0.7mm;
+            text-align: center;
+            margin-top: -2.8mm;
+            margin-bottom: 2mm;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stitle::after {
+            content: '';
+            display: block;
+            width: 7mm;
+            height: 0.4mm;
+            background: var(--blue-primary);
+            margin: 1.4mm auto 0;
+        }
+
+        /* ========================================
+           FEATURES 3-COLUMN LAYOUT
+           ======================================== */
+        .features {
+            position: relative;
+            z-index: 1;
+            padding: 0 8.5mm;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fgrid {
+            display: grid;
+            grid-template-columns: 45mm 1fr 45mm;
+            /* Escalado de 32mm a 45mm para A4 */
+            gap: 4mm;
+            align-items: center;
+            flex: 1;
+        }
+
+        .fcol {
+            display: flex;
+            flex-direction: column;
+            gap: 5.5mm;
+            z-index: 10;
+        }
+
+        .fcol-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Wrapper to scale down the px-based 3D animation from index.html to fit the A4 poster sizes */
+        .poster-3d-wrapper {
+            transform: scale(0.74);
+            /* Escalado de 0.52 a 0.74 para A4 (x1.42) */
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 0;
+            height: 0;
+            position: relative;
+            top: 3mm;
+            margin-left: 21mm;
+            /* Ajuste fino de centrado visual */
+        }
+
+        /* ========================================
+           CSS ANIMATION FROM INDEX.HTML (Calculadoras)
+           ======================================== */
+        .card-stack {
+            --rot-x: 44;
+            --rot-y: -56;
+            --rot-z: 11;
+            --rot-deg: 33deg;
+            --base-offset: 40px;
+            /* offset reducido para el afiche */
+            --transform-y: 28px;
+            position: relative;
+            width: 418px;
+            height: 715px;
+            transform: translateX(calc(var(--base-offset) * -2));
+            /* ajuste de posicion horizontal al centro */
+            margin-top: -10px;
+        }
+
+        .stack-card-1 {
+            --offset: 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            /* Fijado en el punto más alto (- var(--transform-y)) */
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            /* Animación eliminada para dejarlo estático */
+        }
+
+        .stack-card-2 {
+            --offset: var(--base-offset);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 1;
+            /* Fijado en el punto más alto (- var(--transform-y)) */
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            /* Animación eliminada para dejarlo estático */
+        }
+
+        .stack-card-3 {
+            --offset: calc(var(--base-offset) * 2);
+            position: relative;
+            z-index: 1;
+            opacity: 1;
+            /* Fijado en el punto más alto (- var(--transform-y)) */
+            transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            /* Animación eliminada para dejarlo estático */
+        }
+
+        @keyframes cardFloat {
+
+            0%,
+            100% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), var(--offset));
+            }
+
+            50% {
+                transform: rotate3d(44, -56, 11, 33deg) translate(var(--offset), calc(var(--offset) - var(--transform-y)));
+            }
+        }
+
+        .hero-card {
+            width: 320px;
+            background: linear-gradient(to bottom, #18181b 0%, #0f0f12 100%);
+            border: 1px solid #27272a;
+            border-radius: 16px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.4));
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .hero-card-header {
+            background: linear-gradient(135deg, #1a1f2e 0%, #141820 100%);
+            border-bottom: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-header h3 {
+            color: #1E88E5;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .hero-card-inputs {
+            padding: 16px;
+        }
+
+        .hero-card-input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .hero-card-input-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-input-label {
+            color: #9ca3af;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hero-card-input-label.highlight {
+            color: #ef4444;
+        }
+
+        .hero-card-input-label.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-input-value {
+            background: #0a0a0c;
+            border: 1px solid #3f3f46;
+            border-radius: 8px;
+            color: #08e600;
+            font-size: 17px;
+            padding: 8px 16px;
+            min-width: 140px;
+            text-align: left;
+        }
+
+        .hero-card-input-value.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #3f3f46, transparent);
+            margin: 8px 16px;
+        }
+
+        .hero-card-result {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 20px 16px 0 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card-approved {
+            color: #22c55e;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-card-result-label {
+            color: #9ca3af;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-result-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .hero-card-result-value.green {
+            color: #22c55e;
+            text-shadow: 0 0 60px rgba(34, 197, 94, 0.6);
+        }
+
+        .hero-card-glow {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 80px;
+            background: linear-gradient(to top, rgba(34, 197, 94, 0.25) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-card-neon-bar {
+            position: absolute;
+            bottom: 0;
+            left: -15px;
+            right: -15px;
+            height: 4px;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .hero-card-neon-bar.green {
+            background: hsl(142, 71%, 45%);
+            box-shadow: 0 -2px 10px hsla(142, 71%, 45%, 0.5), 0 -4px 20px hsla(142, 71%, 45%, 0.3), 0 -8px 40px hsla(142, 71%, 45%, 0.2);
+        }
+
+        .hero-card-result-value.orange {
+            color: #f59e0b;
+            text-shadow: 0 0 60px rgba(245, 158, 11, 0.6);
+        }
+
+        .hero-card-glow.orange {
+            background: linear-gradient(to top, rgba(245, 158, 11, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.orange {
+            background: hsl(38, 92%, 50%);
+            box-shadow: 0 -2px 10px hsla(38, 92%, 50%, 0.5), 0 -4px 20px hsla(38, 92%, 50%, 0.3), 0 -8px 40px hsla(38, 92%, 50%, 0.2);
+        }
+
+        .hero-card-min-section {
+            background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
+            border-top: 1px solid #27272a;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .hero-card-min-label {
+            color: #d1d5db;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-min-value {
+            color: #22c55e;
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .hero-card-save-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(to right, #16a34a, #22c55e);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .hero-card-save-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-card-result-value.red {
+            color: #ef4444;
+            text-shadow: 0 0 60px rgba(239, 68, 68, 0.6);
+        }
+
+        .hero-card-glow.red {
+            background: linear-gradient(to top, rgba(239, 68, 68, 0.25) 0%, transparent 100%);
+        }
+
+        .hero-card-neon-bar.red {
+            background: hsl(0, 84%, 60%);
+            box-shadow: 0 -2px 10px hsla(0, 84%, 60%, 0.5), 0 -4px 20px hsla(0, 84%, 60%, 0.3), 0 -8px 40px hsla(0, 84%, 60%, 0.2);
+        }
+
+        .hero-card-impossible {
+            color: #ef4444;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .hero-card-weights {
+            background: #18181b;
+            border-top: 1px solid #27272a;
+            padding: 12px 16px;
+        }
+
+        .hero-card-weights-title {
+            color: #9ca3af;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            padding-left: 8px;
+            border-left: 3px solid #3b82f6;
+            text-align: left;
+        }
+
+        .hero-card-weight-row {
+            margin-bottom: 8px;
+        }
+
+        .hero-card-weight-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-weight-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .hero-card-weight-name {
+            color: #e5e7eb;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hero-card-weight-name.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-name.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-percent {
+            color: #6b7280;
+            font-size: 10px;
+        }
+
+        .hero-card-weight-percent.blue {
+            color: #60a5fa;
+        }
+
+        .hero-card-weight-percent.red {
+            color: #f87171;
+        }
+
+        .hero-card-weight-bar-bg {
+            background: #27272a;
+            border-radius: 4px;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .hero-card-weight-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .hero-card-weight-bar-fill.blue {
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+        }
+
+        .hero-card-weight-bar-fill.red {
+            background: linear-gradient(to right, #ef4444, #f87171);
+        }
+
+        .fcard {
+            background: linear-gradient(145deg, var(--bg-card) 0%, #081e2a 100%);
+            border: 0.2mm solid var(--border-color);
+            border-radius: 3.5mm;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0.3mm;
+            background: linear-gradient(to right, transparent, rgba(92, 200, 245, 0.3), transparent);
+            z-index: 1;
+        }
+
+        .fcard-top {
+            padding: 4mm 4mm;
+            /* Reducido un 25% */
+            display: flex;
+            align-items: flex-start;
+            gap: 1.7mm;
+            /* Escalado para A4 */
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .fnum {
+            font-size: 7mm;
+            /* Reducido un 25% (de 8mm a 6mm) */
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            opacity: 0.35;
+            margin-bottom: 1.1mm;
+        }
+
+        .finfo {
+            flex: 1;
+            padding-top: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .finfo h3 {
+            font-size: 4.2mm;
+            /* Reducido un 25% (de 3.2mm a ~2.4mm) */
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 1.7mm;
+            display: flex;
+            align-items: center;
+            gap: 1.7mm;
+            line-height: 1.2;
+        }
+
+        .finfo p {
+            font-size: 3.5mm;
+            /* Escalado para A4 */
+            color: var(--text-gray);
+            line-height: 1.4;
+            max-width: 100%;
+        }
+
+        /* Color variants */
+        .fcard.green .fnum {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .fcard.green::before {
+            background: linear-gradient(to right, transparent, rgba(34, 197, 94, 0.3), transparent);
+        }
+
+        .fcard.purple .fnum {
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .fcard.purple::before {
+            background: linear-gradient(to right, transparent, rgba(124, 58, 237, 0.3), transparent);
+        }
+
+        .fcard.amber .fnum {
+            background: linear-gradient(135deg, #d97706, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .fcard.amber::before {
+            background: linear-gradient(to right, transparent, rgba(217, 119, 6, 0.3), transparent);
+        }
+
+        /* ========================================
+           BOTTOM BAR
+           ======================================== */
+        .bottom {
+            position: relative;
+            z-index: 1;
+            padding: 4mm 8.5mm;
+            border-top: 0.2mm solid var(--border-color);
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 5.5mm;
+            align-items: center;
+        }
+
+        /* Left: Careers */
+        .bcareers {
+            text-align: left;
+        }
+
+        .bcareers .stitle {
+            text-align: left;
+            font-size: 3.4mm;
+            /* Escalado para A4 */
+            margin-bottom: 2.1mm;
+        }
+
+        .bcareers .stitle::after {
+            margin: 1.1mm 0 0 0;
+        }
+
+        .tagsgrid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4mm;
+        }
+
+        .tag {
+            padding: 1.8mm 3.5mm;
+            /* Escalado para A4 */
+            background: var(--bg-card);
+            border: 0.2mm solid var(--border-color);
+            border-radius: 100px;
+            font-size: 2.7mm;
+            /* Escalado para A4 */
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Center: QR */
+        .bqr {
+            text-align: center;
+            border-left: 0.2mm solid var(--border-color);
+            border-right: 0.2mm solid var(--border-color);
+            padding: 0 5.5mm;
+        }
+
+        .qr-box {
+            width: 30mm;
+            height: 30mm;
+            background: white;
+            border-radius: 2mm;
+            margin: 0 auto 2mm;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.4mm;
+        }
+
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .bqr-label {
+            font-size: 4.1mm;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .bqr-sub {
+            font-size: 3.5mm;
+            color: var(--text-muted);
+        }
+
+        /* Right: URL + Community Tagline */
+        .bcontact {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 2mm;
+        }
+
+        .url-box {
+            display: inline-block;
+            padding: 2mm 3mm;
+            border: 0.3mm solid var(--blue-primary);
+            border-radius: 2mm;
+            margin-bottom: 1.4mm;
+        }
+
+        .url-box span {
+            font-size: 3.5mm;
+            font-weight: 700;
+            color: var(--blue-light);
+        }
+
+        .url-box small {
+            display: block;
+            font-size: 2.8mm;
+            color: var(--text-muted);
+            margin-top: 0.3mm;
+        }
+
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 2.8mm;
+        }
+
+        .brand-row img {
+            height: 11mm;
+            filter: grayscale(100%) brightness(0.8);
+            opacity: 0.85;
+        }
+
+        .tagline-heart {
+            color: #3b82f6;
+            font-size: 5mm;
+            line-height: 1;
+        }
+
+        .tagline-text {
+            font-size: 3.1mm;
+            font-weight: 600;
+            color: #a3c4d4;
+            letter-spacing: 0.1mm;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        /* Footer */
+        .pfooter {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2mm;
+            border-top: 0.2mm solid var(--border-color);
+        }
+
+        .pfooter p {
+            font-size: 1.8mm;
+            color: var(--text-muted);
+            letter-spacing: 0.6mm;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        /* ========================================
+           PRINT
+           ======================================== */
+        @media print {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background: none !important;
+            }
+
+            body {
+                display: block;
+            }
+
+            .grid-overlay {
+                display: none;
+            }
+
+            .poster {
+                box-shadow: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Fix para evitar lineas indeseables bajo el texto en impresiones Chrome */
+            .logo-row h1,
+            .stat-num,
+            .fnum {
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+                color: #60a5fa !important;
+            }
+
+            .fcard.green .fnum {
+                color: #22c55e !important;
+            }
+
+            .fcard.purple .fnum {
+                color: #a78bfa !important;
+            }
+
+            .fcard.amber .fnum {
+                color: #fbbf24 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="poster">
+        <div class="grid-overlay" aria-hidden="true"></div>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="logo-row">
+                <img src="imagenes/logo.webp" alt="Logo">
+                <div>
+                    <h1>Calculadora</h1>
+                    <span class="sub">FIA USMP</span>
+                </div>
+            </div>
+
+            <div class="free-badge">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                100% GRATUITO
+            </div>
+
+            <p class="insight">
+                Tu herramienta para <span class="hl">calcular, aprobar</span> y organizarte en la FIA
+            </p>
+            <p class="sub-insight">Todo lo que necesitas para tu vida académica, en un solo lugar</p>
+            <div class="divider"></div>
+        </section>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-num">5</div>
+                <div class="stat-lbl">Carreras</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">100+</div>
+                <div class="stat-lbl">Exámenes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">50+</div>
+                <div class="stat-lbl">Cursos</div>
+            </div>
+        </div>
+
+        <!-- FEATURES 2x2 -->
+        <section class="features">
+            <div class="stitle">¿Qué puedes hacer?</div>
+            <div class="fgrid">
+
+                <!-- Left Column -->
+                <div class="fcol">
+                    <!-- 01: Calcula tus Notas -->
+                    <div class="fcard">
+                        <div class="fcard-top">
+                            <div class="fnum">01</div>
+                            <div class="finfo">
+                                <h3>🧮 Calcula tus Notas</h3>
+                                <p>Ingresa tus notas y descubre cuánto necesitas para aprobar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 03: Promedio Ponderado -->
+                    <div class="fcard purple">
+                        <div class="fcard-top">
+                            <div class="fnum">03</div>
+                            <div class="finfo">
+                                <h3>📊 Promedio Ponderado</h3>
+                                <p>Monitorea tu promedio ponderado de tu ciclo actual.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Column: 3D Animation -->
+                <div class="fcol-center">
+                    <div class="poster-3d-wrapper">
+                        <!-- Card Stack - CSFloat Style -->
+                        <div class="card-stack">
+                            <!-- Card 1 - Front (HTML/CSS Component) -->
+                            <div class="hero-card stack-card-1">
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label blue">Práctica 1
+                                            (P1)</span><span class="hero-card-input-value blue">0</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label blue">Práctica 2
+                                            (P2)</span><span class="hero-card-input-value blue">11</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label blue">Práctica 3
+                                            (P3)</span><span class="hero-card-input-value blue">14</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label blue">Práctica 4
+                                            (P4)</span><span class="hero-card-input-value blue">11</span></div>
+                                </div>
+                                <div class="hero-card-separator"></div>
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row"><span
+                                            class="hero-card-input-label highlight">Examen Final (EF)</span><span
+                                            class="hero-card-input-value green">8</span></div>
+                                </div>
+                                <div class="hero-card-result">
+                                    <div class="hero-card-approved">¡Ya Aprobaste! 🎉</div>
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value green">10.50</div>
+                                    <div class="hero-card-glow text-transparent"></div>
+                                    <div class="hero-card-neon-bar green text-transparent"></div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 - Middle (HTML/CSS Component - Orange) -->
+                            <div class="hero-card stack-card-2">
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 1
+                                            (P1)</span><span class="hero-card-input-value">0</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 2
+                                            (P2)</span><span class="hero-card-input-value">11</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 3
+                                            (P3)</span><span class="hero-card-input-value">14</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 4
+                                            (P4)</span><span class="hero-card-input-value">11</span></div>
+                                </div>
+                                <div class="hero-card-separator"></div>
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row"><span
+                                            class="hero-card-input-label highlight">Examen Final (EF)</span><span
+                                            class="hero-card-input-value">0</span></div>
+                                </div>
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value orange">7.83</div>
+                                    <div class="hero-card-glow orange text-transparent"></div>
+                                    <div class="hero-card-neon-bar orange text-transparent"></div>
+                                </div>
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para aprobar:</div>
+                                    <div class="hero-card-min-value">8.00</div>
+                                    <div class="hero-card-save-btn">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                                        </svg>
+                                        Guardar Notas
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 - Back (HTML/CSS Component - Red) -->
+                            <div class="hero-card stack-card-3">
+                                <div class="hero-card-header">
+                                    <h3>2. INGRESA TUS NOTAS</h3>
+                                </div>
+                                <div class="hero-card-inputs">
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 1
+                                            (P1)</span><span class="hero-card-input-value">0</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 2
+                                            (P2)</span><span class="hero-card-input-value">0</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 3
+                                            (P3)</span><span class="hero-card-input-value">0</span></div>
+                                    <div class="hero-card-input-row"><span class="hero-card-input-label">Práctica 4
+                                            (P4)</span><span class="hero-card-input-value">0</span></div>
+                                </div>
+                                <div class="hero-card-separator"></div>
+                                <div class="hero-card-inputs" style="padding-top: 8px;">
+                                    <div class="hero-card-input-row"><span
+                                            class="hero-card-input-label highlight">Examen Final (EF)</span><span
+                                            class="hero-card-input-value">0</span></div>
+                                </div>
+                                <div class="hero-card-result">
+                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
+                                    <div class="hero-card-result-value red">0.00</div>
+                                    <div class="hero-card-glow red text-transparent"></div>
+                                    <div class="hero-card-neon-bar red text-transparent"></div>
+                                </div>
+                                <div class="hero-card-min-section">
+                                    <div class="hero-card-min-label">Cuanto necesitas en el final para :</div>
+                                    <div class="hero-card-impossible">Imposible</div>
+                                </div>
+                                <div class="hero-card-weights">
+                                    <div class="hero-card-weights-title">Peso de Notas</div>
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header"><span
+                                                class="hero-card-weight-name blue">Prom. Prácticas (PE)</span><span
+                                                class="hero-card-weight-percent blue">66.7%</span></div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill blue" style="width: 66.7%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="hero-card-weight-row">
+                                        <div class="hero-card-weight-header"><span
+                                                class="hero-card-weight-name red">Examen Final (EF)</span><span
+                                                class="hero-card-weight-percent red">33.3%</span></div>
+                                        <div class="hero-card-weight-bar-bg">
+                                            <div class="hero-card-weight-bar-fill red" style="width: 33.3%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="fcol">
+                    <!-- 02: Banco de Exámenes -->
+                    <div class="fcard green">
+                        <div class="fcard-top">
+                            <div class="fnum">02</div>
+                            <div class="finfo">
+                                <h3>📚 Estudia con exámenes pasados</h3>
+                                <p>Accede gratis a prácticas y exámenes de ciclos anteriores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 04: Fórmulas por Curso -->
+                    <div class="fcard amber">
+                        <div class="fcard-top">
+                            <div class="fnum">04</div>
+                            <div class="finfo">
+                                <h3>📋 Fórmulas por Curso</h3>
+                                <p>Cada curso tiene su esquema ya configurado por ti.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BOTTOM BAR -->
+        <div class="bottom">
+            <div class="bcareers">
+                <div class="stitle">Carreras</div>
+                <div class="tagsgrid">
+                    <span class="tag">💻 Computación y Sistemas</span>
+                    <span class="tag">🏗️ Ing. Civil</span>
+                    <span class="tag">⚙️ Ing. Industrial</span>
+                    <span class="tag">🏛️ Arquitectura</span>
+                    <span class="tag">✈️ Ciencias Aeronáuticas</span>
+                </div>
+            </div>
+
+            <div class="bqr">
+                <div class="qr-box">
+                    <img src="imagenes/qr_cyan.jpg" alt="Escanea para ir a Calculadora FIA USMP" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="bqr-label">Escanea el QR</div>
+                <div class="bqr-sub">Acceso directo</div>
+            </div>
+
+            <div class="bcontact">
+                <div class="url-box">
+                    <span>calculadorafiausmp.com</span>
+                    <small>O búscanos en Google como<br><strong>calculadora fia usmp</strong></small>
+                </div>
+                <div class="brand-row">
+                    <img src="imagenes/logo.webp" alt="Logo Calculadora FIA">
+                    <div style="line-height: 1;">
+                        <div style="font-size: 4.5mm; font-weight: 900; color: #a3c4d4; letter-spacing: -0.1mm;">Calculadora</div>
+                        <div style="font-size: 2.1mm; font-weight: 700; color: #7a9eae; letter-spacing: 0.6mm;">FIA USMP</div>
+                    </div>
+                    <span class="tagline-heart">💙</span>
+                </div>
+                <div class="tagline-text">"Por estudiantes para estudiantes"</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="pfooter">
+            <p>Hecho por estudiantes, para estudiantes · FIA USMP 2026</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -25,14 +25,14 @@
     <meta property="og:url" content="https://calculadorafiausmp.com/">
     <meta property="og:title" content="CalculadoraFIAUSMP: Notas, Promedios y Exámenes">
     <meta property="og:description"
-        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.">
+        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a examenes de ciclos pasados.">
     <meta property="og:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="CalculadoraFIAUSMP: Notas, Promedios y Exámenes">
     <meta name="twitter:description"
-        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.">
+        content="Calcula notas y promedios para estudiantes USMP. Accede gratis a examenes de ciclos pasados.">
     <meta name="twitter:image" content="https://calculadorafiausmp.com/imagenes/logo.png">
 
     <!-- Schema.org JSON-LD -->
@@ -62,7 +62,7 @@
                 "@type": "WebApplication",
                 "name": "CalculadoraFIAUSMP",
                 "url": "https://calculadorafiausmp.com/",
-                "description": "Calcula notas y promedios para estudiantes USMP. Accede gratis a exámenes de ciclos pasados.",
+                "description": "Calcula notas y promedios para estudiantes USMP. Accede gratis a exÃ¡menes de ciclos pasados.",
                 "applicationCategory": "EducationalApplication",
                 "operatingSystem": "Web",
                 "offers": {
@@ -75,7 +75,7 @@
     }
     </script>
 
-    <!-- Preconexiones para carga más rápida -->
+    <!-- Preconexiones para carga mÃ¡s rÃ¡pida -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -83,7 +83,7 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" as="script">
 
-    <!-- Preload fuentes críticas -->
+    <!-- Preload fuentes crÃ­ticas -->
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@300;400;500;700;900&display=swap"
         as="style">
@@ -452,7 +452,7 @@
                 0 -8px 40px hsla(38, 92%, 50%, 0.2);
         }
 
-        /* Mensaje de nota mínima */
+        /* Mensaje de nota mÃ­nima */
         .hero-card-min-section {
             background: linear-gradient(to bottom, #18181b 0%, #0d0d0f 100%);
             border-top: 1px solid #27272a;
@@ -475,7 +475,7 @@
             margin-bottom: 12px;
         }
 
-        /* Botón Guardar Notas */
+        /* BotÃ³n Guardar Notas */
         .hero-card-save-btn {
             display: flex;
             align-items: center;
@@ -606,7 +606,7 @@
 
         /* ========================================
            RESPONSIVE - Mobile Hero Cards
-           100% CALIDAD: Sin scale(), tamaños nativos en px
+           100% CALIDAD: Sin scale(), tamaÃ±os nativos en px
            Aumentado ~15% para mejor legibilidad
            ======================================== */
         @media (max-width: 1023px) {
@@ -769,12 +769,11 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5W79TKG" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- Hero Background (CSFloat style) -->
-    <div class="hero-bg" aria-hidden="true"></div>
+    <!-- Hero Background removed for cleaner presentation -->
 
     <!-- ============================================
          MOBILE HEADER - Fixed Top (CSFloat Style)
-         Solo visible en móvil (lg:hidden)
+         Solo visible en mÃ³vil (lg:hidden)
          ============================================ -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800 lg:hidden"
         x-data="authSystem">
@@ -831,7 +830,7 @@
                         </div>
                         <a href="promedioponderado.html"
                             class="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-zinc-800">
-                            <span>📊</span><span>Mi Promedio</span>
+                            <span>Mi Promedio</span>
                         </a>
                         <button @click="logout()"
                             class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-zinc-800 border-t border-zinc-700">
@@ -882,13 +881,13 @@
                 <span class="text-xs font-medium">Mi Promedio</span>
             </a>
 
-            <!-- FAQ con badge de Sílabos -->
+            <!-- FAQ con badge de SÃ­labos -->
             <a href="faq.html#repositorio"
                 class="relative flex flex-col items-center gap-1 px-3 py-2 text-gray-400 hover:text-white transition-colors">
                 <!-- Badge Sílabos -->
                 <span
                     class="absolute -top-1 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap animate-pulse">
-                    Sílabos ↓
+                    Sílabos
                 </span>
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1010,7 +1009,6 @@
                         <div class="py-2">
                             <a href="promedioponderado.html"
                                 class="flex items-center gap-3 px-4 py-2 text-sm text-gray-300 hover:bg-zinc-800 hover:text-white transition-colors">
-                                <span>📊</span>
                                 <span>Mi Promedio Ponderado</span>
                             </a>
                         </div>
@@ -1035,363 +1033,12 @@
 
 
     <!-- Mobile: Add padding for fixed header/footer -->
-    <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0 overflow-hidden">
-        <main class="flex items-center py-8 lg:py-16">
-            <!-- Hero Layout: Flexbox with space-between like CSFloat -->
-            <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center w-full gap-2 lg:gap-8">
-
-                <!-- Left Column: Text Content (max-width 570px like CSFloat) -->
-
-                <div class="order-2 lg:order-1 text-center lg:text-left lg:max-w-[570px]">
-                    <!-- Mobile Spacer: Empuja el texto hacia abajo en móvil -->
-                    <div class="h-5 lg:hidden"></div>
-
-                    <h1 class="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight mb-6 text-gradient">
-                        Obtén los cálculos de promedios que necesitas con CalculadoraFIAUSMP
-                    </h1>
-                    <h2
-                        class="text-base lg:text-lg text-gray-400 leading-relaxed mb-10 max-w-full lg:max-w-[90%] font-normal">
-                        CalculadoraFIAUSMP proporciona un sistema de cálculos y herramientas para el usuario que
-                        impulsan y motivan al conocimiento de sus promedios y cuánto de importancia tiene para su
-                        ciclo estudiantil.
-                    </h2>
-
-                    <div class="mt-8 lg:mt-12">
-                        <p class="text-sm lg:text-base uppercase tracking-wider text-blue-500 mb-4 font-bold">Elija su
-                            carrera a continuación</p>
-                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                            <a href="carrera.html?carrera=ingSistemas"
-                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
-                                Ingeniería de Computación y Sistemas
-                            </a>
-                            <a href="carrera.html?carrera=ingCivil"
-                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
-                                Ingeniería Civil
-                            </a>
-                            <a href="carrera.html?carrera=ingIndustrial"
-                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
-                                Ingeniería Industrial
-                            </a>
-                            <a href="carrera.html?carrera=arquitectura"
-                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
-                                Arquitectura
-                            </a>
-                            <a href="carrera.html?carrera=aeronautica"
-                                class="bg-card-bg border border-zinc-700 text-white px-5 py-3 rounded-lg font-medium transition-all duration-200 hover:border-blue-600 hover:bg-blue-600 hover:text-white">
-                                Ciencias Aeronáuticas
-                            </a>
-                        </div>
-
-                        <!-- BANNER: Véndenos tus prácticas (Solo Móvil) -->
-                        <div class="mt-8 lg:hidden">
-                            <a href="https://wa.me/51942087807?text=Hola%2C%20quiero%20vender%20mis%20pr%C3%A1cticas"
-                                target="_blank" rel="noopener noreferrer"
-                                class="block w-full overflow-hidden border-2 border-blue-500 animate-border-pulse hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 relative"
-                                style="background: #0b0d12;">
-                                <!-- Star/grid background layers -->
-                                <div class="absolute inset-0"
-                                    style="background: 
-                                    repeating-linear-gradient(90deg, rgba(35,123,255,0.06) 0px, transparent 1px, transparent 60px),
-                                    repeating-linear-gradient(0deg, rgba(35,123,255,0.06) 0px, transparent 1px, transparent 60px);"></div>
-                                <!-- Estrella izquierda -->
-                                <div class="absolute"
-                                    style="width: 5px; height: 5px; border-radius: 50%; background: #237BFF; box-shadow: 0 0 12px 4px rgba(35,123,255,0.6), 0 0 30px 8px rgba(35,123,255,0.3); top: 40%; left: 5%;">
-                                </div>
-                                <div class="absolute"
-                                    style="width: 35px; height: 1px; background: linear-gradient(90deg, #2770DE, transparent); top: 40%; left: 5%;">
-                                </div>
-                                <!-- Estrella centro (entre logos) -->
-                                <div class="absolute"
-                                    style="width: 4px; height: 4px; border-radius: 50%; background: #237BFF; box-shadow: 0 0 10px 3px rgba(35,123,255,0.5), 0 0 25px 6px rgba(35,123,255,0.2); top: 70%; left: 59%;">
-                                </div>
-                                <!-- Estrella derecha -->
-                                <div class="absolute"
-                                    style="width: 5px; height: 5px; border-radius: 50%; background: #237BFF; box-shadow: 0 0 12px 4px rgba(35,123,255,0.6), 0 0 30px 8px rgba(35,123,255,0.3); top: 50%; right: 5%;">
-                                </div>
-                                <div class="absolute"
-                                    style="width: 35px; height: 1px; background: linear-gradient(270deg, #2770DE, transparent); top: 50%; right: 5%;">
-                                </div>
-                                <div class="flex items-center justify-between px-3 py-3 relative z-10 gap-3">
-                                    <!-- IZQUIERDA: Textos apilados -->
-                                    <div class="min-w-0">
-                                        <p class="text-white font-bold leading-tight " style="font-size: 14px;">¿Tienes
-                                            prácticas o exámenes guardados?</p>
-                                        <p class="text-gray-400 leading-tight mt-4" style="font-size: 12px;">Te
-                                            pagamos <span class="text-green-400 font-bold">S/1.00</span><br>por práctica
-                                            o examen</p>
-                                    </div>
-                                    <!-- DERECHA: Logos + Botón WhatsApp -->
-                                    <div class="flex-shrink-0 flex flex-col items-center gap-1">
-                                        <!-- Logos Yape y Plin lado a lado -->
-                                        <div class="flex items-center gap-1">
-                                            <img src="imagenes/b39a9638a077eb77418d29f14196dca9.png" alt="Yape"
-                                                style="height: 50px;">
-                                            <img src="imagenes/52af51204684327.Y3JvcCwxMDg2LDg0OSwwLDExOA (1).png"
-                                                alt="Plin" style="height: 40px;">
-                                        </div>
-                                        <!-- Botón Contactar -->
-                                        <div class="bg-green-600 hover:bg-green-500 text-white font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 transition-colors"
-                                            style="font-size: 13px;">
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                                            </svg>
-                                            <span>&nbsp;Contactar</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Mobile Quick Actions - Solo móvil (lg:hidden) -->
-                        <p class="text-sm uppercase tracking-wider text-blue-500 mb-3 mt-8 font-bold lg:hidden">
-                            Funciones</p>
-                        <div class="flex flex-row gap-2 lg:hidden">
-                            <a href="examenes.html"
-                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
-                                <span>Exámenes</span>
-                            </a>
-                            <a href="faq.html"
-                                class="flex-1 flex items-center justify-center gap-1 bg-official-blue hover:bg-blue-600 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span>FAQ</span>
-                            </a>
-                            <a href="promedioponderado.html"
-                                class="flex-1 flex items-center justify-center gap-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-2 rounded-xl transition-all text-xs">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                                <span>Promedio</span>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <!-- Right Column: Animation -->
-                <div class="order-1 lg:order-2 lg:max-w-[500px] lg:flex-shrink-0">
-                    <div
-                        class="hero-animation-container relative h-[450px] lg:h-[650px] w-full flex justify-center items-center overflow-visible">
-
-                        <!-- Card Stack - CSFloat Style -->
-                        <div class="card-stack">
-                            <!-- Card 1 - Front (HTML/CSS Component) -->
-                            <div class="hero-card stack-card-1">
-                                <!-- Header -->
-                                <div class="hero-card-header">
-                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
-                                </div>
-
-                                <!-- Inputs -->
-                                <div class="hero-card-inputs">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label blue">Práctica 1 (P1)</span>
-                                        <span class="hero-card-input-value blue">0</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label blue">Práctica 2 (P2)</span>
-                                        <span class="hero-card-input-value blue">11</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label blue">Práctica 3 (P3)</span>
-                                        <span class="hero-card-input-value blue">14</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label blue">Práctica 4 (P4)</span>
-                                        <span class="hero-card-input-value blue">11</span>
-                                    </div>
-                                </div>
-
-                                <!-- Separador -->
-                                <div class="hero-card-separator"></div>
-
-                                <!-- Examen Final -->
-                                <div class="hero-card-inputs" style="padding-top: 8px;">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
-                                        <span class="hero-card-input-value green">8</span>
-                                    </div>
-                                </div>
-
-                                <!-- Result Box -->
-                                <div class="hero-card-result">
-                                    <div class="hero-card-approved">¡Ya Aprobaste! 🎉</div>
-                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
-                                    <div class="hero-card-result-value green">10.50</div>
-
-                                    <!-- Fade Glow -->
-                                    <div class="hero-card-glow"></div>
-                                    <!-- Neon Bar -->
-                                    <div class="hero-card-neon-bar green"></div>
-                                </div>
-                            </div>
-
-                            <!-- Card 2 - Middle (HTML/CSS Component - Orange) -->
-                            <div class="hero-card stack-card-2">
-                                <!-- Header -->
-                                <div class="hero-card-header">
-                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
-                                </div>
-
-                                <!-- Inputs -->
-                                <div class="hero-card-inputs">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
-                                        <span class="hero-card-input-value">11</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
-                                        <span class="hero-card-input-value">14</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
-                                        <span class="hero-card-input-value">11</span>
-                                    </div>
-                                </div>
-
-                                <!-- Separador -->
-                                <div class="hero-card-separator"></div>
-
-                                <!-- Examen Final -->
-                                <div class="hero-card-inputs" style="padding-top: 8px;">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                </div>
-
-                                <!-- Result Box -->
-                                <div class="hero-card-result">
-                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
-                                    <div class="hero-card-result-value orange">7.83</div>
-
-                                    <!-- Fade Glow -->
-                                    <div class="hero-card-glow orange"></div>
-                                    <!-- Neon Bar -->
-                                    <div class="hero-card-neon-bar orange"></div>
-                                </div>
-
-                                <!-- Nota Mínima + Botón -->
-                                <div class="hero-card-min-section">
-                                    <div class="hero-card-min-label">Cuanto necesitas en el final para aprobar:</div>
-                                    <div class="hero-card-min-value">8.00</div>
-                                    <button class="hero-card-save-btn">
-                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                                        </svg>
-                                        Guardar Notas
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Card 3 - Back (HTML/CSS Component - Red) -->
-                            <div class="hero-card stack-card-3">
-                                <!-- Header -->
-                                <div class="hero-card-header">
-                                    <span class="text-sm font-bold text-official-blue">2. INGRESA TUS NOTAS</span>
-                                </div>
-
-                                <!-- Inputs -->
-                                <div class="hero-card-inputs">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 1 (P1)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 2 (P2)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 3 (P3)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label">Práctica 4 (P4)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                </div>
-
-                                <!-- Separador -->
-                                <div class="hero-card-separator"></div>
-
-                                <!-- Examen Final -->
-                                <div class="hero-card-inputs" style="padding-top: 8px;">
-                                    <div class="hero-card-input-row">
-                                        <span class="hero-card-input-label highlight">Examen Final (EF)</span>
-                                        <span class="hero-card-input-value">0</span>
-                                    </div>
-                                </div>
-
-                                <!-- Result Box -->
-                                <div class="hero-card-result">
-                                    <div class="hero-card-result-label">TU PROMEDIO ACTUAL:</div>
-                                    <div class="hero-card-result-value red">0.00</div>
-
-                                    <!-- Fade Glow -->
-                                    <div class="hero-card-glow red"></div>
-                                    <!-- Neon Bar -->
-                                    <div class="hero-card-neon-bar red"></div>
-                                </div>
-
-                                <!-- Imposible text -->
-                                <div class="hero-card-min-section">
-                                    <div class="hero-card-min-label">Cuanto necesitas en el final para :</div>
-                                    <div class="hero-card-impossible">Imposible</div>
-                                </div>
-
-                                <!-- Peso de Notas -->
-                                <div class="hero-card-weights">
-                                    <div class="hero-card-weights-title">Peso de Notas</div>
-
-                                    <!-- Prom. Prácticas -->
-                                    <div class="hero-card-weight-row">
-                                        <div class="hero-card-weight-header">
-                                            <span class="hero-card-weight-name blue">Prom. Prácticas (PE)</span>
-                                            <span class="hero-card-weight-percent blue">66.7%</span>
-                                        </div>
-                                        <div class="hero-card-weight-bar-bg">
-                                            <div class="hero-card-weight-bar-fill blue" style="width: 66.7%;"></div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Examen Final -->
-                                    <div class="hero-card-weight-row">
-                                        <div class="hero-card-weight-header">
-                                            <span class="hero-card-weight-name red">Examen Final (EF)</span>
-                                            <span class="hero-card-weight-percent red">33.3%</span>
-                                        </div>
-                                        <div class="hero-card-weight-bar-bg">
-                                            <div class="hero-card-weight-bar-fill red" style="width: 33.3%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Blur glow effect behind cards -->
-                        <div
-                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-epics-blue blur-[150px] opacity-25 z-0">
-                        </div>
-                    </div>
-                </div>
-
+    <div class="container mx-auto px-4 flex-1 pt-16 pb-20 lg:pt-0 lg:pb-0 overflow-hidden flex flex-col justify-center">
+        <main class="flex flex-col items-center justify-center w-full h-full my-auto pb-8 lg:pb-0">
+            <div class="w-full flex justify-center items-center" style="height: calc(100vh - 200px); min-height: 500px;">
+                <img src="imagenes/desercion.jpg" alt="Tasa de Deserción" class="max-w-full max-h-full object-contain overflow-hidden rounded-xl shadow-2xl border border-zinc-800" style="max-height: 80vh;">
             </div>
         </main>
-
         <!-- Footer - Visible on all devices, appears above mobile bottom nav -->
         <footer class="bg-zinc-950 border-t border-zinc-800 pt-16 pb-24 lg:pb-16 px-5 mt-auto">
             <div class="container mx-auto">
@@ -1438,7 +1085,7 @@
                             style="color: #546E7A;">Sobre Nosotros</h5>
                         <ul class="list-none">
                             <li><a href="faq.html"
-                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">¿Cómo
+                                    class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Como
                                     Funciona?</a></li>
                             <li><a href="exposicion.html"
                                     class="text-gray-400 block mb-2 hover:text-official-blue transition-colors duration-200">Exposición</a></li>
