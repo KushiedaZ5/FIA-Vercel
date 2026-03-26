@@ -378,13 +378,14 @@ const examenesDisponibles = {
     // Instrumentación y Control Industrial
     // Carpeta: pdfs/ICI/
     'ICI': {
-        'PC1': ['210', '21SAI', '211'],
+        'PC1': ['210', '21SAI'],
         'PC4': ['201'],
     },
 
     // Automatización Industrial
     // Carpeta: pdfs/AIND/
     'AIND': {
+        'PC1': ['211'],
         'PC3': ['202'],
         'L4': ['202'],
     },
