@@ -1,0 +1,64 @@
+GHOST ENTRIES (In JS, but missing physical PDF -> CAUSES 404):
+AIND/PC1-212.pdf
+AL/PC4-SEM.pdf
+F1/PC2-142 1.pdf
+F1/PC2-142 2.pdf
+F1/PC2-201.pdf
+F1/PC2-202.pdf
+F2C/PC2-202.pdf
+F2C/PC4-201.pdf
+ISAL/PC3-202.pdf
+ISE/PC1-212.pdf
+ISE/PC3-212.pdf
+MD/PC3-061.pdf
+MD/PC3-062.pdf
+MD/PC3-071.pdf
+MD/PC3-072.pdf
+MD/PC3-081.pdf
+MD/PC3-082.pdf
+POA/PC4-212.pdf
+RM1/PC3-081.pdf
+RM2/PC2-081.pdf
+
+UNREGISTERED FILES (Physical PDF exists, but not in JS -> INVISIBLE IN UI):
+AE2/PC2-231 2.pdf
+AL/PC3-SEM.pdf
+C1/PC1-252.pdf
+CAM2/PC3-201 2.pdf
+CG/ppts/CO_Sesion_Semana-10_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-1_2026-01.pdf
+CG/ppts/CO_Sesion_Semana-2_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-3_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-4_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-5_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-6_7_2026-0.pdf
+CG/ppts/CO_Sesion_Semana-9_2025-II.pdf
+CG/ppts/CO_Sesion_Semana_11-2026-0.pdf
+CG/ppts/CO_Sesion_Semana_12-2026-0.pdf
+CON1/PC2-201 R.pdf
+EST2/PC2-252.pdf
+F1/EF-090.pdf
+F1/PC1-090.pdf
+F1/PC2-090.pdf
+F1/PC3-090.pdf
+F1/PC4-090.pdf
+F2C/PC4-252.pdf
+ISAL/PC1-212.pdf
+ISAL/PC3-212.pdf
+ISAL/T3-202.pdf
+MICRO/C1-252.pdf
+MICRO/C2-252.pdf
+MICRO/C3-252.pdf
+MICRO/C4-252.pdf
+MICRO/C5-252.pdf
+MICRO/C6-252.pdf
+MICRO/CE-252.pdf
+MICRO/EF-112.pdf
+MICRO/EF-252.pdf
+MICRO/EP-251.pdf
+MICRO/EP-252.pdf
+MICRO/PC1-252.pdf
+MICRO/PC2-252.pdf
+MICROS/EF-112.pdf
+PM/PC1-151.pdf
+POA/PC4-140.pdf

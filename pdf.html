@@ -403,7 +403,7 @@
                 <template x-for="ciclo in ciclosDisponibles" :key="ciclo">
                     <button @click="selectCiclo(ciclo)" :class="{'active': cicloSeleccionado === ciclo}"
                         class="cycle-btn bg-zinc-800 border border-zinc-600 text-white font-medium px-4 py-2 rounded-lg text-sm">
-                        <span x-text="clave + '-' + tipoSeleccionado + ' ' + getCicloNombre(ciclo)"></span>
+                        <span x-text="tipoSeleccionado + '-' + ciclo"></span>
                     </button>
                 </template>
                 <template x-if="ciclosDisponibles.length === 0">

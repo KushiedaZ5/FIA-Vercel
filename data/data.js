@@ -36,7 +36,7 @@ const dataCarreras = {
                 { value: 'ti2', text: 'Tecnología de Información 2', esquema: '046', creditos: 4, clave: 'TI2' },
                 { value: 'fis2_castro', text: 'Física 2 - Prof. Castro', esquema: '042', creditos: 5, clave: 'F2C' },
                 { value: 'fis2_tejada', text: 'Física 2 - Prof. Tejada', esquema: '042', creditos: 5, clave: 'F2T' },
-                { value: 'alg2', text: 'Algoritmos 2', esquema: '047', creditos: 5, clave: 'AED2' },
+                { value: 'alg2', text: 'Algoritmos 2 - Sistemas', esquema: '047', creditos: 5, clave: 'AED2S' },
                 { value: 'micro_sanchez', text: 'Microeconomía - Prof. Sánchez', esquema: '054', creditos: 4, clave: 'MICROS' },
                 { value: 'micro_caparachin', text: 'Microeconomía - Prof. Caparachín', esquema: '134', creditos: 4, clave: 'MICROC' }
             ],
@@ -124,7 +124,7 @@ const dataCarreras = {
                 { value: 'dinamica_civil', text: 'Dinámica', esquema: '045', creditos: 3, clave: 'DIN' },
                 { value: 'tec_concreto', text: 'Tecnología del Concreto', esquema: '045', creditos: 3, clave: 'TC' },
                 { value: 'estatica', text: 'Estática', esquema: '049', creditos: 4, clave: 'ESTA' },
-                { value: 'construccion1_civil', text: 'Construcción 1', esquema: '045', creditos: 3, clave: 'CON1' },
+                { value: 'construccion1_civil', text: 'Construcción 1 - Civil', esquema: '045', creditos: 3, clave: 'CON1I' },
                 { value: 'ec_diferenciales_civil', text: 'Ecuaciones Diferenciales', esquema: '040', creditos: 4, clave: 'ED' },
                 { value: 'fis2_castro', text: 'Física 2 - Prof. Castro', esquema: '042', creditos: 5, clave: 'F2C' },
                 { value: 'fis2_tejada', text: 'Física 2 - Prof. Tejada', esquema: '042', creditos: 5, clave: 'F2T' },
@@ -224,7 +224,7 @@ const dataCarreras = {
                 { value: 'dis_ind_com', text: 'Diseño Industrial por Computador', esquema: '038', creditos: 3, clave: 'DIC' },
                 { value: 'discapacidad_inclusion', text: 'Discapacidad e Inclusión(Proximamente...)', esquema: '045', creditos: 3, clave: 'DI' }
             ], 'ciclo4': [
-                { value: 'alg1', text: 'Algoritmos y Estructura de Datos I(Proximamente...)', esquema: '128', creditos: 5, clave: 'AED1' },
+                { value: 'alg1', text: 'Algoritmos y Estructura de Datos I - Industrial', esquema: '128', creditos: 5, clave: 'AED1I' },
                 { value: 'est1', text: 'Estadística y Probabilidades I', esquema: '041', creditos: 4, clave: 'EST1' },
                 { value: 'fis2_castro', text: 'Física 2 - Prof. Castro', esquema: '042', creditos: 5, clave: 'F2C' },
                 { value: 'fis2_tejada', text: 'Física 2 - Prof. Tejada', esquema: '042', creditos: 5, clave: 'F2T' },

@@ -144,12 +144,20 @@ document.addEventListener('alpine:init', () => {
          * Carga los tipos de examen disponibles para este curso
          */
         loadTiposDisponibles() {
-            // Lista predeterminada de tipos de examen
-            const tiposPredeterminados = ['PC1', 'PC2', 'PC3', 'PC4', 'EF', 'EP', 'W1', 'LB1', 'LB2', 'LB3'];
+            // Lista predeterminada de tipos de examen (orden lógico real)
+            const tiposPredeterminados = ['PC1', 'PC2', 'PC3', 'PC4', 'EP', 'EF', 'W1', 'W2', 'LB1', 'LB2', 'LB3', 'LB4', 'LB5', 'LB6', 'LB7'];
 
             if (typeof examenesDisponibles !== 'undefined' && this.clave && examenesDisponibles[this.clave]) {
-                // Usar solo los tipos que tienen exámenes
-                this.tiposDisponibles = Object.keys(examenesDisponibles[this.clave]);
+                // Usar solo los tipos que tienen exámenes y ORDENARLOS
+                const disponibles = Object.keys(examenesDisponibles[this.clave]);
+                this.tiposDisponibles = disponibles.sort((a, b) => {
+                    const idxA = tiposPredeterminados.indexOf(a);
+                    const idxB = tiposPredeterminados.indexOf(b);
+                    if (idxA === -1 && idxB === -1) return a.localeCompare(b);
+                    if (idxA === -1) return 1;
+                    if (idxB === -1) return -1;
+                    return idxA - idxB;
+                });
             } else {
                 // Mostrar todos los tipos predeterminados (pero deshabilitados)
                 this.tiposDisponibles = tiposPredeterminados;
