@@ -439,5 +439,36 @@ const esquemas = {
             return ((2 * pe) + n.EP + n.EF) / 4;
         },
     },
-   
+   "138": {
+        descripcion: "Control de calidad(Regalo para virgilio)",
+        imagen: "imagenes/138.jpg",
+        inputs: ["P1", "P2", "MF", "EO", "EP", "EF"],
+        pesos: [{ n: "Prom. de Evaluaciones (PE)", v: 33.3, c: "bg-primary" }, { n: "Examen Parcial (EP)", v: 33.3, c: "bg-warning" }, { n: "Examen Final (EF)", v: 33.3, c: "bg-danger" }],
+        calcular: (n) => {
+            // TF = 65% x EO + 35% x MF
+            const tf = (0.65 * n.EO) + (0.35 * n.MF);
+            // PC = 33.3% x PC1 + 33.3% x PC2 + 33.3% x TF
+            const pc = (n.P1 + n.P2 + tf) / 3;
+            // PF = 33.3% x PC + 33.3% x EP + 33.3% x EF
+            return (pc + n.EP + n.EF) / 3;
+        },
+        // Ejemplos preestablecidos para Contabilidad General
+        ejemplos: [
+            {
+                nombre: "🟢 Sin dar el final",
+                descripcion: "Aprobar sin rendir el examen final",
+                notas: { P1: 16, P2: 16, MF: 16, EO: 16, EP: 16, EF: 0 }
+            },
+            {
+                nombre: "🟡 18 en parcial, 3 en final",
+                descripcion: "Sacando 18 en el parcial pero solo 3 en final",
+                notas: { P1: 11, P2: 11, MF: 11, EO: 11, EP: 18, EF: 3 }
+            },
+            {
+                nombre: "🔴 Raspando con 10 en final",
+                descripcion: "Pasando a las justas con 10 en el final",
+                notas: { P1: 6, P2: 13, MF: 13, EO: 13, EP: 11, EF: 10 }
+            }
+        ]
+    },
 };

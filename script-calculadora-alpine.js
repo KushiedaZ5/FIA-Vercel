@@ -18,6 +18,7 @@ document.addEventListener('alpine:init', () => {
         notas: {
             P1: '', P2: '', P3: '', P4: '', P5: '',
             W1: '',
+            MF: '', // Monografía Final
             APPC: '', AFPC: '', // Avance Parcial/Final del Proyecto de Curso
             EP: '',
             EF: '',
@@ -30,6 +31,7 @@ document.addEventListener('alpine:init', () => {
         erroresValidacion: {
             P1: '', P2: '', P3: '', P4: '', P5: '',
             W1: '',
+            MF: '',
             APPC: '', AFPC: '',
             EP: '',
             EF: '',

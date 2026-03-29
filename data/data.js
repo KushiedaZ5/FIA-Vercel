@@ -246,12 +246,12 @@ const dataCarreras = {
                 { value: 'taller_herramientas', text: 'Taller de Herramientas Informáticas', esquema: '133', creditos: 2, clave: 'THI' },
             ],
             'ciclo7': [
-                { value: 'control_calidad', text: 'Control de Calidad(Proximamente...)', esquema: '038', creditos: 4, clave: 'CC' },
-                { value: 'gestion_financiera_ind', text: 'Gestión Financiera(Proximamente...)', esquema: '038', creditos: 4, clave: 'GF' },
-                { value: 'ing_metodos2', text: 'Ingeniería de Métodos II(Proximamente...)', esquema: '038', creditos: 4, clave: 'IM2' },
-                { value: 'investigacion_operativa2', text: 'Investigación Operativa II(Proximamente...)', esquema: '038', creditos: 4, clave: 'IO2' },
-                { value: 'mercadotecnia', text: 'Mercadotecnia(Proximamente...)', esquema: '045', creditos: 4, clave: 'MKT' },
-                { value: 'instrumentacion_control', text: 'Instrumentación y Control Industrial(Proximamente...)', esquema: '047', creditos: 2, clave: 'ICI' },
+                { value: 'control_calidad', text: 'Control de Calidad', esquema: '138', creditos: 4, clave: 'CC' },
+                { value: 'gestion_financiera_ind', text: 'Gestión Financiera', esquema: '038', creditos: 4, clave: 'GF' },
+                { value: 'ing_metodos2', text: 'Ingeniería de Métodos II', esquema: '038', creditos: 4, clave: 'IM2' },
+                { value: 'investigacion_operativa2', text: 'Investigación Operativa II', esquema: '045', creditos: 4, clave: 'IO2' },
+                { value: 'mercadotecnia', text: 'Mercadotecnia', esquema: '045', creditos: 4, clave: 'MKT' },
+                { value: 'instrumentacion_control', text: 'Instrumentación y Control Industrial', esquema: '046', creditos: 2, clave: 'ICI' },
             ],
             'ciclo8': [
                 { value: 'automatizacion_industrial', text: 'Automatización Industrial(Proximamente...)', esquema: '047', creditos: 4, clave: 'AIND' },
