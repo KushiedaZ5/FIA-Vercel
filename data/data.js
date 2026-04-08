@@ -235,7 +235,7 @@ const dataCarreras = {
                 { value: 'contabilidad_general', text: 'Contabilidad General', esquema: '038', creditos: 4, clave: 'CG' },
                 { value: 'ing_administrativa', text: 'Ingeniería Administrativa', esquema: '132', creditos: 4, clave: 'IA' },
                 { value: 'ing_electrica', text: 'Ingeniería Eléctrica y Electrónica', esquema: '047', creditos: 5, clave: 'IEE' },
-                { value: 'mecanica_materiales', text: 'Mecánica de Materiales', esquema: '128', creditos: 5, clave: 'MM' },
+                { value: 'mecanica_materiales', text: 'Mecánica de Materiales', esquema: '054', creditos: 5, clave: 'MM' },
             ],
             'ciclo6': [
                 { value: 'ing_costos', text: 'Ingeniería de Costos', esquema: '038', creditos: 4, clave: 'ICO' },
