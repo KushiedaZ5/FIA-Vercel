@@ -135,7 +135,7 @@ const dataCarreras = {
                 { value: 'caminos1', text: 'Caminos I', esquema: '045', creditos: 4, clave: 'CAM1' },
                 { value: 'resistencia_materiales1', text: 'Resistencia de Materiales I', esquema: '135', creditos: 5, clave: 'RM1' },
                 { value: 'ecologia_impacto', text: 'Ecología e Impacto Ambiental', esquema: '045', creditos: 3, clave: 'EIA' },
-                { value: 'instalaciones_electricas', text: 'Instalaciones Eléctricas en Edificaciones', esquema: '045', creditos: 2, clave: 'IEE' },
+                { value: 'instalaciones_electricas', text: 'Instalaciones Eléctricas en Edificaciones', esquema: '045', creditos: 2, clave: 'IEECIV' },
             ],
             'ciclo6': [
                 { value: 'mecanica_fluidos1', text: 'Mecánica de Fluidos I(Proximamente...)', esquema: '038', creditos: 5, clave: 'MF1' },
