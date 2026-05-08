@@ -42,7 +42,7 @@ const dataCarreras = {
             ],
             'ciclo5': [
                 { value: 'contabilidad_general', text: 'Contabilidad General', esquema: '038', creditos: 4, clave: 'CG' },
-                { value: 'gestion_procesos', text: 'Gestión de Procesos', esquema: '132', creditos: 5, clave: 'GP' },
+                { value: 'gestion_procesos', text: 'Gestión de Procesos', esquema: '046', creditos: 5, clave: 'GP' },
                 { value: 'ing_administrativa', text: 'Ingeniería Administrativa', esquema: '132', creditos: 4, clave: 'IA' },
                 { value: 'sistemas_operativos', text: 'Sistemas Operativos y Plataformas', esquema: '129', creditos: 4, clave: 'SOP' },
                 { value: 'teoria_bd', text: 'Teoría y Diseño de Base de Datos', esquema: '043', creditos: 5, clave: 'TBD' }
