@@ -68,7 +68,7 @@ const dataCarreras = {
                 { value: 'formulacion_evaluacion', text: 'Formulación y Evaluación de Proyectos', esquema: '045', creditos: 4, clave: 'FEPSIS' },
                 { value: 'gestion_recursos', text: 'Gestion de Recursos de Tecnología de Información', esquema: '045', creditos: 4, clave: 'GRTISSIS' },
                 { value: 'investigacion_sistemas', text: 'Investigación en Sistemas de Información(Proximamente...)', esquema: '046', creditos: 2, clave: 'ISIS' },
-                
+
             ],
             'ciclo9': [
                 { value: 'inteligencia_negocios', text: 'Inteligencia de Negocios(Proximamente...)', esquema: '045', creditos: 4, clave: 'INSIS' },
@@ -80,15 +80,15 @@ const dataCarreras = {
             'ciclo10': [
                 { value: 'etica_moral', text: 'Ética y Moral', esquema: '038', creditos: 4, clave: 'EMSIS' },
                 { value: 'marketing_digital', text: 'Marketing Digital', esquema: '045', creditos: 4, clave: 'MDSIS' },
-            
+
             ],
             'Electivos': [
                 { value: 'pruebas_software', text: 'Pruebas de Software', esquema: '045', creditos: 4, clave: 'PSSIS' },
                 { value: 'redes_conectividad', text: 'Redes y Conectividad', esquema: '046', creditos: 4, clave: 'RCSIS' },
                 { value: 'gestion_estrategica', text: 'Gestión Estratégica', esquema: '045', creditos: 4, clave: 'GESIS' },
-            
+
             ]
-            
+
         }
     },
     'ingCivil': {
@@ -390,6 +390,12 @@ const dataCarreras = {
                 { value: 'operaciones_despacho_aereo', text: 'Operaciones de Despacho Aéreo', esquema: '045', creditos: 4, clave: 'ODA' },
                 { value: 'costos_presupuestos', text: 'Costos y Presupuestos', esquema: '038', creditos: 3, clave: 'CP' },
                 { value: 'sms_i', text: 'Sistema de Gestión de Seguridad Operacional I (SMS-I)', esquema: '038', creditos: 3, clave: 'SMS1' },
+            ], 'ciclo7': [
+                { value: 'finanzas', text: 'Finanzas', esquema: '038', creditos: 4, clave: 'FIN' },
+                { value: 'gestion_estrategica_aviacion', text: 'Gestión Estratégica para Aviación(Proximamente...)', esquema: '045', creditos: 4, clave: 'GEA' },
+                { value: 'derecho_empresarial_aero', text: 'Derecho Empresarial(Proximamente...)', esquema: '045', creditos: 3, clave: 'DEA' },
+                { value: 'negocios_internacionales_aero', text: 'Negocios Internacionales(Proximamente...)', esquema: '038', creditos: 3, clave: 'NIA' },
+                { value: 'seguridad_aviacion_avsec', text: 'Seguridad de la Aviación (AVSEC)(Proximamente...)', esquema: '045', creditos: 3, clave: 'AVSEC' },
             ]
         }
     }
@@ -524,7 +530,9 @@ const ciclosAcademicos = {
     '23SAI': '2023 SAI',
     '231': '2023-1',
     '2312': '2023-1 2',
+    '2313': '2023-1 3',
     '232': '2023-2',
+    '2321': '2023-2 1',
 
     '24SAI': '2024 SAI',
     '241': '2024-1',
@@ -541,8 +549,11 @@ const ciclosAcademicos = {
     '251A': '2025-1 Aplazados',
     '2512': '2025-1 2',
     '252': '2025-2',
+    '2522': '2025-2 2',
+    '2524': '2025-2 4',
 
     '26SAI': '2026 SAI',
+    '260': '2026-0',
     '261': '2026-1',
     '262': '2026-2'
 };
