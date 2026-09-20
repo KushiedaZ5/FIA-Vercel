@@ -50,7 +50,7 @@ const dataCarreras = {
             'ciclo6': [
                 { value: 'ing_costos', text: 'Ingeniería de Costos', esquema: '038', creditos: 4, clave: 'ICO' },
                 { value: 'ing_software1', text: 'Ingeniería de Software I', esquema: '128', creditos: 5, clave: 'IS1' },
-                { value: 'inv_operativa', text: 'Investigación Operativa', esquema: '038', creditos: 4, clave: 'IO' },
+                { value: 'investigacion_operativa1', text: 'Investigación Operativa 1', esquema: '038', creditos: 4, clave: 'IO1' },
                 { value: 'programacion1', text: 'Programación I', esquema: '046', creditos: 5, clave: 'PROG1' },
                 { value: 'teoria_sistemas', text: 'Teoría General de Sistemas ', esquema: '045', creditos: 4, clave: 'TGS' },
             ],
@@ -241,7 +241,7 @@ const dataCarreras = {
                 { value: 'ing_costos', text: 'Ingeniería de Costos', esquema: '038', creditos: 4, clave: 'ICO' },
                 { value: 'ing_mtodos1', text: 'Ingeniería de Métodos I', esquema: '038', creditos: 4, clave: 'IM1' },
                 { value: 'gestion_procesos', text: 'Gestión de Procesos', esquema: '132', creditos: 4, clave: 'GP' },
-                { value: 'investigacion_operativa1', text: 'Investigación Operativa I', esquema: '038', creditos: 4, clave: 'IO1' },
+                { value: 'investigacion_operativa1', text: 'Investigación Operativa 1', esquema: '038', creditos: 4, clave: 'IO1' },
                 { value: 'proceso_manufactura', text: 'Proceso de Manufactura', esquema: '047', creditos: 4, clave: 'PM' },
                 { value: 'taller_herramientas', text: 'Taller de Herramientas Informáticas', esquema: '133', creditos: 2, clave: 'THI' },
             ],
